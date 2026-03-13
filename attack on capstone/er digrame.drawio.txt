@@ -1,0 +1,137 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="features-erd" name="Features ERD">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- USER -->
+        <mxCell id="User" value="User&#10;---------------------&#10;PK user_id&#10;full_name&#10;email&#10;password_hash&#10;role"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="240" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- STUDENT -->
+        <mxCell id="Student" value="Student&#10;---------------------&#10;PK student_id (FK → User)&#10;major&#10;level&#10;enrollment_year"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="320" y="40" width="240" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- COURSE -->
+        <mxCell id="Course" value="Course&#10;---------------------&#10;PK course_id&#10;code&#10;name&#10;credit_hours&#10;difficulty_level"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="600" y="40" width="260" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- ONLINE COURSE -->
+        <mxCell id="OnlineCourse" value="OnlineCourse&#10;---------------------&#10;PK online_course_id&#10;platform&#10;title&#10;url&#10;est_duration_hours&#10;difficulty_level&#10;main_topic"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="900" y="40" width="280" height="220" as="geometry"/>
+        </mxCell>
+
+        <!-- ANNOUNCEMENT -->
+        <mxCell id="Announcement" value="Announcement&#10;---------------------&#10;PK announcement_id&#10;FK created_by_user_id&#10;title&#10;content&#10;created_at&#10;target_audience_type&#10;target_major&#10;target_level"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="40" width="300" height="240" as="geometry"/>
+        </mxCell>
+
+        <!-- STUDENT SCHEDULE -->
+        <mxCell id="StudentSchedule" value="StudentSchedule&#10;---------------------&#10;PK schedule_id&#10;FK student_id&#10;semester&#10;year&#10;created_at&#10;is_final"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="280" width="260" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- STUDENT COURSE COMPLETION -->
+        <mxCell id="StudentCourseCompletion" value="StudentCourseCompletion&#10;---------------------&#10;PK completion_id&#10;FK student_id&#10;FK course_id&#10;status&#10;grade&#10;term"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="320" y="280" width="280" height="210" as="geometry"/>
+        </mxCell>
+
+        <!-- COURSE SECTION -->
+        <mxCell id="CourseSection" value="CourseSection&#10;---------------------&#10;PK section_id&#10;FK course_id&#10;semester&#10;year&#10;day_of_week&#10;start_time&#10;end_time&#10;room"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="640" y="280" width="280" height="230" as="geometry"/>
+        </mxCell>
+
+        <!-- STUDENT SCHEDULE SECTION -->
+        <mxCell id="StudentScheduleSection" value="StudentScheduleSection&#10;---------------------&#10;PK schedule_section_id&#10;FK schedule_id&#10;FK section_id"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="520" width="260" height="150" as="geometry"/>
+        </mxCell>
+
+        <!-- SCHEDULE RATING -->
+        <mxCell id="ScheduleRating" value="ScheduleRating&#10;---------------------&#10;PK rating_id&#10;FK schedule_id&#10;workload_score&#10;time_distribution_score&#10;difficulty_score&#10;overall_score&#10;ai_explanation&#10;created_at"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="320" y="520" width="320" height="230" as="geometry"/>
+        </mxCell>
+
+        <!-- STUDENT ONLINE COURSE RECOMMENDATION -->
+        <mxCell id="StudentOnlineCourseRecommendation" value="StudentOnlineCourseRecommendation&#10;---------------------&#10;PK recommendation_id&#10;FK student_id&#10;FK online_course_id&#10;recommended_at&#10;source_reason&#10;status"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="900" y="300" width="330" height="220" as="geometry"/>
+        </mxCell>
+
+        <!-- STUDENT ANNOUNCEMENT STATUS -->
+        <mxCell id="StudentAnnouncementStatus" value="StudentAnnouncementStatus&#10;---------------------&#10;PK status_id&#10;FK announcement_id&#10;FK student_id&#10;is_read&#10;read_at&#10;is_pinned_by_student"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="320" width="320" height="220" as="geometry"/>
+        </mxCell>
+
+        <!-- RELATIONSHIPS -->
+
+        <!-- User 1 - * Student -->
+        <mxCell id="r_user_student" edge="1" parent="1" source="User" target="Student"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;rounded=0;html=1;"/>
+
+        <!-- Student 1 - * StudentSchedule -->
+        <mxCell id="r_student_schedule" edge="1" parent="1" source="Student" target="StudentSchedule"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;rounded=0;html=1;"/>
+
+        <!-- Student 1 - * StudentCourseCompletion -->
+        <mxCell id="r_student_completion" edge="1" parent="1" source="Student" target="StudentCourseCompletion"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;rounded=0;html=1;"/>
+
+        <!-- Course 1 - * StudentCourseCompletion -->
+        <mxCell id="r_course_completion" edge="1" parent="1" source="Course" target="StudentCourseCompletion"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;rounded=0;html=1;"/>
+
+        <!-- Course 1 - * CourseSection -->
+        <mxCell id="r_course_section" edge="1" parent="1" source="Course" target="CourseSection"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;rounded=0;html=1;"/>
+
+        <!-- StudentSchedule 1 - * StudentScheduleSection -->
+        <mxCell id="r_schedule_schedsection" edge="1" parent="1" source="StudentSchedule" target="StudentScheduleSection"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;rounded=0;html=1;"/>
+
+        <!-- CourseSection 1 - * StudentScheduleSection -->
+        <mxCell id="r_section_schedsection" edge="1" parent="1" source="CourseSection" target="StudentScheduleSection"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;rounded=0;html=1;"/>
+
+        <!-- StudentSchedule 1 - * ScheduleRating -->
+        <mxCell id="r_schedule_rating" edge="1" parent="1" source="StudentSchedule" target="ScheduleRating"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;rounded=0;html=1;"/>
+
+        <!-- OnlineCourse 1 - * StudentOnlineCourseRecommendation -->
+        <mxCell id="r_onlinecourse_reco" edge="1" parent="1" source="OnlineCourse" target="StudentOnlineCourseRecommendation"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;rounded=0;html=1;"/>
+
+        <!-- Student 1 - * StudentOnlineCourseRecommendation -->
+        <mxCell id="r_student_reco" edge="1" parent="1" source="Student" target="StudentOnlineCourseRecommendation"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;rounded=0;html=1;"/>
+
+        <!-- User 1 - * Announcement -->
+        <mxCell id="r_user_announcement" edge="1" parent="1" source="User" target="Announcement"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;rounded=0;html=1;"/>
+
+        <!-- Announcement 1 - * StudentAnnouncementStatus -->
+        <mxCell id="r_announcement_status" edge="1" parent="1" source="Announcement" target="StudentAnnouncementStatus"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;rounded=0;html=1;"/>
+
+        <!-- Student 1 - * StudentAnnouncementStatus -->
+        <mxCell id="r_student_annstatus" edge="1" parent="1" source="Student" target="StudentAnnouncementStatus"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;rounded=0;html=1;"/>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

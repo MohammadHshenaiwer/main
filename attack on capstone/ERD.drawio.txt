@@ -1,0 +1,85 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="erd" name="ERD">
+    <mxGraphModel dx="1194" dy="778" grid="1" gridSize="10" guides="1" tooltips="1">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- USER -->
+        <mxCell id="user" value="User&#10;---------------------&#10;PK user_id&#10;name&#10;email&#10;password_hash&#10;role&#10;created_at&#10;updated_at"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=14;"
+          vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="220" height="220" as="geometry"/>
+        </mxCell>
+
+        <!-- PROMPT TEMPLATE -->
+        <mxCell id="template" value="PromptTemplate&#10;---------------------&#10;PK template_id&#10;name&#10;description&#10;prompt_text&#10;style_tags&#10;FK created_by_user_id&#10;created_at&#10;updated_at"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;"
+          vertex="1" parent="1">
+          <mxGeometry x="340" y="40" width="260" height="260" as="geometry"/>
+        </mxCell>
+
+        <!-- GENERATED PROMPT -->
+        <mxCell id="generated" value="GeneratedPrompt&#10;---------------------&#10;PK generated_id&#10;FK user_id&#10;FK template_id&#10;final_prompt_text&#10;result_url&#10;status&#10;created_at"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=14;"
+          vertex="1" parent="1">
+          <mxGeometry x="660" y="40" width="260" height="240" as="geometry"/>
+        </mxCell>
+
+        <!-- PROJECT IDEA -->
+        <mxCell id="idea" value="ProjectIdea&#10;---------------------&#10;PK idea_id&#10;title&#10;description&#10;category&#10;difficulty_level&#10;FK created_by_user_id&#10;created_at&#10;updated_at"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=14;"
+          vertex="1" parent="1">
+          <mxGeometry x="40" y="340" width="260" height="260" as="geometry"/>
+        </mxCell>
+
+        <!-- IDEA COMMENT -->
+        <mxCell id="comment" value="IdeaComment&#10;---------------------&#10;PK comment_id&#10;FK idea_id&#10;FK user_id&#10;comment_text&#10;created_at"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=14;"
+          vertex="1" parent="1">
+          <mxGeometry x="340" y="360" width="260" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- TAG -->
+        <mxCell id="tag" value="IdeaTag&#10;---------------------&#10;PK tag_id&#10;name"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;"
+          vertex="1" parent="1">
+          <mxGeometry x="660" y="340" width="200" height="140" as="geometry"/>
+        </mxCell>
+
+        <!-- IDEA-TAG JUNCTION -->
+        <mxCell id="junction" value="ProjectIdeaTag&#10;---------------------&#10;PK(idea_id, tag_id)&#10;FK idea_id&#10;FK tag_id"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;fontSize=14;"
+          vertex="1" parent="1">
+          <mxGeometry x="900" y="340" width="240" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- RELATIONSHIPS -->
+        <mxCell id="r1" edge="1" source="user" target="template"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;" parent="1"/>
+
+        <mxCell id="r2" edge="1" source="user" target="generated"
+          style="endArrow=ERcrowfoot;strokeWidth=1.5;" parent="1"/>
+
+        <mxCell id="r3" edge="1" source="template" target="generated"
+          style="endArrow=ERcrowfoot;strokeWidth=1.5;" parent="1"/>
+
+        <mxCell id="r4" edge="1" source="user" target="idea"
+          style="endArrow=ERcrowfoot;strokeWidth=1.5;" parent="1"/>
+
+        <mxCell id="r5" edge="1" source="idea" target="comment"
+          style="endArrow=ERcrowfoot;strokeWidth=1.5;" parent="1"/>
+
+        <mxCell id="r6" edge="1" source="user" target="comment"
+          style="endArrow=ERcrowfoot;strokeWidth=1.5;" parent="1"/>
+
+        <mxCell id="r7" edge="1" source="idea" target="junction"
+          style="endArrow=ERcrowfoot;strokeWidth=1.5;" parent="1"/>
+
+        <mxCell id="r8" edge="1" source="tag" target="junction"
+          style="endArrow=ERcrowfoot;strokeWidth=1.5;" parent="1"/>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

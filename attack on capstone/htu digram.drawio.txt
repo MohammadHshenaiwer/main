@@ -1,0 +1,117 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="htu-portal-erd" name="HTU Student Portal ERD">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Student -->
+        <mxCell id="Student" value="Student&#10;---------------------&#10;PK student_id&#10;first_name&#10;last_name&#10;email&#10;password_hash&#10;major&#10;level&#10;status&#10;enrollment_year"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="240" height="240" as="geometry"/>
+        </mxCell>
+
+        <!-- Instructor -->
+        <mxCell id="Instructor" value="Instructor&#10;---------------------&#10;PK instructor_id&#10;first_name&#10;last_name&#10;email&#10;FK department_id"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="360" y="40" width="240" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- Department -->
+        <mxCell id="Department" value="Department&#10;---------------------&#10;PK department_id&#10;name&#10;code&#10;faculty"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="700" y="40" width="220" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- Course -->
+        <mxCell id="Course" value="Course&#10;---------------------&#10;PK course_id&#10;code&#10;name&#10;credit_hours&#10;FK department_id"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="340" width="260" height="210" as="geometry"/>
+        </mxCell>
+
+        <!-- Semester -->
+        <mxCell id="Semester" value="Semester&#10;---------------------&#10;PK semester_id&#10;name&#10;academic_year&#10;start_date&#10;end_date"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="700" y="260" width="230" height="210" as="geometry"/>
+        </mxCell>
+
+        <!-- Section -->
+        <mxCell id="Section" value="Section&#10;---------------------&#10;PK section_id&#10;FK course_id&#10;FK instructor_id&#10;FK semester_id&#10;section_number&#10;capacity&#10;room&#10;schedule_info"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="360" y="320" width="280" height="240" as="geometry"/>
+        </mxCell>
+
+        <!-- Enrollment -->
+        <mxCell id="Enrollment" value="Enrollment&#10;---------------------&#10;PK enrollment_id&#10;FK student_id&#10;FK section_id&#10;enrollment_status&#10;final_grade"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="360" y="620" width="260" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- Attendance -->
+        <mxCell id="Attendance" value="Attendance&#10;---------------------&#10;PK attendance_id&#10;FK enrollment_id&#10;attendance_date&#10;status&#10;notes"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="620" width="270" height="210" as="geometry"/>
+        </mxCell>
+
+        <!-- Exam -->
+        <mxCell id="Exam" value="Exam&#10;---------------------&#10;PK exam_id&#10;FK section_id&#10;exam_type&#10;exam_date&#10;weight"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="700" y="520" width="230" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- ExamResult -->
+        <mxCell id="ExamResult" value="ExamResult&#10;---------------------&#10;PK result_id&#10;FK exam_id&#10;FK student_id&#10;score"
+          style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="700" y="750" width="230" height="170" as="geometry"/>
+        </mxCell>
+
+        <!-- RELATIONSHIPS -->
+
+        <!-- Department 1 - * Course -->
+        <mxCell id="r_dep_course" edge="1" parent="1" source="Department" target="Course"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;rounded=0;html=1;"/>
+        
+        <!-- Department 1 - * Instructor -->
+        <mxCell id="r_dep_instructor" edge="1" parent="1" source="Department" target="Instructor"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;rounded=0;html=1;"/>
+
+        <!-- Course 1 - * Section -->
+        <mxCell id="r_course_section" edge="1" parent="1" source="Course" target="Section"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;rounded=0;html=1;"/>
+
+        <!-- Instructor 1 - * Section -->
+        <mxCell id="r_instructor_section" edge="1" parent="1" source="Instructor" target="Section"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;rounded=0;html=1;"/>
+
+        <!-- Semester 1 - * Section -->
+        <mxCell id="r_semester_section" edge="1" parent="1" source="Semester" target="Section"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;rounded=0;html=1;"/>
+
+        <!-- Student 1 - * Enrollment -->
+        <mxCell id="r_student_enrollment" edge="1" parent="1" source="Student" target="Enrollment"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;rounded=0;html=1;"/>
+
+        <!-- Section 1 - * Enrollment -->
+        <mxCell id="r_section_enrollment" edge="1" parent="1" source="Section" target="Enrollment"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;rounded=0;html=1;"/>
+
+        <!-- Enrollment 1 - * Attendance -->
+        <mxCell id="r_enrollment_attendance" edge="1" parent="1" source="Enrollment" target="Attendance"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;rounded=0;html=1;"/>
+
+        <!-- Section 1 - * Exam -->
+        <mxCell id="r_section_exam" edge="1" parent="1" source="Section" target="Exam"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;rounded=0;html=1;"/>
+
+        <!-- Exam 1 - * ExamResult -->
+        <mxCell id="r_exam_result" edge="1" parent="1" source="Exam" target="ExamResult"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;rounded=0;html=1;"/>
+
+        <!-- Student 1 - * ExamResult -->
+        <mxCell id="r_student_result" edge="1" parent="1" source="Student" target="ExamResult"
+          style="endArrow=ERcrowfoot;startArrow=none;strokeWidth=1.5;rounded=0;html=1;"/>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
