@@ -1,0 +1,11 @@
+git remote -v
+
+origin  https://github.com/MohammadHshenaiwer/main.git (fetch)
+origin  https://github.com/MohammadHshenaiwer/main.git (push)
+
+
+git push -u origin main
+
+git add .
+git commit -m :main
+git push -u origin main
