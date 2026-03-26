@@ -1,4 +1,0 @@
-all,jordanian,077,14
-mohammad,jordan,0798564855,22
-mohammad ,jordan,0798564855,22
-testuser,testland,12345,25
