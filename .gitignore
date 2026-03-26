@@ -1,0 +1,3 @@
+﻿# Ignore all PowerPoint and Word slide/document files
+**/*.pptx
+**/*.docx
