@@ -33,4 +33,13 @@ public class Section {
 
     @Column(name = "enrolled_count")
     private Integer enrolledCount;
+
+    @Column(name = "day_of_week")
+    private String dayOfWeek;
+
+    @Column(name = "start_time")
+    private java.time.LocalTime startTime;
+
+    @Column(name = "end_time")
+    private java.time.LocalTime endTime;
 }

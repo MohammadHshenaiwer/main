@@ -15,7 +15,6 @@ com\university\swap\service\SwapOfferService.class
 com\university\swap\config\CorsConfig.class
 com\university\swap\dto\CreateOfferRequest.class
 com\university\swap\repository\SwapOfferRepository.class
-com\university\swap\service\SwapRequestService.class
 com\university\swap\model\Course.class
 com\university\swap\controller\SectionController.class
 com\university\swap\repository\StudentRepository.class

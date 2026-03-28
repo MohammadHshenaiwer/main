@@ -7,7 +7,7 @@ import java.io.BufferedReader;
 
 public class readfile {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(Syste19m.in);
         System.out.println("enter NAME or GRADE");
         String search = scan.nextLine();
         try (BufferedReader input = new BufferedReader(new FileReader("writeinfile.txt"));) {
