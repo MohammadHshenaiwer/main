@@ -1,5 +1,6 @@
 package com.university.swap.service;
 
+import com.university.swap.dto.DirectAcceptRequest;
 import com.university.swap.dto.SendSwapRequest;
 import com.university.swap.enums.OfferStatus;
 import com.university.swap.enums.RequestStatus;
@@ -23,10 +24,11 @@ public class SwapRequestService {
     private final StudentRepository studentRepo;
     private final SectionRepository sectionRepo;
     private final EnrollmentRepository enrollmentRepo;
+    private final StudentCourseCompletionRepository completionRepo;
 
     // ── Accept a direct trade instantly (from the board) ───────
     @Transactional
-    public void acceptDirectTrade(com.university.swap.dto.DirectAcceptRequest dto) {
+    public void acceptDirectTrade(DirectAcceptRequest dto) {
         SwapOffer offer = offerRepo.findById(dto.getOfferId())
                 .orElseThrow(() -> new ResourceNotFoundException("Offer not found: " + dto.getOfferId()));
 
@@ -46,6 +48,55 @@ public class SwapRequestService {
         Section offeredSection = sectionRepo.findById(dto.getOfferedSectionId())
                 .orElseThrow(() -> new ResourceNotFoundException("Section not found: " + dto.getOfferedSectionId()));
 
+        Long receiverSectionId = offer.getHaveSection().getSectionId();
+        Long senderSectionId = dto.getOfferedSectionId();
+        Long offererId = offer.getStudent().getStudentId();
+        Long accepterId = dto.getAccepterStudentId();
+
+        Long offererCourseId = offer.getHaveSection().getCourse().getCourseId();
+        Long accepterCourseId = offeredSection.getCourse().getCourseId();
+
+        // ── CASE 1: Cannot accept to GET a course already completed ──
+        if (completionRepo.hasStudentPassedCourse(offererId, accepterCourseId)) {
+            throw new SwapException(
+                    "❌ You already completed " + offeredSection.getCourse().getCourseName()
+                            + ". You cannot swap to get it again.");
+        }
+        if (completionRepo.hasStudentPassedCourse(accepterId, offererCourseId)) {
+            throw new SwapException(
+                    "❌ You already completed " + offer.getHaveSection().getCourse().getCourseName()
+                            + ". You cannot swap to get it again.");
+        }
+
+        // ── CASE 2: Cannot swap if year level is higher than what you currently have
+        // ──
+        Integer offererYear = offer.getHaveSection().getCourseYear();
+        Integer accepterYear = offeredSection.getCourseYear();
+        if (offererYear != null && accepterYear != null) {
+            if (accepterYear > offererYear) {
+                throw new SwapException(
+                        "❌ The offerer cannot receive a Year " + accepterYear +
+                                " course in exchange for a Year " + offererYear + " course.");
+            }
+            if (offererYear > accepterYear) {
+                throw new SwapException(
+                        "❌ You cannot receive a Year " + offererYear +
+                                " course in exchange for a Year " + accepterYear + " course.");
+            }
+        }
+
+        // Verify both still enrolled
+        enrollmentRepo.findActiveByStudentAndSection(offererId, receiverSectionId)
+                .orElseThrow(() -> new SwapException(
+                        "Swap failed: The offer owner is no longer enrolled in their section."));
+        enrollmentRepo.findActiveByStudentAndSection(accepterId, senderSectionId)
+                .orElseThrow(() -> new SwapException("Swap failed: You are no longer enrolled in your section."));
+
+        // ── CASE 3: Time conflict check ──
+        checkTimeConflict(offererId, senderSectionId, receiverSectionId);
+        checkTimeConflict(accepterId, receiverSectionId, senderSectionId);
+
+        // Save request record
         SwapRequest request = new SwapRequest();
         request.setOffer(offer);
         request.setSender(accepter);
@@ -54,22 +105,6 @@ public class SwapRequestService {
         request.setStatus(RequestStatus.ACCEPTED);
         request.setResolvedAt(LocalDateTime.now());
         SwapRequest savedRequest = requestRepo.save(request);
-
-        Long receiverSectionId = offer.getHaveSection().getSectionId();
-        Long senderSectionId = dto.getOfferedSectionId();
-        Long offererId = offer.getStudent().getStudentId();
-        Long accepterId = dto.getAccepterStudentId();
-
-        enrollmentRepo.findActiveByStudentAndSection(offererId, receiverSectionId)
-                .orElseThrow(() -> new SwapException(
-                        "Swap failed: The offer owner is no longer enrolled in their section."));
-
-        enrollmentRepo.findActiveByStudentAndSection(accepterId, senderSectionId)
-                .orElseThrow(() -> new SwapException("Swap failed: You are no longer enrolled in your section."));
-
-        // ── CHECK TIME CONFLICTS BEFORE SWAPPING ──────────────
-        checkTimeConflict(offererId, senderSectionId, receiverSectionId);
-        checkTimeConflict(accepterId, receiverSectionId, senderSectionId);
 
         // Swap both enrollments atomically
         int u1 = enrollmentRepo.updateStudentSection(offererId, receiverSectionId, senderSectionId);
@@ -80,7 +115,6 @@ public class SwapRequestService {
 
         offer.setStatus(OfferStatus.COMPLETED);
         offerRepo.save(offer);
-
         requestRepo.rejectOtherRequests(offer.getOfferId(), savedRequest.getRequestId());
     }
 
@@ -107,8 +141,33 @@ public class SwapRequestService {
         if (offer.getStatus() != OfferStatus.OPEN)
             throw new SwapException("This offer is no longer open.");
 
+        // Sender must be enrolled in the section they're offering
         enrollmentRepo.findActiveByStudentAndSection(dto.getSenderId(), dto.getSenderSectionId())
                 .orElseThrow(() -> new SwapException("You are not enrolled in the section you are trying to offer."));
+
+        // ── CASE 1: Sender cannot offer a course they already completed ──
+        if (completionRepo.hasStudentPassedCourse(dto.getSenderId(), senderSection.getCourse().getCourseId())) {
+            throw new SwapException(
+                    "❌ You already completed " + senderSection.getCourse().getCourseName()
+                            + ". You cannot offer it for swap.");
+        }
+
+        // ── CASE 1b: Sender cannot request a course they already completed ──
+        Long wantedCourseId = offer.getHaveSection().getCourse().getCourseId();
+        if (completionRepo.hasStudentPassedCourse(dto.getSenderId(), wantedCourseId)) {
+            throw new SwapException(
+                    "❌ You already completed " + offer.getHaveSection().getCourse().getCourseName()
+                            + ". No need to swap for it.");
+        }
+
+        // ── CASE 2: Year level check ──
+        Integer senderYear = senderSection.getCourseYear();
+        Integer receiverYear = offer.getHaveSection().getCourseYear();
+        if (senderYear != null && receiverYear != null && receiverYear > senderYear) {
+            throw new SwapException(
+                    "❌ You cannot receive a Year " + receiverYear +
+                            " course in exchange for a Year " + senderYear + " course.");
+        }
 
         if (requestRepo.hasPendingRequest(dto.getOfferId(), dto.getSenderId()))
             throw new SwapException("You already have a pending request for this offer.");
@@ -146,14 +205,38 @@ public class SwapRequestService {
         Long receiverId = acceptingStudentId;
         Long senderId = request.getSender().getStudentId();
 
+        Long receiverCourseId = offer.getHaveSection().getCourse().getCourseId();
+        Long senderCourseId = request.getSenderSection().getCourse().getCourseId();
+
+        // ── CASE 1: Cannot accept to GET a course already completed ──
+        if (completionRepo.hasStudentPassedCourse(receiverId, senderCourseId)) {
+            throw new SwapException(
+                    "❌ You already completed " + request.getSenderSection().getCourse().getCourseName()
+                            + ". You cannot swap to get it again.");
+        }
+        if (completionRepo.hasStudentPassedCourse(senderId, receiverCourseId)) {
+            throw new SwapException(
+                    "❌ The other student already completed " + offer.getHaveSection().getCourse().getCourseName()
+                            + ". Swap not allowed.");
+        }
+
+        // ── CASE 2: Year level check ──
+        Integer receiverYear = offer.getHaveSection().getCourseYear();
+        Integer senderYear = request.getSenderSection().getCourseYear();
+        if (receiverYear != null && senderYear != null && senderYear > receiverYear) {
+            throw new SwapException(
+                    "❌ You cannot receive a Year " + senderYear +
+                            " course in exchange for a Year " + receiverYear + " course.");
+        }
+
+        // Verify both still enrolled
         enrollmentRepo.findActiveByStudentAndSection(receiverId, receiverSectionId)
                 .orElseThrow(() -> new SwapException("Swap failed: You are no longer enrolled in your section."));
-
         enrollmentRepo.findActiveByStudentAndSection(senderId, senderSectionId)
                 .orElseThrow(() -> new SwapException(
                         "Swap failed: The other student is no longer enrolled in their section."));
 
-        // ── CHECK TIME CONFLICTS BEFORE SWAPPING ──────────────
+        // ── CASE 3: Time conflict check ──
         checkTimeConflict(receiverId, senderSectionId, receiverSectionId);
         checkTimeConflict(senderId, receiverSectionId, senderSectionId);
 
@@ -170,7 +253,6 @@ public class SwapRequestService {
 
         requestRepo.save(request);
         offerRepo.save(offer);
-
         requestRepo.rejectOtherRequests(offer.getOfferId(), requestId);
     }
 
@@ -224,10 +306,14 @@ public class SwapRequestService {
         return requestRepo.findBySender_StudentIdOrderBySentAtDesc(studentId);
     }
 
-    // ── TIME CONFLICT CHECKER ──────────────────────────────────
-    // studentId = the student receiving the new section
-    // incomingId = the section they will GET after the swap
-    // swappingOutId = the section they are GIVING UP (excluded from check)
+    // ══════════════════════════════════════════════════════════
+    // PRIVATE HELPERS
+    // ══════════════════════════════════════════════════════════
+
+    // ── CASE 3: Time conflict check ───────────────────────────
+    // studentId = student receiving the new section
+    // incomingId = section they will GET
+    // swappingOutId = section they are GIVING UP (excluded)
     private void checkTimeConflict(Long studentId, Long incomingId, Long swappingOutId) {
         Section incoming = sectionRepo.findById(incomingId)
                 .orElseThrow(() -> new ResourceNotFoundException("Section not found: " + incomingId));
@@ -240,10 +326,8 @@ public class SwapRequestService {
         for (Enrollment e : enrollments) {
             Section existing = e.getSection();
 
-            // Skip the section being swapped out
             if (existing.getSectionId().equals(swappingOutId))
                 continue;
-
             if (existing.getDayOfWeek() == null || existing.getStartTime() == null)
                 continue;
 

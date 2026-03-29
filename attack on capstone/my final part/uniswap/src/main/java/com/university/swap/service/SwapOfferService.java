@@ -20,6 +20,7 @@ public class SwapOfferService {
     private final StudentRepository studentRepo;
     private final EnrollmentRepository enrollmentRepo;
     private final SectionRepository sectionRepo;
+    private final StudentCourseCompletionRepository completionRepo;
 
     // ── Get all open offers (Swap Board) ──────────────────────
     public List<SwapOffer> getAllOpenOffers(Long currentStudentId) {
@@ -32,9 +33,6 @@ public class SwapOfferService {
     }
 
     // ── Create a new offer ─────────────────────────────────────
-    // NEW LOGIC:
-    //   Student selects one of their enrolled sections (haveSectionId)
-    //   Student types what they want (wantDescription) as free text
     @Transactional
     public SwapOffer createOffer(CreateOfferRequest req) {
 
@@ -49,21 +47,44 @@ public class SwapOfferService {
         // 3. Student must actually be enrolled in that section
         enrollmentRepo.findActiveByStudentAndSection(req.getStudentId(), req.getHaveSectionId())
                 .orElseThrow(() -> new SwapException(
-                        "You are not enrolled in section: " + haveSection.getSectionNumber()
-                        + " of " + haveSection.getCourse().getCourseName()));
+                        "You are not enrolled in section " + haveSection.getSectionNumber()
+                                + " of " + haveSection.getCourse().getCourseName()));
+
+        // ── CASE 1: Cannot offer a course you already completed ──
+        if (completionRepo.hasStudentPassedCourse(req.getStudentId(), haveSection.getCourse().getCourseId())) {
+            throw new SwapException(
+                    "❌ You already completed " + haveSection.getCourse().getCourseName() + ". You cannot offer it for swap.");
+        }
 
         // 4. wantSection must exist
-        if (req.getWantSectionId() == null) {
+        if (req.getWantSectionId() == null)
             throw new SwapException("Please select what course/section you want to receive.");
-        }
+
         Section wantSection = sectionRepo.findById(req.getWantSectionId())
-                .orElseThrow(() -> new ResourceNotFoundException("Target Section not found: " + req.getWantSectionId()));
+                .orElseThrow(
+                        () -> new ResourceNotFoundException("Target Section not found: " + req.getWantSectionId()));
+
+        // ── CASE 2: Cannot request a course you already completed ──
+        if (completionRepo.hasStudentPassedCourse(req.getStudentId(), wantSection.getCourse().getCourseId())) {
+            throw new SwapException(
+                    "❌ You already completed " + wantSection.getCourse().getCourseName() + ". No need to swap for it.");
+        }
+
+        // ── CASE 3: Cannot request a higher year course ──
+        if (haveSection.getCourseYear() != null && wantSection.getCourseYear() != null) {
+            if (wantSection.getCourseYear() > haveSection.getCourseYear()) {
+                throw new SwapException(
+                        "❌ You cannot request a Year " + wantSection.getCourseYear() +
+                                " course when you are offering a Year " + haveSection.getCourseYear() + " course.");
+            }
+        }
 
         // 5. Check if targeting a specific student
         Student targetStudent = null;
         if (req.getTargetStudentId() != null) {
             targetStudent = studentRepo.findById(req.getTargetStudentId())
-                    .orElseThrow(() -> new ResourceNotFoundException("Target student not found: " + req.getTargetStudentId()));
+                    .orElseThrow(() -> new ResourceNotFoundException(
+                            "Target student not found: " + req.getTargetStudentId()));
         }
 
         // 6. Build and save

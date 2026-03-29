@@ -34,6 +34,7 @@ public class Section {
     @Column(name = "enrolled_count")
     private Integer enrolledCount;
 
+    // ── New fields for conflict + year checking ──
     @Column(name = "day_of_week")
     private String dayOfWeek;
 
@@ -42,4 +43,7 @@ public class Section {
 
     @Column(name = "end_time")
     private java.time.LocalTime endTime;
+
+    @Column(name = "course_year")
+    private Integer courseYear;
 }
