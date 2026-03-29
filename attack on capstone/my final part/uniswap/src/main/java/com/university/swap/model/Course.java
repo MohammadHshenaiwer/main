@@ -24,4 +24,7 @@ public class Course {
 
     @Column(name = "credit_hours")
     private Integer credits;
+
+    @Column(name = "prerequisite_course_code")
+    private String prerequisiteCourseCode;
 }

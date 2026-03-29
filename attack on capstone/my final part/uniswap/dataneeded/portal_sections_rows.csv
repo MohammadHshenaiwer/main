@@ -1,0 +1,378 @@
+id,school_name,course_number,section_number,theoretical,course_name,hours,instructor_name,time_classroom,prerequisite_course,source_file
+1,School of Computing and Informatics,40201100,1,0,Programming,3,Malak Ziyad Mahmoud Fraihat,"08,30 - 10,00 ح ر / المبنى الجنوبي الجديد S-214 ** Blended 1 hours",40303130,Page1.html
+2,School of Computing and Informatics,40201100,2,0,Programming,3,Malak Ziyad Mahmoud Fraihat,"10,00 - 11,30 ح ر / المبنى الجنوبي الجديد S-214 ** Blended 1 hours",40303130,Page1.html
+3,School of Computing and Informatics,40201100,3,0,Programming,3,Mohammad Noor-Aldeen Badri Alkhateeb,"13,00 - 14,30 ح ر / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",40303130,Page1.html
+4,School of Computing and Informatics,40201100,4,0,Programming,3,Suhaib Gazi Khattar Al-Obeidallah,"14,30 - 16,00 ح ر / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",40303130,Page1.html
+5,School of Computing and Informatics,40201100,5,0,Programming,3,Hana' Zaid Abdul Karim Al Rashid,"08,30 - 10,00 ن خ / المبنى الجنوبي الجديد S-214 ** Blended 1 hours",40303130,Page1.html
+6,School of Computing and Informatics,40201100,6,0,Programming,3,Lina Hammad,"10,00 - 11,30 ن خ / المبنى الجنوبي الجديد S-214 ** Blended 1 hours",40303130,Page1.html
+7,School of Computing and Informatics,40201100,7,0,Programming,3,Lina Hammad,"11,30 - 13,00 ن خ / المبنى الجنوبي الجديد S-214 ** Blended 1 hours",40303130,Page1.html
+8,School of Computing and Informatics,40201100,8,0,Programming,3,Huthaifa Abdelhameed Ibrahim  Al Omari,"13,00 - 14,30 ن خ / المبنى الجنوبي الجديد S-214 ** Blended 1 hours",40303130,Page1.html
+9,School of Computing and Informatics,40201100,9,0,Programming,3,Hikmat Yahia Hikmat Ahmad Shehadeh,"08,30 - 10,00 س ث / المبنى الجنوبي الجديد S-214 ** Blended 1 hours",40303130,Page1.html
+10,School of Computing and Informatics,40201100,10,0,Programming,3,Mo'tasem Khairi Mohammad Sammarah,"10,00 - 11,30 س ث / المبنى الجنوبي الجديد S-214 ** Blended 1 hours",40303130,Page1.html
+11,School of Computing and Informatics,40201100,11,0,Programming,3,Mo'tasem Khairi Mohammad Sammarah,"11,30 - 13,00 س ث / المبنى الجنوبي الجديد S-214 ** Blended 1 hours",40303130,Page1.html
+12,School of Computing and Informatics,40201100,12,0,Programming,3,Hikmat Yahia Hikmat Ahmad Shehadeh,"13,00 - 14,30 س ث / المبنى الجنوبي الجديد S-214 ** Blended 1 hours",40303130,Page1.html
+13,School of Computing and Informatics,40201100,13,0,Programming,3,Malak Ziyad Mahmoud Fraihat,"10,00 - 11,30 س ث / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",40303130,Page1.html
+14,School of Computing and Informatics,40201100,14,0,Programming,3,Sawsan Al-Odibat,"10,00 - 11,30 ن خ / المركز الهندي الأردني IJC-06 ** Blended 1 hours",40303130,Page1.html
+15,School of Computing and Informatics,201160,1,0,Creative Games Development,3,Nour Khrais,"14,30 - 17,30 س / ** Blended 1 hours",,Page1.html
+16,School of Computing and Informatics,40201200,1,0,Advanced Programming,3,Sultan Mahmoud Ahmad Alrushdan,"08,30 - 10,00 ح ر / المبنى الجنوبي الجديد S-210 ** Blended 1 hours",,Page1.html
+17,School of Computing and Informatics,40201200,2,0,Advanced Programming,3,Sultan Mahmoud Ahmad Alrushdan,"13,00 - 14,30 ح ر / المبنى الجنوبي الجديد S-210 ** Blended 1 hours",,Page1.html
+18,School of Computing and Informatics,40201200,3,0,Advanced Programming,3,Malek Adnan Mohammad Al Louzi,"08,30 - 10,00 ن خ / المبنى الجنوبي الجديد S-208 ** Blended 1 hours",,Page1.html
+19,School of Computing and Informatics,40201200,4,0,Advanced Programming,3,Malek Adnan Mohammad Al Louzi,"11,30 - 13,00 ن خ / المبنى الجنوبي الجديد S-210 ** Blended 1 hours",,Page1.html
+20,School of Computing and Informatics,40201200,6,0,Advanced Programming,3,Sultan Mahmoud Ahmad Alrushdan,"11,30 - 13,00 س ث / المبنى الجنوبي الجديد S-210 ** Blended 1 hours",,Page1.html
+21,School of Computing and Informatics,40201201,1,0,Data Structures & Algorithms,3,Balqis Mohammad Khalaf Aldabaibeh,"10,00 - 11,30 ح ر / المركز الهندي الأردني IJC-06 ** Blended 1 hours",40201100,Page1.html
+22,School of Computing and Informatics,40201201,2,0,Data Structures & Algorithms,3,Ashraf Mohammad Saleem Al-Smadi,"16,00 - 17,30 ح ر / المبنى الجنوبي الجديد S-210 ** Blended 1 hours",40201100,Page1.html
+23,School of Computing and Informatics,40201201,3,0,Data Structures & Algorithms,3,Balqis Mohammad Khalaf Aldabaibeh,"10,00 - 11,30 ن خ / المبنى الجنوبي الجديد S-210 ** Blended 1 hours",40201100,Page1.html
+24,School of Computing and Informatics,40201201,4,0,Data Structures & Algorithms,3,Balqis Mohammad Khalaf Aldabaibeh,"11,30 - 13,00 ن خ / المبنى الجنوبي الجديد S-207 ** Blended 1 hours",40201100,Page1.html
+25,School of Computing and Informatics,40201201,5,0,Data Structures & Algorithms,3,Mo'tasem Khairi Mohammad Sammarah,"08,30 - 10,00 س ث / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",40201100,Page1.html
+26,School of Computing and Informatics,40201201,7,0,Data Structures & Algorithms,3,Razan Atallah Mustafa Al Quran,"13,00 - 14,30 ح ر / مبنى رقم ( 23 ) W-B10 ** Blended 1 hours",40201100,Page1.html
+27,School of Computing and Informatics,40201201,8,0,Data Structures & Algorithms,3,Razan Atallah Mustafa Al Quran,"14,30 - 16,00 ن خ / المبنى الجنوبي الجديد S-214 ** Blended 1 hours",40201100,Page1.html
+28,School of Computing and Informatics,40201220,1,0,Software Development Lifecycles,3,Ashwaq Raed Mashal Khalil,"11,30 - 13,00 ح ر / المركز الهندي الأردني IJC-01 ** Blended 1 hours",40201100,Page1.html
+29,School of Computing and Informatics,40201220,2,0,Software Development Lifecycles,3,Salem Ayed Hasan Alemaishat,"13,00 - 14,30 ن خ / المبنى الجنوبي الجديد S-208 ** Blended 1 hours",40201100,Page1.html
+30,School of Computing and Informatics,40201220,3,0,Software Development Lifecycles,3,Ashwaq Raed Mashal Khalil,"08,30 - 10,00 س ث / المبنى الجنوبي الجديد S-208 ** Blended 1 hours",40201100,Page1.html
+31,School of Computing and Informatics,40201260,3,0,Website Design & Development,3,Orwa Mohammad Khalaf Aladaileh,"10,00 - 11,30 ن خ / المبنى الجنوبي الجديد S-209 ** Blended 1 hours",40201100,Page1.html
+32,School of Computing and Informatics,40201260,4,0,Website Design & Development,3,Asma Mohammad Ahmad Sabbah,"13,00 - 14,30 س ث / المبنى الجنوبي الجديد S-209 ** Blended 1 hours",40201100,Page1.html
+33,School of Computing and Informatics,40201261,1,0,Prototyping,3,Hana' Zaid Abdul Karim Al Rashid,"08,30 - 10,00 ح ر / مبنى رقم ( 23 ) W-B07 ** Blended 1 hours",,Page1.html
+34,School of Computing and Informatics,40201261,2,0,Prototyping,3,Razan Atallah Mustafa Al Quran,"14,30 - 16,00 ح ر / المركز الهندي الأردني IJC-02 ** Blended 1 hours",,Page1.html
+35,School of Computing and Informatics,40201261,3,0,Prototyping,3,Hana' Zaid Abdul Karim Al Rashid,"13,00 - 14,30 ن خ / مبنى رقم ( 23 ) W-B07 ** Blended 1 hours",,Page1.html
+36,School of Computing and Informatics,40201261,4,0,Prototyping,3,Sawsan Al-Odibat,"14,30 - 16,00 ن خ / مبنى رقم ( 23 ) W-B07 ** Blended 1 hours",,Page1.html
+37,School of Computing and Informatics,40201261,6,0,Prototyping,3,Ashwaq Raed Mashal Khalil,"11,30 - 13,00 س ث / ** Blended 1 hours",,Page1.html
+38,School of Computing and Informatics,201263,1,0,Advanced Scripting for Games,3,Ali Hani Yasin Al-Shami,"11,30 - 14,30 خ / ** Blended 1 hours",,Page1.html
+39,School of Computing and Informatics,201264,1,0,Immersive Technology Development,3,Dania Adnan Ismail Alsa`Id,"14,30 - 17,30 ر / ** Blended 1 hours",,Page1.html
+40,School of Computing and Informatics,201270,1,0,Special Topics in Game Development,3,Dania Adnan Ismail Alsa`Id,"14,30 - 17,30 ن / ** Blended 1 hours",,Page1.html
+41,School of Computing and Informatics,201290,1,0,Apprenticeship 1 for Game Design and Development,6,Mohammad Husni Najib Yahia,/ ** Blended 6 hours,60,Page1.html
+42,School of Computing and Informatics,40201290,1,0,Planning a Computing Project,4,Balqis Mohammad Khalaf Aldabaibeh,"11,30 - 13,00 ح ر / المبنى الجنوبي الجديد S-210 ** Blended 1 hours",40302211,Page1.html
+43,School of Computing and Informatics,40201290,2,0,Planning a Computing Project,4,Nayef Mohammad Salameh Abu Aqeel,"14,30 - 16,00 ح ر / المركز الهندي الأردني IJC-06 ** Blended 1 hours",40302211,Page1.html
+44,School of Computing and Informatics,40201290,3,0,Planning a Computing Project,4,Rawaah Qoraan,"08,30 - 10,00 ن خ / المبنى الجنوبي الجديد S-207 ** Blended 1 hours",40302211,Page1.html
+45,School of Computing and Informatics,40201290,4,0,Planning a Computing Project,4,Aseel Mousa Eshtaiwi Abuhaq,"10,00 - 11,30 ن خ / المبنى الجنوبي الجديد S-207 ** Blended 1 hours",40302211,Page1.html
+46,School of Computing and Informatics,40201290,5,0,Planning a Computing Project,4,Nayef Mohammad Salameh Abu Aqeel,"13,00 - 14,30 س ث / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",40302211,Page1.html
+47,School of Computing and Informatics,201291,1,0,Apprenticeship for Computer Science 1,6,Mohammad Husni Najib Yahia,/ ** Blended 6 hours,75,Page1.html
+48,School of Computing and Informatics,201292,1,0,Apprenticeship for Computer Science 2,6,Mohammad Husni Najib Yahia,/ ** Blended 6 hours,,Page1.html
+49,School of Computing and Informatics,201293,1,0,Apprenticeship 2 for Game Design and Development,6,Mohammad Husni Najib Yahia,/ ** Blended 6 hours,60,Page1.html
+50,School of Computing and Informatics,40201320,1,0,ERP Systems,3,Mohammad Husni Najib Yahia,"08,30 - 10,00 ح ر / المركز الهندي الأردني IJC-06 ** Blended 1 hours",,Page1.html
+51,School of Computing and Informatics,40201320,2,0,ERP Systems,3,Salem Ayed Hasan Alemaishat,"14,30 - 16,00 ح ر / المبنى الجنوبي الجديد S-210 ** Blended 1 hours",,Page1.html
+52,School of Computing and Informatics,40201320,3,0,ERP Systems,3,Salem Ayed Hasan Alemaishat,"14,30 - 16,00 ن خ / المبنى الجنوبي الجديد S-207 ** Blended 1 hours",,Page1.html
+53,School of Computing and Informatics,40201320,4,0,ERP Systems,3,Raghed Faisal Abdel Rahman Shahatit,"13,00 - 14,30 ن خ / المركز الهندي الأردني IJC-01 ** Blended 1 hours",,Page1.html
+54,School of Computing and Informatics,40201321,1,0,Systems Analysis & Design,3,Orwa Mohammad Khalaf Aladaileh,"08,30 - 10,00 ح ر / المركز الهندي الأردني IJC-02 ** Blended 1 hours",,Page1.html
+55,School of Computing and Informatics,40201321,2,0,Systems Analysis & Design,3,Ashaar Abdelwahab Daej Alkhamaiseh,"11,30 - 13,00 ح ر / المبنى الجنوبي الجديد S-209 ** Blended 1 hours",,Page1.html
+56,School of Computing and Informatics,40201321,3,0,Systems Analysis & Design,3,Ashaar Abdelwahab Daej Alkhamaiseh,"10,00 - 11,30 ن خ / مبنى رقم ( 23 ) W-B10 ** Blended 1 hours",,Page1.html
+57,School of Computing and Informatics,40201321,4,0,Systems Analysis & Design,3,Orwa Mohammad Khalaf Aladaileh,"08,30 - 10,00 ن خ / المبنى الجنوبي الجديد S-210 ** Blended 1 hours",,Page1.html
+58,School of Computing and Informatics,40201341,1,0,Operating Systems,3,Malek Adnan Mohammad Al Louzi,"08,30 - 10,00 ح ر / المبنى الجنوبي الجديد S-207 ** Blended 1 hours",40201201,Page1.html
+59,School of Computing and Informatics,40201341,2,0,Operating Systems,3,Elham Mahmoud Awad Derbas,"13,00 - 14,30 ح ر / المركز الهندي الأردني IJC-02 ** Blended 1 hours",40201201,Page1.html
+60,School of Computing and Informatics,40201341,3,0,Operating Systems,3,Elham Mahmoud Awad Derbas,"08,30 - 10,00 ن خ / المبنى الجنوبي الجديد S-209 ** Blended 1 hours",40201201,Page1.html
+61,School of Computing and Informatics,40201341,4,0,Operating Systems,3,Nayef Mohammad Salameh Abu Aqeel,"11,30 - 13,00 س ث / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",40201201,Page1.html
+62,School of Computing and Informatics,40201341,5,0,Operating Systems,3,Sultan Mahmoud Ahmad Alrushdan,"10,00 - 11,30 س ث / المبنى الجنوبي الجديد S-208 ** Blended 1 hours",40201201,Page1.html
+63,School of Computing and Informatics,40201362,1,0,Games Engine & Scripting,3,Dania Adnan Ismail Alsa`Id,"14,30 - 17,30 ح / ** Blended 1 hours",,Page1.html
+64,School of Computing and Informatics,40201362,2,0,Games Engine & Scripting,3,Dania Adnan Ismail Alsa`Id,"11,30 - 14,30 ن / ** Blended 1 hours",,Page1.html
+65,School of Computing and Informatics,40201362,3,0,Games Engine & Scripting,3,Dania Adnan Ismail Alsa`Id,"14,30 - 17,30 ث / ** Blended 1 hours",,Page1.html
+66,School of Computing and Informatics,201391,1,0,Computing Research Project,6,Islam Yaser Abelqader Alomari,"13,00 - 14,30 ر / ONLINE ONLINE ** 13,00 - 14,30 ح / ONLINE ** Blended 3 hours",40201290,Page1.html
+67,School of Computing and Informatics,201391,2,0,Computing Research Project,6,Nayef Mohammad Salameh Abu Aqeel,"13,00 - 14,30 ح / ONLINE ONLINE ** 13,00 - 14,30 ر / ONLINE ** Blended 3 hours",40201290,Page1.html
+68,School of Computing and Informatics,201391,3,0,Computing Research Project,6,Samir Yacoub Mufid Tartir,"10,00 - 11,30 خ / ONLINE ONLINE ** 10,00 - 11,30 ن / ONLINE ** Blended 3 hours",40201290,Page1.html
+69,School of Computing and Informatics,201391,4,0,Computing Research Project,6,Islam Yaser Abelqader Alomari,"10,00 - 11,30 ن / ONLINE ONLINE ** 10,00 - 11,30 خ / ONLINE ** Blended 3 hours",40201290,Page1.html
+70,School of Computing and Informatics,201391,5,0,Computing Research Project,6,Fadia Sami Nu`man Ala`eddin,"10,00 - 11,30 ث / المركز الهندي الأردني IJC-01 ** 10,00 - 11,30 س / المركز الهندي الأردني ONLINE ** Blended 3 hours",40201290,Page1.html
+71,School of Computing and Informatics,201391,6,0,Computing Research Project,6,Fadia Sami Nu`man Ala`eddin,"13,00 - 14,30 س / ONLINE ONLINE ** 13,00 - 14,30 ث / ONLINE W-B07 ** Blended 3 hours",40201290,Page1.html
+72,School of Computing and Informatics,201391,7,0,Computing Research Project,6,Rawaah Qoraan,"14,30 - 16,00 خ / ONLINE ONLINE ** 14,30 - 16,00 ن / ONLINE S-208 ** Blended 3 hours",40201290,Page1.html
+73,School of Computing and Informatics,201391,8,0,Computing Research Project,6,Asmaa Shukry Yousef Lafi,"14,30 - 16,00 ن / ONLINE ONLINE ** 14,30 - 16,00 خ / ONLINE S-208 ** Blended 3 hours",40201290,Page1.html
+74,School of Computing and Informatics,201392,1,0,Apprenticeship for Computer Science 3,6,Mohammad Husni Najib Yahia,/ ** Blended 6 hours,,Page1.html
+75,School of Computing and Informatics,30201392,1,0,On-Job Training Continuation,0,Ala'a Saqer Ahmad Al-Habashna,/,7102 75,Page1.html
+76,School of Computing and Informatics,40201430,1,0,Database Programing,3,Samir Yacoub Mufid Tartir,"14,30 - 16,00 ح ر / المبنى الجنوبي الجديد S-214 ** Blended 1 hours",,Page1.html
+77,School of Computing and Informatics,40201430,2,0,Database Programing,3,Samir Yacoub Mufid Tartir,"14,30 - 16,00 ن خ / المبنى الجنوبي الجديد S-210 ** Blended 1 hours",,Page1.html
+78,School of Computing and Informatics,40201440,1,0,Systems Programing,3,Sultan Mahmoud Ahmad Alrushdan,"10,00 - 11,30 ح ر / المبنى الجنوبي الجديد S-207 ** Blended 1 hours",,Page1.html
+79,School of Computing and Informatics,40201440,2,0,Systems Programing,3,Samer Adnan Abdullah Suleiman,"10,00 - 11,30 س ث / المبنى الجنوبي الجديد S-207 ** Blended 1 hours",,Page1.html
+80,School of Computing and Informatics,40201440,3,0,Systems Programing,3,Samer Adnan Abdullah Suleiman,"11,30 - 13,00 ح ر / المركز الهندي الأردني IJC-06 ** Blended 1 hours",,Page1.html
+81,School of Computing and Informatics,40201441,1,0,Internet of Things,3,,"16,00 - 17,30 ح ر / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",,Page1.html
+82,School of Computing and Informatics,40201441,2,0,Internet of Things,3,Ibrahim Abed Alfattah Mohammad Ghanem,"14,30 - 16,00 س ث / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",,Page1.html
+83,School of Computing and Informatics,40201450,1,0,Cloud Computing,3,Yazan Abdelrazzak Mohammad Alshannik,"14,30 - 16,00 ح ر / مبنى رقم ( 23 ) W-B07 ** Blended 1 hours",10203180 و 40201341,Page1.html
+84,School of Computing and Informatics,40201450,2,0,Cloud Computing,3,Yazan Abdelrazzak Mohammad Alshannik,"14,30 - 16,00 ن خ / المركز الهندي الأردني IJC-02 ** Blended 1 hours",10203180 و 40201341,Page1.html
+85,School of Computing and Informatics,40201470,1,0,Special Topics,3,Elham Mahmoud Awad Derbas,"10,00 - 11,30 ح ر / المبنى الجنوبي الجديد S-210 ** Blended 1 hours",,Page1.html
+86,School of Computing and Informatics,40201470,2,0,Special Topics,3,Dania Adnan Ismail Alsa`Id,"14,30 - 17,30 ر / ** Blended 1 hours",,Page1.html
+87,School of Computing and Informatics,201471,1,0,Special Topics in Computer Science 1,3,Razan Atallah Mustafa Al Quran,"13,00 - 14,30 ن خ / المركز الهندي الأردني IJC-02 ** Blended 1 hours",75,Page1.html
+88,School of Computing and Informatics,201472,1,0,Special Topics in Computer Science 2,3,Orwa Mohammad Khalaf Aladaileh,"11,30 - 13,00 ح ر / مبنى رقم ( 23 ) W-B10 ** Blended 1 hours",75,Page1.html
+89,School of Computing and Informatics,30201480,1,0,Advanced Computer Architecture,3,Reem Moshrif Mohammad Bani Hani,"14,30 - 16,00 ح ر / المبنى الجنوبي الجديد S-208 ** Blended 1 hours",,Page1.html
+90,School of Computing and Informatics,30201480,2,0,Advanced Computer Architecture,3,Huthaifa Abdelhameed Ibrahim  Al Omari,"14,30 - 16,00 ن خ / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",,Page1.html
+91,School of Computing and Informatics,30201480,3,0,Advanced Computer Architecture,3,Huthaifa Abdelhameed Ibrahim  Al Omari,"16,00 - 17,30 ن خ / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",,Page1.html
+92,School of Computing and Informatics,40201491,1,0,Capstone project I,1,Mohammad Husni Najib Yahia,/,90,Page1.html
+93,School of Computing and Informatics,40201492,1,0,Capstone project II,2,Mohammad Husni Najib Yahia,/,,Page1.html
+94,School of Computing and Informatics,202291,1,0,Apprenticeship for Information Science 1,6,Ala'a Saqer Ahmad Al-Habashna,/ ** Blended 6 hours,,Page1.html
+95,School of Computing and Informatics,202292,1,0,Apprenticeship for Information Science 2,6,Ala'a Saqer Ahmad Al-Habashna,/ ** Blended 6 hours,,Page1.html
+96,School of Computing and Informatics,202392,1,0,Apprenticeship for Information Science 3,6,Ala'a Saqer Ahmad Al-Habashna,/ ** Blended 6 hours,,Page1.html
+97,School of Computing and Informatics,30202432,1,0,Bioinformatics,3,Rami Ratib Musa Al-Ouran,"08,30 - 10,00 س ث / المبنى الجنوبي الجديد S-210 ** Blended 1 hours",,Page1.html
+98,School of Computing and Informatics,30202452,1,0,Internet of Things,3,,"16,00 - 17,30 ح ر / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",,Page1.html
+99,School of Computing and Informatics,30202452,2,0,Internet of Things,3,,"14,30 - 16,00 س ث / ** Blended 1 hours",,Page1.html
+100,School of Computing and Informatics,10203180,1,0,Networking,3,Asmaa Shukry Yousef Lafi,"08,30 - 10,00 ح ر / مبنى رقم ( 23 ) W-B10 ** Blended 1 hours",40303130,Page1.html
+101,School of Computing and Informatics,10203180,2,0,Networking,3,Asmaa Shukry Yousef Lafi,"10,00 - 11,30 ح ر / مبنى رقم ( 23 ) W-B10 ** Blended 1 hours",40303130,Page1.html
+102,School of Computing and Informatics,10203180,3,0,Networking,3,Isra' Ibrahim Ismael Hasan,"11,30 - 13,00 ح ر / المبنى الجنوبي الجديد S-214 ** Blended 1 hours",40303130,Page1.html
+103,School of Computing and Informatics,10203180,4,0,Networking,3,Isra' Ibrahim Ismael Hasan,"13,00 - 14,30 ح ر / المبنى الجنوبي الجديد S-214 ** Blended 1 hours",40303130,Page1.html
+104,School of Computing and Informatics,10203180,5,0,Networking,3,Ashaar Abdelwahab Daej Alkhamaiseh,"14,30 - 16,00 ح ر / مبنى رقم ( 23 ) W-B10 ** Blended 1 hours",40303130,Page1.html
+105,School of Computing and Informatics,10203180,6,0,Networking,3,Weaam Akram Soud Alrbeiqi,"08,30 - 10,00 ن خ / مبنى رقم ( 23 ) W-B07 ** Blended 1 hours",40303130,Page1.html
+106,School of Computing and Informatics,10203180,7,0,Networking,3,Weaam Akram Soud Alrbeiqi,"10,00 - 11,30 ن خ / مبنى رقم ( 23 ) W-B07 ** Blended 1 hours",40303130,Page1.html
+107,School of Computing and Informatics,10203180,8,0,Networking,3,Sami Aqeel Murshed Almashaqbeh,"11,30 - 13,00 ن خ / مبنى رقم ( 23 ) W-B10 ** Blended 1 hours",40303130,Page1.html
+108,School of Computing and Informatics,10203180,9,0,Networking,3,Asmaa Shukry Yousef Lafi,"13,00 - 14,30 ن خ / مبنى رقم ( 23 ) W-B10 ** Blended 1 hours",40303130,Page1.html
+109,School of Computing and Informatics,10203180,10,0,Networking,3,Hazem Khaled Radwan Arabiyat,"11,30 - 13,00 س ث / المبنى الجنوبي الجديد S-208 ** Blended 1 hours",40303130,Page1.html
+110,School of Computing and Informatics,10203180,11,0,Networking,3,Hazem Khaled Radwan Arabiyat,"13,00 - 14,30 س ث / المبنى الجنوبي الجديد S-208 ** Blended 1 hours",40303130,Page1.html
+111,School of Computing and Informatics,10203180,12,0,Networking,3,Hazem Khaled Radwan Arabiyat,"14,30 - 16,00 س ث / المبنى الجنوبي الجديد S-208 ** Blended 1 hours",40303130,Page1.html
+112,School of Computing and Informatics,10203180,13,0,Networking,3,Eyad Salah Abdul Hamid Taqieddin,"11,30 - 13,00 س ث / المبنى الجنوبي الجديد S-209 ** Blended 1 hours",40303130,Page1.html
+113,School of Computing and Informatics,10203180,14,0,Networking,3,Weaam Akram Soud Alrbeiqi,"14,30 - 16,00 ن خ / مبنى رقم ( 23 ) W-B10 ** Blended 1 hours",40303130,Page1.html
+114,School of Computing and Informatics,10203180,15,0,Networking,3,,"10,00 - 11,30 س ث / مبنى رقم ( 23 ) W-B07 ** Blended 1 hours",40303130,Page1.html
+115,School of Computing and Informatics,10203210,1,0,Network Security,3,Elham Mahmoud Awad Derbas,"10,00 - 11,30 ن خ / المركز الهندي الأردني IJC-02 ** Blended 1 hours",203280 أو 30201140 أو 10203280,Page1.html
+116,School of Computing and Informatics,10203210,2,0,Network Security,3,Eyad Salah Abdul Hamid Taqieddin,"10,00 - 11,30 س ث / المبنى الجنوبي الجديد S-209 ** Blended 1 hours",203280 أو 30201140 أو 10203280,Page1.html
+117,School of Computing and Informatics,203280,1,0,Security,3,Hazem Khaled Radwan Arabiyat,"11,30 - 13,00 ح ر / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",40303130,Page1.html
+118,School of Computing and Informatics,203280,2,0,Security,3,Hazem Khaled Radwan Arabiyat,"13,00 - 14,30 ح ر / المبنى الجنوبي الجديد S-208 ** Blended 1 hours",40303130,Page1.html
+119,School of Computing and Informatics,203280,3,0,Security,3,Asmaa Shukry Yousef Lafi,"08,30 - 10,00 ن خ / مبنى رقم ( 23 ) W-B10 ** Blended 1 hours",40303130,Page1.html
+120,School of Computing and Informatics,203280,4,0,Security,3,Ashaar Abdelwahab Daej Alkhamaiseh,"11,30 - 13,00 ن خ / مبنى رقم ( 23 ) W-B07 ** Blended 1 hours",40303130,Page1.html
+121,School of Computing and Informatics,203280,5,0,Security,3,Isra' Ibrahim Ismael Hasan,"11,30 - 13,00 س ث / المركز الهندي الأردني IJC-01 ** Blended 1 hours",40303130,Page1.html
+122,School of Computing and Informatics,203280,6,0,Security,3,Isra' Ibrahim Ismael Hasan,"13,00 - 14,30 س ث / المركز الهندي الأردني IJC-01 ** Blended 1 hours",40303130,Page1.html
+123,School of Computing and Informatics,10203280,1,0,Security,3,Ashaar Abdelwahab Daej Alkhamaiseh,"11,30 - 13,00 ن خ / مبنى رقم ( 23 ) W-B07 ** Blended 1 hours",,Page1.html
+124,School of Computing and Informatics,203290,1,0,Apprenticeship for Cybersecurity 1,6,Safaa Fawzey Mohammad Hriez,/ ** Blended 6 hours,7102,Page1.html
+125,School of Computing and Informatics,203291,1,0,Apprenticeship for Cybersecurity 2,6,Safaa Fawzey Mohammad Hriez,/ ** Blended 6 hours,203290 1,Page1.html
+126,School of Computing and Informatics,10203300,1,0,Information Security Management,3,Qutaiba Salameh Mohmad Al Harfi Albluwi,"08,30 - 10,00 ن خ / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",10203210,Page1.html
+127,School of Computing and Informatics,10203340,1,0,Cryptography,3,Rawaah Qoraan,"11,30 - 13,00 ن خ / المركز الهندي الأردني IJC-02 ** Blended 1 hours",40303221,Page1.html
+128,School of Computing and Informatics,203360,1,0,Penetration Testing,3,,"08,30 - 10,00 ح ر / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",10203362,Page1.html
+129,School of Computing and Informatics,203360,3,0,Penetration Testing,3,Sami Aqeel Murshed Almashaqbeh,"08,30 - 10,00 ن خ / المركز الهندي الأردني IJC-02 ** Blended 1 hours",10203362,Page1.html
+130,School of Computing and Informatics,10203360,1,0,Penetration Testing,3,Weaam Akram Soud Alrbeiqi,"08,30 - 10,00 ح ر / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",,Page1.html
+131,School of Computing and Informatics,10203361,1,0,Forensics,3,Safaa Fawzey Mohammad Hriez,"11,30 - 13,00 ح ر / مبنى رقم ( 23 ) W-B07 ** Blended 1 hours",10203380 و 203280 أو 10203280,Page1.html
+132,School of Computing and Informatics,10203361,2,0,Forensics,3,Safaa Fawzey Mohammad Hriez,"11,30 - 13,00 ن خ / المبنى الجنوبي الجديد S-209 ** Blended 1 hours",10203380 و 203280 أو 10203280,Page1.html
+133,School of Computing and Informatics,10203362,1,0,Ethical Hacking,3,Sami Aqeel Murshed Almashaqbeh,"13,00 - 14,30 ح ر / المبنى الجنوبي الجديد S-209 ** Blended 1 hours",10203210,Page1.html
+134,School of Computing and Informatics,10203380,1,0,Computer Organization and Design,3,Reem Moshrif Mohammad Bani Hani,"14,30 - 16,00 ح ر / المبنى الجنوبي الجديد S-208 ** Blended 1 hours",40201100 و 40303221 Corequisite,Page1.html
+135,School of Computing and Informatics,10203380,2,0,Computer Organization and Design,3,Huthaifa Abdelhameed Ibrahim  Al Omari,"14,30 - 16,00 ن خ / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",40201100 و 40303221 Corequisite,Page1.html
+136,School of Computing and Informatics,10203380,3,0,Computer Organization and Design,3,Huthaifa Abdelhameed Ibrahim  Al Omari,"16,00 - 17,30 ن خ / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",40201100 و 40303221 Corequisite,Page1.html
+137,School of Computing and Informatics,203391,1,0,Apprenticeship for Cybersecurity 3,6,Safaa Fawzey Mohammad Hriez,/ ** Blended 6 hours,203291 2,Page1.html
+138,School of Computing and Informatics,203400,1,0,Risk Analysis & Systems Testing,3,Ibrahim Abed Alfattah Mohammad Ghanem,"13,00 - 14,30 ح ر / مبنى رقم ( 23 ) W-B07 ** Blended 1 hours",203280,Page1.html
+139,School of Computing and Informatics,203400,2,0,Risk Analysis & Systems Testing,3,Ibrahim Abed Alfattah Mohammad Ghanem,"11,30 - 13,00 س ث / المركز الهندي الأردني IJC-02 ** Blended 1 hours",203280,Page1.html
+140,School of Computing and Informatics,203420,1,0,Secure Coding,3,Safaa Fawzey Mohammad Hriez,"13,00 - 14,30 ن خ / المبنى الجنوبي الجديد S-210 ** Blended 1 hours",10204282,Page1.html
+141,School of Computing and Informatics,10203470,1,0,Special Topics,3,Murad Almunther Ikrema Yaghi,"16,00 - 17,30 ح ر / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",,Page1.html
+142,School of Computing and Informatics,10203470,2,0,Special Topics,3,,"14,30 - 16,00 س ث / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",,Page1.html
+143,School of Computing and Informatics,203472,1,0,Special Topics in Cybersecurity 2,3,Elham Mahmoud Awad Derbas,"10,00 - 11,30 ح ر / المبنى الجنوبي الجديد S-210 ** Blended 1 hours",75,Page1.html
+144,School of Computing and Informatics,10203491,1,0,Capstone Project I,1,Safaa Fawzey Mohammad Hriez,/,90,Page1.html
+145,School of Computing and Informatics,10203492,1,0,Capstone Project II,2,Safaa Fawzey Mohammad Hriez,/,10203491,Page1.html
+146,School of Computing and Informatics,10204210,1,0,Data Analytics,3,Yousef Darwish,"13,00 - 14,30 ح ر / المبنى الجنوبي الجديد S-207 ** Blended 1 hours",30201100 أو 10201100,Page1.html
+147,School of Computing and Informatics,10204210,2,0,Data Analytics,3,Yara Emad Abdelghafour Alharahsheh,"14,30 - 16,00 ن خ / المبنى الجنوبي الجديد S-209 ** Blended 1 hours",30201100 أو 10201100,Page1.html
+148,School of Computing and Informatics,10204210,3,0,Data Analytics,3,Bassam Faris Abdel Hamed Al Kasasbeh,"13,00 - 14,30 س ث / المبنى الجنوبي الجديد S-210 ** Blended 1 hours",30201100 أو 10201100,Page1.html
+149,School of Computing and Informatics,10204210,4,0,Data Analytics,3,Yousef Darwish,"16,00 - 17,30 ح / المبنى الجنوبي الجديد S-207 ** 16,00 - 17,30 ر / المبنى الجنوبي الجديد S-208 ** Blended 1 hours",30201100 أو 10201100,Page1.html
+150,School of Computing and Informatics,10204250,1,0,Artificial Intelligence & Intelligent Systems,3,Rami Ratib Musa Al-Ouran,"10,00 - 11,30 س ث / المركز الهندي الأردني IJC-02 ** Blended 1 hours",,Page1.html
+151,School of Computing and Informatics,10204250,2,0,Artificial Intelligence & Intelligent Systems,3,Mariam Mohammad Yahya Biltawi,"11,30 - 13,00 ح ر / المبنى الجنوبي الجديد S-207 ** Blended 1 hours",,Page1.html
+152,School of Computing and Informatics,10204250,3,0,Artificial Intelligence & Intelligent Systems,3,Mariam Mohammad Yahya Biltawi,"10,00 - 11,30 ح ر / المبنى الجنوبي الجديد S-209 ** Blended 1 hours",,Page1.html
+153,School of Computing and Informatics,10204250,4,0,Artificial Intelligence & Intelligent Systems,3,Batool Nayef Mohammad Alarmouti,"08,30 - 10,00 س ث / مبنى رقم ( 23 ) W-B07 ** Blended 1 hours",,Page1.html
+154,School of Computing and Informatics,10204250,5,0,Artificial Intelligence & Intelligent Systems,3,,"11,30 - 13,00 ن خ / المركز الهندي الأردني IJC-06 ** Blended 1 hours",,Page1.html
+155,School of Computing and Informatics,204251,1,0,Fundamentals of Artificial Intelligence (AI) & Intelligent Systems,3,Mariam Mohammad Yahya Biltawi,"10,00 - 11,30 ح ر / المبنى الجنوبي الجديد S-209 ** Blended 1 hours",40303121,Page1.html
+156,School of Computing and Informatics,204251,2,0,Fundamentals of Artificial Intelligence (AI) & Intelligent Systems,3,,"11,30 - 13,00 ح ر / المبنى الجنوبي الجديد S-207 ** Blended 1 hours",40303121,Page1.html
+157,School of Computing and Informatics,204251,3,0,Fundamentals of Artificial Intelligence (AI) & Intelligent Systems,3,Batool Nayef Mohammad Alarmouti,"11,30 - 13,00 ن خ / المركز الهندي الأردني IJC-01 ** Blended 1 hours",40303121,Page1.html
+158,School of Computing and Informatics,204251,4,0,Fundamentals of Artificial Intelligence (AI) & Intelligent Systems,3,,"10,00 - 11,30 س ث / المركز الهندي الأردني IJC-02 ** Blended 1 hours",40303121,Page1.html
+159,School of Computing and Informatics,204251,5,0,Fundamentals of Artificial Intelligence (AI) & Intelligent Systems,3,Batool Nayef Mohammad Alarmouti,"08,30 - 10,00 س ث / مبنى رقم ( 23 ) W-B07 ** Blended 1 hours",40303121,Page1.html
+160,School of Computing and Informatics,204251,6,0,Fundamentals of Artificial Intelligence (AI) & Intelligent Systems,3,Mariam Mohammad Yahya Biltawi,"11,30 - 13,00 ن خ / المركز الهندي الأردني IJC-06 ** Blended 1 hours",40303121,Page1.html
+161,School of Computing and Informatics,204280,1,0,Principles of Data Science and Computing Systems,3,Bushra Soud Ali Al-Zeirah,"10,00 - 11,30 ح ر / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",,Page1.html
+162,School of Computing and Informatics,10204282,1,0,Database Design & Development,3,Mohammad Husni Najib Yahia,"10,00 - 11,30 ح ر / مبنى رقم ( 23 ) W-B07 ** Blended 1 hours",40201100,Page1.html
+163,School of Computing and Informatics,10204282,2,0,Database Design & Development,3,Samir Yacoub Mufid Tartir,"13,00 - 14,30 ن خ / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",40201100,Page1.html
+164,School of Computing and Informatics,10204282,3,0,Database Design & Development,3,Samer Adnan Abdullah Suleiman,"11,30 - 13,00 س ث / المبنى الجنوبي الجديد S-207 ** Blended 1 hours",40201100,Page1.html
+165,School of Computing and Informatics,204290,1,0,Apprenticeship for DS & AI 1,6,Ala'a Saqer Ahmad Al-Habashna,/ ** Blended 6 hours,75,Page1.html
+166,School of Computing and Informatics,204291,1,0,Apprenticeship for DS & AI 2,6,Ala'a Saqer Ahmad Al-Habashna,/ ** Blended 6 hours,,Page1.html
+167,School of Computing and Informatics,10204310,1,0,Data Mining,3,,"10,00 - 11,30 س ث / مبنى رقم ( 23 ) W-B10 ** Blended 1 hours",,Page1.html
+168,School of Computing and Informatics,10204310,2,0,Data Mining,3,Bassam Faris Abdel Hamed Al Kasasbeh,"13,00 - 14,30 ح ر / المركز الهندي الأردني IJC-01 ** Blended 1 hours",,Page1.html
+169,School of Computing and Informatics,204311,1,0,Big Data Analytics and Visualization,3,Ayah Basim Ramadan Karajeh,"11,30 - 13,00 ح ر / المركز الهندي الأردني IJC-02 ** Blended 1 hours",,Page1.html
+170,School of Computing and Informatics,204311,2,0,Big Data Analytics and Visualization,3,Ayah Basim Ramadan Karajeh,"13,00 - 14,30 س ث / المبنى الجنوبي الجديد S-207 ** Blended 1 hours",,Page1.html
+171,School of Computing and Informatics,204311,3,0,Big Data Analytics and Visualization,3,Ayah Basim Ramadan Karajeh,"08,30 - 10,00 ح ر / المبنى الجنوبي الجديد S-209 ** Blended 1 hours",,Page1.html
+172,School of Computing and Informatics,10204312,1,0,Business Intelligence,3,Asma Mahmoud Mohammad Al-Fakhore,"14,30 - 16,00 ن خ / المركز الهندي الأردني IJC-06 ** Blended 1 hours",,Page1.html
+173,School of Computing and Informatics,204313,1,0,Business Process Support,3,Yara Emad Abdelghafour Alharahsheh,"08,30 - 10,00 ح ر / المبنى الجنوبي الجديد S-208 ** Blended 1 hours",10204282,Page1.html
+174,School of Computing and Informatics,204313,2,0,Business Process Support,3,Islam Yaser Abelqader Alomari,"11,30 - 13,00 ح ر / المبنى الجنوبي الجديد S-208 ** Blended 1 hours",10204282,Page1.html
+175,School of Computing and Informatics,204313,3,0,Business Process Support,3,Batool Nayef Mohammad Alarmouti,"10,00 - 11,30 ن خ / المبنى الجنوبي الجديد S-208 ** Blended 1 hours",10204282,Page1.html
+176,School of Computing and Informatics,204313,4,0,Business Process Support,3,Yara Emad Abdelghafour Alharahsheh,"11,30 - 13,00 ن خ / المبنى الجنوبي الجديد S-208 ** Blended 1 hours",10204282,Page1.html
+177,School of Computing and Informatics,204313,5,0,Business Process Support,3,Islam Yaser Abelqader Alomari,"13,00 - 14,30 ن خ / المبنى الجنوبي الجديد S-207 ** Blended 1 hours",10204282,Page1.html
+178,School of Computing and Informatics,204313,6,0,Business Process Support,3,Malak Ziyad Mahmoud Fraihat,"08,30 - 10,00 س ث / المبنى الجنوبي الجديد S-207 ** Blended 1 hours",10204282,Page1.html
+179,School of Computing and Informatics,204313,7,0,Business Process Support,3,Batool Nayef Mohammad Alarmouti,"11,30 - 13,00 س ث / مبنى رقم ( 23 ) W-B07 ** Blended 1 hours",10204282,Page1.html
+180,School of Computing and Informatics,10204330,1,0,Modeling and Simulation,3,Murad Almunther Ikrema Yaghi,"14,30 - 16,00 ح ر / المبنى الجنوبي الجديد S-207 ** Blended 1 hours",,Page1.html
+181,School of Computing and Informatics,10204330,2,0,Modeling and Simulation,3,Murad Almunther Ikrema Yaghi,"13,00 - 14,30 س ث / المركز الهندي الأردني IJC-06 ** Blended 1 hours",,Page1.html
+182,School of Computing and Informatics,10204350,1,0,Machine Learning,3,Rami Ratib Musa Al-Ouran,"10,00 - 11,30 ح ر / المركز الهندي الأردني IJC-02 ** Blended 1 hours",,Page1.html
+183,School of Computing and Informatics,10204351,1,0,Natural Language Processing,3,Raneem Nadim Mohamed Qaddoura,"14,30 - 16,00 ح ر / المبنى الجنوبي الجديد S-209 ** Blended 1 hours",,Page1.html
+184,School of Computing and Informatics,10204351,2,0,Natural Language Processing,3,Raneem Nadim Mohamed Qaddoura,"13,00 - 14,30 ن خ / المبنى الجنوبي الجديد S-209 ** Blended 1 hours",,Page1.html
+185,School of Computing and Informatics,10204351,3,0,Natural Language Processing,3,Yara Emad Abdelghafour Alharahsheh,"13,00 - 14,30 ح ر / المركز الهندي الأردني IJC-06 ** Blended 1 hours",,Page1.html
+186,School of Computing and Informatics,204391,1,0,Apprenticeship for DS & AI 3,6,Ala'a Saqer Ahmad Al-Habashna,/ ** Blended 6 hours,,Page1.html
+187,School of Computing and Informatics,204412,1,0,Applied Analytical Models,3,Bassam Faris Abdel Hamed Al Kasasbeh,"11,30 - 13,00 س ث / المركز الهندي الأردني IJC-06 ** Blended 1 hours",,Page1.html
+188,School of Computing and Informatics,10204412,1,0,Applied Analytical Models,3,Bassam Faris Abdel Hamed Al Kasasbeh,"11,30 - 13,00 س ث / المركز الهندي الأردني IJC-06 ** Blended 1 hours",,Page1.html
+189,School of Computing and Informatics,204430,1,0,Data Mining,3,Bassam Faris Abdel Hamed Al Kasasbeh,"13,00 - 14,30 ح ر / المركز الهندي الأردني IJC-01 ** Blended 1 hours",,Page1.html
+190,School of Computing and Informatics,204430,2,0,Data Mining,3,Bassam Faris Abdel Hamed Al Kasasbeh,"10,00 - 11,30 س ث / مبنى رقم ( 23 ) W-B10 ** Blended 1 hours",,Page1.html
+191,School of Computing and Informatics,204432,1,0,Bioinformatics,3,Rami Ratib Musa Al-Ouran,"08,30 - 10,00 س ث / المبنى الجنوبي الجديد S-210 ** Blended 1 hours",,Page1.html
+192,School of Computing and Informatics,10204450,1,0,Deep Learning,3,Ayah Basim Ramadan Karajeh,"10,00 - 11,30 ح ر / المبنى الجنوبي الجديد S-208 ** Blended 1 hours",,Page1.html
+193,School of Computing and Informatics,10204450,2,0,Deep Learning,3,Ala'a Saqer Ahmad Al-Habashna,"10,00 - 11,30 ن خ / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",,Page1.html
+194,School of Computing and Informatics,10204450,3,0,Deep Learning,3,Ala'a Saqer Ahmad Al-Habashna,"11,30 - 13,00 ن خ / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",,Page1.html
+195,School of Computing and Informatics,10204450,4,0,Deep Learning,3,Ayah Basim Ramadan Karajeh,"11,30 - 13,00 س ث / مبنى رقم ( 23 ) W-B10 ** Blended 1 hours",,Page1.html
+196,School of Computing and Informatics,10204454,1,0,Optimization theory,3,Raneem Nadim Mohamed Qaddoura,"16,00 - 17,30 ن خ / المبنى الجنوبي الجديد S-209 ** Blended 1 hours",,Page1.html
+197,School of Computing and Informatics,10204470,1,0,Special Topics,3,,"16,00 - 17,30 ح ر / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",,Page1.html
+198,School of Computing and Informatics,10204470,2,0,Special Topics,3,,"14,30 - 16,00 س ث / المبنى الجنوبي الجديد S-212 ** Blended 1 hours",,Page1.html
+199,School of Computing and Informatics,10204491,1,0,Capstone project I,1,Ala'a Saqer Ahmad Al-Habashna,/,90,Page1.html
+200,School of Computing and Informatics,10204492,1,0,Capstone project II,2,Ala'a Saqer Ahmad Al-Habashna,/,,Page1.html
+201,School of Social and Basic Sciences,30301110,1,0,Remedial Arabic Language,3,Nizar Jebril Ibrahim Alseoudi,"14,30 - 16,00 ح ر / مبنى رقم ( 23 ) W105",,Page2.html
+202,School of Social and Basic Sciences,30301110,2,0,Remedial Arabic Language,3,Haneen Ibraheem Bajes Maali,"14,30 - 16,00 ن خ / مبنى رقم ( 23 ) W105",,Page2.html
+203,School of Social and Basic Sciences,30301111,1,0,Arabic Language & Communication Skills,1,Haneen Ibraheem Bajes Maali,"10,00 - 11,30 ح / مبنى رقم ( 23 ) W-216 ** Blended 1.5 hours",30301110,Page2.html
+204,School of Social and Basic Sciences,30301111,2,0,Arabic Language & Communication Skills,1,Haneen Ibraheem Bajes Maali,"10,00 - 11,30 ر / مبنى رقم ( 23 ) W-216 ** Blended 1.5 hours",30301110,Page2.html
+205,School of Social and Basic Sciences,30301111,5,0,Arabic Language & Communication Skills,1,Haneen Ibraheem Bajes Maali,"13,00 - 14,30 ح / مبنى رقم ( 23 ) W-216 ** Blended 1.5 hours",30301110,Page2.html
+206,School of Social and Basic Sciences,30301111,6,0,Arabic Language & Communication Skills,1,Salah Aldin Ahmad Mousa Darawsheh,"13,00 - 14,30 ر / مبنى رقم ( 23 ) W-216 ** Blended 1.5 hours",30301110,Page2.html
+207,School of Social and Basic Sciences,30301111,8,0,Arabic Language & Communication Skills,1,Salah Aldin Ahmad Mousa Darawsheh,"14,30 - 16,00 خ / مبنى رقم ( 23 ) W-108 ** Blended 1.5 hours",30301110,Page2.html
+208,School of Social and Basic Sciences,30301111,9,0,Arabic Language & Communication Skills,1,Haneen Ibraheem Bajes Maali,"10,00 - 11,30 ن / مبنى رقم ( 23 ) W-216 ** Blended 1.5 hours",30301110,Page2.html
+209,School of Social and Basic Sciences,30301111,10,0,Arabic Language & Communication Skills,1,Haneen Ibraheem Bajes Maali,"11,30 - 13,00 خ / مبنى رقم ( 23 ) W-216 ** Blended 1.5 hours",30301110,Page2.html
+210,School of Social and Basic Sciences,30301111,11,0,Arabic Language & Communication Skills,1,Nizar Jebril Ibrahim Alseoudi,"14,30 - 16,00 ن / مبنى رقم ( 23 ) W-216 ** Blended 1.5 hours",30301110,Page2.html
+211,School of Social and Basic Sciences,30301111,12,0,Arabic Language & Communication Skills,1,Nizar Jebril Ibrahim Alseoudi,"14,30 - 16,00 خ / مبنى رقم ( 23 ) W-216 ** Blended 1.5 hours",30301110,Page2.html
+212,School of Social and Basic Sciences,30301111,13,0,Arabic Language & Communication Skills,1,Haneen Ibraheem Bajes Maali,"13,00 - 14,30 ن / مبنى رقم ( 23 ) W-216 ** Blended 1.5 hours",30301110,Page2.html
+213,School of Social and Basic Sciences,30301111,15,0,Arabic Language & Communication Skills,1,Salah Aldin Ahmad Mousa Darawsheh,"14,30 - 16,00 س / مبنى رقم ( 23 ) W-108 ** Blended 1.5 hours",30301110,Page2.html
+214,School of Social and Basic Sciences,30301111,16,0,Arabic Language & Communication Skills,1,Salah Aldin Ahmad Mousa Darawsheh,"14,30 - 16,00 ث / مبنى رقم ( 23 ) W-108 ** Blended 1.5 hours",30301110,Page2.html
+215,School of Social and Basic Sciences,30301122,1,0,English Intermediate,3,Suha Fawzi Dawood Abdo,"10,00 - 11,30 ح ر / مبنى رقم ( 23 ) W-121 ** Blended 1 hours",30301121,Page2.html
+216,School of Social and Basic Sciences,30301122,3,0,English Intermediate,3,Ohood Ali Mohammad Saif Al Nakeeb,"11,30 - 13,00 ح ر / مبنى رقم ( 23 ) W105 ** Blended 1 hours",30301121,Page2.html
+217,School of Social and Basic Sciences,30301122,6,0,English Intermediate,3,Hala Khaled Atallah Arar,"10,00 - 11,30 س ث / مبنى رقم ( 23 ) W105 ** Blended 1 hours",30301121,Page2.html
+218,School of Social and Basic Sciences,30301122,7,0,English Intermediate,3,Laila Abdellilah Mahmoud Alswais,"08,30 - 10,00 ح ر / مبنى رقم ( 23 ) W-203 ** Blended 1 hours",30301121,Page2.html
+219,School of Social and Basic Sciences,30301122,8,0,English Intermediate,3,Iyad Abdel Raouf Khamees Khateeb,"11,30 - 13,00 ن خ / مبنى رقم ( 23 ) W105 ** Blended 1 hours",30301121,Page2.html
+220,School of Social and Basic Sciences,30301122,9,0,English Intermediate,3,Laila Abdellilah Mahmoud Alswais,"11,30 - 13,00 ن خ / مبنى رقم ( 23 ) W109 ** Blended 1 hours",30301121,Page2.html
+221,School of Social and Basic Sciences,30301123,1,0,English Upper - Intermediate,3,Iyad Abdel Raouf Khamees Khateeb,"08,30 - 10,00 ح ر / مبنى رقم ( 23 ) W-108 ** Blended 1 hours",30301122,Page2.html
+222,School of Social and Basic Sciences,30301123,2,0,English Upper - Intermediate,3,Hala Khaled Atallah Arar,"10,00 - 11,30 ح ر / مبنى رقم ( 23 ) W-108 ** Blended 1 hours",30301122,Page2.html
+223,School of Social and Basic Sciences,30301123,3,0,English Upper - Intermediate,3,Iyad Abdel Raouf Khamees Khateeb,"11,30 - 13,00 ح ر / مبنى رقم ( 23 ) W-108 ** Blended 1 hours",30301122,Page2.html
+224,School of Social and Basic Sciences,30301123,4,0,English Upper - Intermediate,3,Hala Khaled Atallah Arar,"13,00 - 14,30 ح ر / مبنى رقم ( 23 ) W-108 ** Blended 1 hours",30301122,Page2.html
+225,School of Social and Basic Sciences,30301123,5,0,English Upper - Intermediate,3,Ohood Ali Mohammad Saif Al Nakeeb,"14,30 - 16,00 ح ر / مبنى رقم ( 23 ) W-108 ** Blended 1 hours",30301122,Page2.html
+226,School of Social and Basic Sciences,30301123,6,0,English Upper - Intermediate,3,Iyad Abdel Raouf Khamees Khateeb,"08,30 - 10,00 ن خ / مبنى رقم ( 23 ) W-108 ** Blended 1 hours",30301122,Page2.html
+227,School of Social and Basic Sciences,30301123,7,0,English Upper - Intermediate,3,Iyad Abdel Raouf Khamees Khateeb,"13,00 - 14,30 ن خ / مبنى رقم ( 23 ) W-108 ** Blended 1 hours",30301122,Page2.html
+228,School of Social and Basic Sciences,30301123,8,0,English Upper - Intermediate,3,Ohood Ali Mohammad Saif Al Nakeeb,"11,30 - 13,00 ن خ / مبنى رقم ( 23 ) W-108 ** Blended 1 hours",30301122,Page2.html
+229,School of Social and Basic Sciences,30301123,10,0,English Upper - Intermediate,3,Hala Khaled Atallah Arar,"13,00 - 14,30 س ث / مبنى رقم ( 23 ) W105 ** Blended 1 hours",30301122,Page2.html
+230,School of Social and Basic Sciences,30301123,11,0,English Upper - Intermediate,3,Ohood Ali Mohammad Saif Al Nakeeb,"13,00 - 14,30 ن خ / ** Blended 1 hours",30301122,Page2.html
+231,School of Social and Basic Sciences,30301124,1,0,English Advanced,3,Christina Abdel Karim Hafez Zawati,"08,30 - 10,00 ح ر / مبنى رقم ( 23 ) W109 ** Blended 1 hours",30301123,Page2.html
+232,School of Social and Basic Sciences,30301124,2,0,English Advanced,3,Laila Abdellilah Mahmoud Alswais,"10,00 - 11,30 ح ر / مبنى رقم ( 23 ) W109 ** Blended 1 hours",30301123,Page2.html
+233,School of Social and Basic Sciences,30301124,3,0,English Advanced,3,Rose Richard Henry Al Hawamdeh,"11,30 - 13,00 ح ر / مبنى رقم ( 23 ) W109 ** Blended 1 hours",30301123,Page2.html
+234,School of Social and Basic Sciences,30301124,4,0,English Advanced,3,Laila Abdellilah Mahmoud Alswais,"13,00 - 14,30 ح ر / مبنى رقم ( 23 ) W109 ** Blended 1 hours",30301123,Page2.html
+235,School of Social and Basic Sciences,30301124,5,0,English Advanced,3,Rose Richard Henry Al Hawamdeh,"14,30 - 16,00 ح ر / مبنى رقم ( 23 ) W-121 ** Blended 1 hours",30301123,Page2.html
+236,School of Social and Basic Sciences,30301124,6,0,English Advanced,3,Christina Abdel Karim Hafez Zawati,"08,30 - 10,00 ن خ / مبنى رقم ( 23 ) W109 ** Blended 1 hours",30301123,Page2.html
+237,School of Social and Basic Sciences,30301124,7,0,English Advanced,3,Christina Abdel Karim Hafez Zawati,"10,00 - 11,30 ن خ / مبنى رقم ( 23 ) W109 ** Blended 1 hours",30301123,Page2.html
+238,School of Social and Basic Sciences,30301124,9,0,English Advanced,3,Christina Abdel Karim Hafez Zawati,"13,00 - 14,30 ن خ / مبنى رقم ( 23 ) W109 ** Blended 1 hours",30301123,Page2.html
+239,School of Social and Basic Sciences,30301124,10,0,English Advanced,3,Rose Richard Henry Al Hawamdeh,"14,30 - 16,00 ن خ / مبنى رقم ( 23 ) W-121 ** Blended 1 hours",30301123,Page2.html
+240,School of Social and Basic Sciences,30301124,13,0,English Advanced,3,Laila Abdellilah Mahmoud Alswais,"14,30 - 16,00 ن خ / مبنى رقم ( 23 ) W-203 ** Blended 1 hours",30301123,Page2.html
+241,School of Social and Basic Sciences,30301124,14,0,English Advanced,3,Christina Abdel Karim Hafez Zawati,"11,30 - 13,00 ح ر / مبنى رقم ( 23 ) W-203 ** Blended 1 hours",30301123,Page2.html
+242,School of Social and Basic Sciences,30301130,1,0,Foundational French Language,1,Rana Nizar Jassim Alameen,"10,00 - 11,30 ح ر / مبنى رقم ( 23 ) W-215",,Page2.html
+243,School of Social and Basic Sciences,30301130,2,0,Foundational French Language,1,Rana Nizar Jassim Alameen,"13,00 - 14,30 ح ر / مبنى رقم ( 23 ) W105",,Page2.html
+244,School of Social and Basic Sciences,30301130,3,0,Foundational French Language,1,Rana Nizar Jassim Alameen,"10,00 - 11,30 ن خ / مبنى رقم ( 23 ) W105",,Page2.html
+245,School of Social and Basic Sciences,30301130,5,0,Foundational French Language,1,Rana Nizar Jassim Alameen,"08,30 - 10,00 ن خ / مبنى رقم ( 23 ) W105",,Page2.html
+246,School of Social and Basic Sciences,30301140,1,0,Foundational German Language,1,Omar Aldeies,"13,00 - 14,30 س ث / مبنى رقم ( 23 ) W-108",,Page2.html
+247,School of Social and Basic Sciences,30301160,1,0,Turkish Language,1,,"10,00 - 11,30 س ث / مبنى رقم ( 23 ) W-103",,Page2.html
+248,School of Social and Basic Sciences,30301160,2,0,Turkish Language,1,,"11,30 - 13,00 س ث / مبنى رقم ( 23 ) W105",,Page2.html
+249,School of Social and Basic Sciences,30301170,1,0,Foundations of Italian ITAL,1,,"11,30 - 13,00 ح ر / مبنى رقم ( 23 ) W-216",,Page2.html
+250,School of Social and Basic Sciences,30301180,1,0,Chinese language,1,,"10,00 - 11,30 ح ر / مبنى رقم ( 23 ) W105",,Page2.html
+251,School of Social and Basic Sciences,30301221,1,0,Development Academic Writing,1,,"08,30 - 10,00 ح ر / مبنى رقم ( 23 ) W-203",30301124,Page2.html
+252,School of Social and Basic Sciences,30301221,2,0,Development Academic Writing,1,,"08,30 - 10,00 ح ر / مبنى رقم ( 23 ) W-215",30301124,Page2.html
+253,School of Social and Basic Sciences,30301221,3,0,Development Academic Writing,1,,"14,30 - 16,00 ح ر / مبنى رقم ( 23 ) W-203",30301124,Page2.html
+254,School of Social and Basic Sciences,30301221,4,0,Development Academic Writing,1,,"14,30 - 16,00 ح ر / مبنى رقم ( 23 ) W-103",30301124,Page2.html
+255,School of Social and Basic Sciences,30301221,20,0,Development Academic Writing,1,,"08,30 - 10,00 ح ر / مبنى رقم ( 23 ) W-103",30301124,Page2.html
+256,School of Social and Basic Sciences,30301221,21,0,Development Academic Writing,1,,"08,30 - 10,00 ح ر / مبنى رقم ( 23 ) W-216",30301124,Page2.html
+257,School of Social and Basic Sciences,30301221,22,0,Development Academic Writing,1,,"08,30 - 10,00 ن خ / مبنى رقم ( 23 ) W-001",30301124,Page2.html
+258,School of Social and Basic Sciences,30301221,23,0,Development Academic Writing,1,,"10,00 - 11,30 ن خ / مبنى رقم ( 23 ) W-001",30301124,Page2.html
+259,School of Social and Basic Sciences,30301221,24,0,Development Academic Writing,1,,"11,30 - 13,00 ن خ / مبنى رقم ( 23 ) W-001",30301124,Page2.html
+260,School of Social and Basic Sciences,30301221,25,0,Development Academic Writing,1,,"14,30 - 16,00 ن خ / مبنى رقم ( 23 ) W-001",30301124,Page2.html
+261,School of Social and Basic Sciences,30301221,26,0,Development Academic Writing,1,,"14,30 - 16,00 ن خ / مبنى رقم ( 23 ) W-103",30301124,Page2.html
+262,School of Social and Basic Sciences,30301221,27,0,Development Academic Writing,1,,"11,30 - 13,00 ن خ / مبنى رقم ( 23 ) W-203",30301124,Page2.html
+263,School of Social and Basic Sciences,30301221,28,0,Development Academic Writing,1,,"14,30 - 16,00 ن خ / مبنى رقم ( 23 ) W-215",30301124,Page2.html
+264,School of Social and Basic Sciences,30301221,29,0,Development Academic Writing,1,,"08,30 - 10,00 ن خ / مبنى رقم ( 23 ) W-215",30301124,Page2.html
+265,School of Social and Basic Sciences,30301221,31,0,Development Academic Writing,1,,"10,00 - 11,30 ح ر / مبنى رقم ( 23 ) W-202",30301124,Page2.html
+266,School of Social and Basic Sciences,30301221,32,0,Development Academic Writing,1,,"13,00 - 14,30 ر / مبنى رقم ( 23 ) W-121 ** 13,00 - 14,30 ح / مبنى رقم ( 23 ) W-125",30301124,Page2.html
+267,School of Social and Basic Sciences,30301221,33,0,Development Academic Writing,1,,"11,30 - 13,00 ح ر / مبنى رقم ( 23 ) W-202",30301124,Page2.html
+268,School of Social and Basic Sciences,30301221,34,0,Development Academic Writing,1,,"08,30 - 10,00 س ث / مبنى رقم ( 23 ) W-203",30301124,Page2.html
+269,School of Social and Basic Sciences,30301221,35,0,Development Academic Writing,1,,"10,00 - 11,30 س ث / مبنى رقم ( 23 ) W-203",30301124,Page2.html
+270,School of Social and Basic Sciences,30301221,36,0,Development Academic Writing,1,,"11,30 - 13,00 س ث / مبنى رقم ( 23 ) W-203",30301124,Page2.html
+271,School of Social and Basic Sciences,30301221,37,0,Development Academic Writing,1,,"13,00 - 14,30 س ث / مبنى رقم ( 23 ) W-203",30301124,Page2.html
+272,School of Social and Basic Sciences,30301221,38,0,Development Academic Writing,1,,"14,30 - 16,00 س ث / مبنى رقم ( 23 ) W-203",30301124,Page2.html
+273,School of Social and Basic Sciences,30301221,39,0,Development Academic Writing,1,,"10,00 - 11,30 س ث / مبنى رقم ( 23 ) W-215",30301124,Page2.html
+274,School of Social and Basic Sciences,30301221,40,0,Development Academic Writing,1,,"11,30 - 13,00 س ث / مبنى رقم ( 23 ) W-215",30301124,Page2.html
+275,School of Social and Basic Sciences,30301221,41,0,Development Academic Writing,1,,"13,00 - 14,30 س ث / مبنى رقم ( 23 ) W-215",30301124,Page2.html
+276,School of Social and Basic Sciences,30301221,42,0,Development Academic Writing,1,,"13,00 - 14,30 ح ر / مبنى رقم ( 23 ) W-202",30301124,Page2.html
+277,School of Social and Basic Sciences,30301221,43,0,Development Academic Writing,1,,"14,30 - 16,00 ح / مبنى رقم ( 23 ) W-102 ** 14,30 - 16,00 ر / مبنى رقم ( 23 ) W109",30301124,Page2.html
+278,School of Social and Basic Sciences,30301221,44,0,Development Academic Writing,1,,"13,00 - 14,30 ح ر / مبنى رقم ( 23 ) W-203",30301124,Page2.html
+279,School of Social and Basic Sciences,30301221,45,0,Development Academic Writing,1,,"14,30 - 16,00 ن خ / مبنى رقم ( 23 ) W109",30301124,Page2.html
+280,School of Social and Basic Sciences,30301221,46,0,Development Academic Writing,1,,"10,00 - 11,30 ن خ / مبنى رقم ( 23 ) W-108",30301124,Page2.html
+281,School of Social and Basic Sciences,30301221,47,0,Development Academic Writing,1,,"13,00 - 14,30 ن خ / مبنى رقم ( 23 ) W105",30301124,Page2.html
+282,School of Social and Basic Sciences,30301221,48,0,Development Academic Writing,1,,"14,30 - 16,00 ح ر / مبنى رقم ( 23 ) W-215",30301124,Page2.html
+283,School of Social and Basic Sciences,30301221,49,0,Development Academic Writing,1,,"13,00 - 14,30 ن خ / مبنى رقم ( 23 ) W-202",30301124,Page2.html
+284,School of Social and Basic Sciences,30301221,50,0,Development Academic Writing,1,,"14,30 - 16,00 ن / مبنى رقم ( 23 ) W-108 ** 14,30 - 16,00 خ / مبنى رقم ( 23 ) W-125",30301124,Page2.html
+285,School of Social and Basic Sciences,30301223,1,0,Introduction to Translation,1,Suha Fawzi Dawood Abdo,"13,00 - 14,30 ح ر / مبنى رقم ( 23 ) W-215",30301124,Page2.html
+286,School of Social and Basic Sciences,30301223,2,0,Introduction to Translation,1,Suha Fawzi Dawood Abdo,"10,00 - 11,30 ن خ / مبنى رقم ( 23 ) W-215",30301124,Page2.html
+287,School of Social and Basic Sciences,30301223,3,0,Introduction to Translation,1,Suha Fawzi Dawood Abdo,"13,00 - 14,30 ن خ / مبنى رقم ( 23 ) W-215",30301124,Page2.html
+288,School of Social and Basic Sciences,30301224,1,0,Arabic Calligraphy,1,Nizar Jebril Ibrahim Alseoudi,"11,30 - 13,00 ح / مبنى رقم ( 23 ) W-215 ** Blended .5 hours",,Page2.html
+289,School of Social and Basic Sciences,30301224,2,0,Arabic Calligraphy,1,Nizar Jebril Ibrahim Alseoudi,"11,30 - 13,00 ن / مبنى رقم ( 23 ) W-215 ** Blended .5 hours",,Page2.html
+290,School of Social and Basic Sciences,30301224,3,0,Arabic Calligraphy,1,Nizar Jebril Ibrahim Alseoudi,"11,30 - 13,00 ر / مبنى رقم ( 23 ) W-215 ** Blended .5 hours",,Page2.html
+291,School of Social and Basic Sciences,30301224,4,0,Arabic Calligraphy,1,Nizar Jebril Ibrahim Alseoudi,"11,30 - 13,00 خ / مبنى رقم ( 23 ) W-215 ** Blended .5 hours",,Page2.html
+292,School of Social and Basic Sciences,40302111,1,0,Professional Skills,1,Sawsan Osama Abdel Hamid Sayeh,"08,30 - 10,00 ح ر / مبنى رقم ( 23 ) W-102",,Page2.html
+293,School of Social and Basic Sciences,40302111,2,0,Professional Skills,1,Sawsan Osama Abdel Hamid Sayeh,"11,30 - 13,00 ح ر / مبنى رقم ( 23 ) W-102",,Page2.html
+294,School of Social and Basic Sciences,40302111,3,0,Professional Skills,1,Sawsan Osama Abdel Hamid Sayeh,"13,00 - 14,30 ن خ / مبنى رقم ( 23 ) W-102",,Page2.html
+295,School of Social and Basic Sciences,40302111,4,0,Professional Skills,1,Asma'a Abdel-Karim Azmi Al Kayalli,"13,00 - 14,30 ح ر / مبنى رقم ( 23 ) W-001",,Page2.html
+296,School of Social and Basic Sciences,40302111,5,0,Professional Skills,1,Asma'a Abdel-Karim Azmi Al Kayalli,"14,30 - 16,00 ن خ / مبنى رقم ( 23 ) W-102",,Page2.html
+297,School of Social and Basic Sciences,40302111,6,0,Professional Skills,1,Gida Abdelhamid Abdelwahab Hamam,"10,00 - 11,30 ح ر / مبنى رقم ( 23 ) W-102",,Page2.html
+298,School of Social and Basic Sciences,40302111,7,0,Professional Skills,1,Gida Abdelhamid Abdelwahab Hamam,"14,30 - 16,00 ح ر / مبنى رقم ( 23 ) W-001",,Page2.html
+299,School of Social and Basic Sciences,40302111,8,0,Professional Skills,1,Gida Abdelhamid Abdelwahab Hamam,"10,00 - 11,30 ن خ / مبنى رقم ( 23 ) W-102",,Page2.html
+300,School of Social and Basic Sciences,40302111,9,0,Professional Skills,1,Fayzeh Zeyad Mohammad Abuhaltam,"11,30 - 13,00 ن خ / مبنى رقم ( 23 ) W-102",,Page2.html
+301,School of Social and Basic Sciences,40302111,10,0,Professional Skills,1,Fayzeh Zeyad Mohammad Abuhaltam,"13,00 - 14,30 ح ر / مبنى رقم ( 23 ) W-102",,Page2.html
+302,School of Social and Basic Sciences,40302111,11,0,Professional Skills,1,Elham Alzyadat,"11,30 - 13,00 س ث / مبنى رقم ( 23 ) W-102",,Page2.html
+303,School of Social and Basic Sciences,40302111,12,0,Professional Skills,1,Areej Ibrahim Hussein Abuqudairi,"13,00 - 14,30 س ث / مبنى رقم ( 23 ) W-102",,Page2.html
+304,School of Social and Basic Sciences,30302123,1,0,Art Appreciation and Techniques,1,Gida Abdelhamid Abdelwahab Hamam,"13,00 - 14,30 ن خ / مبنى رقم ( 23 ) W-203",,Page2.html
+305,School of Social and Basic Sciences,30302125,1,0,Rights and Responsibilities: Understanding Human Rights,1,Areej Ibrahim Hussein Abuqudairi,"13,00 - 14,30 ن خ / مبنى رقم ( 23 ) W-121",,Page2.html
+306,School of Social and Basic Sciences,30302126,1,0,Introduction to Cultural Anthropology - Focus on Urban Anthropology,1,Gida Abdelhamid Abdelwahab Hamam,"11,30 - 13,00 ح ر / مبنى رقم ( 23 ) W-001",,Page2.html
+307,School of Social and Basic Sciences,30302127,1,0,"Jerusalem, History and Civilization",1,Bassam Abdulsalam Hamideh Butoush,"10,00 - 11,30 ح ر / مبنى رقم ( 23 ) W-203",,Page2.html
+308,School of Social and Basic Sciences,30302129,1,0,Military Sciences,1,Military Science 1,/ ** Blended 1 hours,,Page2.html
+309,School of Social and Basic Sciences,30302129,2,0,Military Sciences,1,Military Science 1,/ ** Blended 1 hours,,Page2.html
+310,School of Social and Basic Sciences,30302133,1,0,Principles of Management,1,Noura Tariq Borhan Al-Nashef,"13,00 - 14,30 ن خ / مبنى رقم ( 23 ) W-001",,Page2.html
+311,School of Social and Basic Sciences,30302134,1,0,Strategies for Industry Competitiveness: Tools & Techniques,1,Tala Sulaiman Mfleh Arabiat,"11,30 - 14,30 ث / مبنى رقم ( 23 ) W-103",,Page2.html
+312,School of Social and Basic Sciences,40302211,1,0,Professional Practice,3,Noura Tariq Borhan Al-Nashef,"10,30 - 12,30 ح ر / مبنى رقم ( 23 ) W-103",30302111 1 أو 40302111 و 30301122,Page2.html
+313,School of Social and Basic Sciences,40302211,2,0,Professional Practice,3,Noura Tariq Borhan Al-Nashef,"08,30 - 10,30 ن خ / مبنى رقم ( 23 ) W-103",30302111 1 أو 40302111 و 30301122,Page2.html
+314,School of Social and Basic Sciences,40302211,3,0,Professional Practice,3,Reem Ali Hassan Abu Lughod,"12,30 - 14,30 ح ر / مبنى رقم ( 23 ) W-103",30302111 1 أو 40302111 و 30301122,Page2.html
+315,School of Social and Basic Sciences,40302211,4,0,Professional Practice,3,Reem Ali Hassan Abu Lughod,"12,30 - 14,30 س ث / مبنى رقم ( 23 ) W-121",30302111 1 أو 40302111 و 30301122,Page2.html
+316,School of Social and Basic Sciences,40302211,5,0,Professional Practice,3,Reem Ali Hassan Abu Lughod,"11,30 - 13,30 ن خ / مبنى رقم ( 23 ) W-103",30302111 1 أو 40302111 و 30301122,Page2.html
+317,School of Social and Basic Sciences,40302211,7,0,Professional Practice,3,Areej Ibrahim Hussein Abuqudairi,"10,30 - 12,30 س ث / مبنى رقم ( 23 ) W-121",30302111 1 أو 40302111 و 30301122,Page2.html
+318,School of Social and Basic Sciences,40302211,8,0,Professional Practice,3,Areej Ibrahim Hussein Abuqudairi,"08,30 - 10,30 ن خ / مبنى رقم ( 23 ) W-202",30302111 1 أو 40302111 و 30301122,Page2.html
+319,School of Social and Basic Sciences,40302231,1,0,Entrepreneurship Bootcamp,4,Wedad Khalid Walid Alsaad,"10,00 - 11,30 ث / مبنى رقم ( 23 ) W-002 ** 11,30 - 14,30 ح ر / مبنى رقم ( 23 ) W-002 ** Blended .5 hours",30302112 2 أو 40302211 و 30301123,Page2.html
+320,School of Social and Basic Sciences,40302231,2,0,Entrepreneurship Bootcamp,4,,"08,30 - 11,30 ن خ / مبنى رقم ( 23 ) W-002 ** 10,00 - 11,30 ث / مبنى رقم ( 23 ) ** Blended .5 hours",30302112 2 أو 40302211 و 30301123,Page2.html
+321,School of Social and Basic Sciences,40302231,3,0,Entrepreneurship Bootcamp,4,,"08,30 - 11,30 ح ر / مبنى رقم ( 23 ) W-002 ** 10,00 - 11,30 ث / مبنى رقم ( 23 ) ** Blended .5 hours",30302112 2 أو 40302211 و 30301123,Page2.html
+322,School of Social and Basic Sciences,40302231,4,0,Entrepreneurship Bootcamp,4,Asma'a Abdel-Karim Azmi Al Kayalli,"10,00 - 11,30 ث / ** 11,30 - 14,30 ن خ / مبنى رقم ( 23 ) W-002 ** Blended .5 hours",30302112 2 أو 40302211 و 30301123,Page2.html
+323,School of Social and Basic Sciences,40302231,5,0,Entrepreneurship Bootcamp,4,,"10,00 - 11,30 ث / ** 14,30 - 17,30 ح ر / مبنى رقم ( 23 ) W-002 ** Blended .5 hours",30302112 2 أو 40302211 و 30301123,Page2.html
+324,School of Social and Basic Sciences,40302231,6,0,Entrepreneurship Bootcamp,4,,"08,30 - 11,30 ح ر / مبنى رقم ( 23 ) W-001 ** 10,00 - 11,30 ث / مبنى رقم ( 23 ) ** Blended .5 hours",30302112 2 أو 40302211 و 30301123,Page2.html
+325,School of Social and Basic Sciences,40302231,7,0,Entrepreneurship Bootcamp,4,,"10,00 - 11,30 ث / ** 14,30 - 17,30 ن خ / مبنى رقم ( 23 ) W-002 ** Blended .5 hours",30302112 2 أو 40302211 و 30301123,Page2.html
+326,School of Social and Basic Sciences,40302231,8,0,Entrepreneurship Bootcamp,4,,"14,30 - 17,30 س ث / مبنى رقم ( 23 ) W-002 ** Blended 2 hours",30302112 2 أو 40302211 و 30301123,Page2.html
+327,School of Social and Basic Sciences,30302232,3,0,Leadership Camp,1,Tala Sulaiman Mfleh Arabiat,"08,30 - 11,30 ن / مبنى رقم ( 23 ) W-203",30302231 أو 40302231,Page2.html
+328,School of Social and Basic Sciences,30302232,4,0,Leadership Camp,1,Emile Samuel Issa Abujaber,"14,30 - 17,30 ر / مبنى رقم ( 23 ) W-102",30302231 أو 40302231,Page2.html
+329,School of Social and Basic Sciences,30302232,6,0,Leadership Camp,1,Tala Sulaiman Mfleh Arabiat,"08,30 - 11,30 س / مبنى رقم ( 23 ) W-002",30302231 أو 40302231,Page2.html
+330,School of Social and Basic Sciences,30302232,8,0,Leadership Camp,1,Tala Sulaiman Mfleh Arabiat,/ ** Blended 3 hours,30302231 أو 40302231,Page2.html
+331,School of Social and Basic Sciences,30302232,9,0,Leadership Camp,1,Wedad Khalid Walid Alsaad,/ ** Blended 3 hours,30302231 أو 40302231,Page2.html
+332,School of Social and Basic Sciences,30302232,10,0,Leadership Camp,1,Sawsan Osama Abdel Hamid Sayeh,/ ** Blended 3 hours,30302231 أو 40302231,Page2.html
+333,School of Social and Basic Sciences,30302237,1,0,Free Choice Elective 1,1,Hala Ali Abdallah Abu Rubeiha,/,,Page2.html
+334,School of Social and Basic Sciences,30302237,2,0,Free Choice Elective 1,1,Asma'a Abdel-Karim Azmi Al Kayalli,/,,Page2.html
+335,School of Social and Basic Sciences,30302237,3,0,Free Choice Elective 1,1,,/,,Page2.html
+336,School of Social and Basic Sciences,30303110,1,0,Remedial Maths,2,Shadi Mohmmad Abdel Ra'uof Al-Omari,"12,00 - 13,00 ح / مبنى رقم ( 23 ) W-121 ** Blended 1 hours",,Page2.html
+337,School of Social and Basic Sciences,30303110,2,0,Remedial Maths,2,Shadi Mohmmad Abdel Ra'uof Al-Omari,"13,00 - 14,00 ح / مبنى رقم ( 23 ) W-121 ** Blended 1 hours",,Page2.html
+338,School of Social and Basic Sciences,30303110,3,0,Remedial Maths,2,Shadi Mohmmad Abdel Ra'uof Al-Omari,"10,30 - 11,30 ن / مبنى رقم ( 23 ) W-202 ** Blended 1 hours",,Page2.html
+339,School of Social and Basic Sciences,30303111,1,0,Functional Maths,3,Sajedah Mohammad Abdallah Alameer,"08,30 - 10,30 ر / مبنى رقم ( 23 ) W-125 ** Blended 1 hours",30303110,Page2.html
+340,School of Social and Basic Sciences,30303111,2,0,Functional Maths,3,Tareq Mohammad Abdulaziz Dalgmoni,"10,30 - 12,30 ح / مبنى رقم ( 23 ) W-125 ** Blended 1 hours",30303110,Page2.html
+341,School of Social and Basic Sciences,30303111,3,0,Functional Maths,3,Aladeen Ahmad Ibrahim Al Basheer,"12,30 - 14,30 ر / مبنى رقم ( 23 ) W-125 ** Blended 1 hours",30303110,Page2.html
+342,School of Social and Basic Sciences,30303111,4,0,Functional Maths,3,Mohammad Hussein Ali Badarneh,"14,30 - 16,30 ح / مبنى رقم ( 23 ) W-125 ** Blended 1 hours",30303110,Page2.html
+343,School of Social and Basic Sciences,30303111,5,0,Functional Maths,3,Rula Mufied Elias Musleh,"08,30 - 10,30 خ / مبنى رقم ( 23 ) W-125 ** Blended 1 hours",30303110,Page2.html
+344,School of Social and Basic Sciences,30303111,6,0,Functional Maths,3,Tareq Mohammad Abdulaziz Dalgmoni,"10,30 - 12,30 ن / مبنى رقم ( 23 ) W-125 ** Blended 1 hours",30303110,Page2.html
+345,School of Social and Basic Sciences,30303111,7,0,Functional Maths,3,Shadi Mohmmad Abdel Ra'uof Al-Omari,"12,30 - 14,30 ن / مبنى رقم ( 23 ) W-125 ** Blended 1 hours",30303110,Page2.html
+346,School of Social and Basic Sciences,30303111,8,0,Functional Maths,3,Ahmad Al-Soudi,"14,30 - 16,30 ن / مبنى رقم ( 23 ) W-125 ** Blended 1 hours",30303110,Page2.html
+347,School of Social and Basic Sciences,30303111,10,0,Functional Maths,3,Shatha Suleiman Ahmad Ali Saleh,"08,30 - 10,30 ث / مبنى رقم ( 23 ) W-125 ** Blended 1 hours",30303110,Page2.html
+348,School of Social and Basic Sciences,30303111,11,0,Functional Maths,3,Ahmad Al-Soudi,"10,30 - 12,30 س / مبنى رقم ( 23 ) W-125 ** Blended 1 hours",30303110,Page2.html
+349,School of Social and Basic Sciences,30303111,13,0,Functional Maths,3,Tareq Mohammad Abdulaziz Dalgmoni,"12,30 - 14,30 س / مبنى رقم ( 23 ) W-125 ** Blended 1 hours",30303110,Page2.html
+350,School of Social and Basic Sciences,30303111,14,0,Functional Maths,3,Aladeen Ahmad Ibrahim Al Basheer,"12,30 - 14,30 ث / مبنى رقم ( 23 ) W-125 ** Blended 1 hours",30303110,Page2.html
+351,School of Social and Basic Sciences,30303111,15,0,Functional Maths,3,Mohammad Hussein Ali Badarneh,"14,30 - 16,30 ث / مبنى رقم ( 23 ) W-125 ** Blended 1 hours",30303110,Page2.html
+352,School of Social and Basic Sciences,30303112,1,0,Functional Physics,3,Mohammad Hussein Ali Badarneh,"14,30 - 16,30 ر / مبنى رقم ( 23 ) W-128 ** Blended 1 hours",,Page2.html
+353,School of Social and Basic Sciences,30303112,2,0,Functional Physics,3,Mohammad Hussein Ali Badarneh,"14,30 - 16,30 ن / مبنى رقم ( 23 ) W-128 ** Blended 1 hours",,Page2.html
+354,School of Social and Basic Sciences,40303121,1,0,Maths for Computing,3,Radwan Abdallah Ibrahim Alsmadi,"08,30 - 10,00 ح ر / مبنى رقم ( 23 ) W-128 ** Blended 1 hours",30303111,Page2.html
+355,School of Social and Basic Sciences,40303121,2,0,Maths for Computing,3,Nemeh Salem Mohammad Altawil,"10,00 - 11,30 ح ر / مبنى رقم ( 23 ) W-128 ** Blended 1 hours",30303111,Page2.html
+356,School of Social and Basic Sciences,40303121,3,0,Maths for Computing,3,Radwan Abdallah Ibrahim Alsmadi,"11,30 - 13,00 ح ر / مبنى رقم ( 23 ) W-128 ** Blended 1 hours",30303111,Page2.html
+357,School of Social and Basic Sciences,40303121,4,0,Maths for Computing,3,Bayan Shabaneh,"13,00 - 14,30 ح ر / مبنى رقم ( 23 ) W-128 ** Blended 1 hours",30303111,Page2.html
+358,School of Social and Basic Sciences,40303121,5,0,Maths for Computing,3,Nemeh Salem Mohammad Altawil,"08,30 - 10,00 ن خ / مبنى رقم ( 23 ) W-128 ** Blended 1 hours",30303111,Page2.html
+359,School of Social and Basic Sciences,40303121,6,0,Maths for Computing,3,Radwan Abdallah Ibrahim Alsmadi,"10,00 - 11,30 ن خ / مبنى رقم ( 23 ) W-128 ** Blended 1 hours",30303111,Page2.html
+360,School of Social and Basic Sciences,40303121,7,0,Maths for Computing,3,Nemeh Salem Mohammad Altawil,"11,30 - 13,00 ن خ / مبنى رقم ( 23 ) W-128 ** Blended 1 hours",30303111,Page2.html
+361,School of Social and Basic Sciences,40303121,8,0,Maths for Computing,3,Heba Shashaan,"13,00 - 14,30 ن خ / مبنى رقم ( 23 ) W-128 ** Blended 1 hours",30303111,Page2.html
+362,School of Social and Basic Sciences,40303121,9,0,Maths for Computing,3,Bayan Shabaneh,"08,30 - 10,00 س ث / مبنى رقم ( 23 ) W-128 ** Blended 1 hours",30303111,Page2.html
+363,School of Social and Basic Sciences,40303121,10,0,Maths for Computing,3,Bayan Shabaneh,"11,30 - 13,00 س ث / مبنى رقم ( 23 ) W-128 ** Blended 1 hours",30303111,Page2.html
+364,School of Social and Basic Sciences,40303130,1,0,Fundamentals of Computing,4,Shatha Ali Hamed Al Hawawsha,"08,30 - 10,00 ح ر / المركز الهندي الأردني IJC-01 ** Blended 3 hours",,Page2.html
+365,School of Social and Basic Sciences,40303130,2,0,Fundamentals of Computing,4,Shatha Ali Hamed Al Hawawsha,"10,00 - 11,30 ح ر / المركز الهندي الأردني IJC-01 ** Blended 3 hours",,Page2.html
+366,School of Social and Basic Sciences,40303130,3,0,Fundamentals of Computing,4,Ashraf Mohammad Saleem Al-Smadi,"14,30 - 16,00 ح ر / المركز الهندي الأردني IJC-01 ** Blended 3 hours",,Page2.html
+367,School of Social and Basic Sciences,40303130,4,0,Fundamentals of Computing,4,Shatha Ali Hamed Al Hawawsha,"08,30 - 10,00 ن خ / المركز الهندي الأردني IJC-01 ** Blended 3 hours",,Page2.html
+368,School of Social and Basic Sciences,40303130,5,0,Fundamentals of Computing,4,Shatha Ali Hamed Al Hawawsha,"10,00 - 11,30 ن خ / المركز الهندي الأردني IJC-01 ** Blended 3 hours",,Page2.html
+369,School of Social and Basic Sciences,40303130,6,0,Fundamentals of Computing,4,Shatha Ali Hamed Al Hawawsha,"14,30 - 16,00 ن خ / المركز الهندي الأردني IJC-01 ** Blended 3 hours",,Page2.html
+370,School of Social and Basic Sciences,40303130,7,0,Fundamentals of Computing,4,Ashraf Mohammad Saleem Al-Smadi,"13,00 - 14,30 س ث / المركز الهندي الأردني IJC-02 ** Blended 3 hours",,Page2.html
+371,School of Social and Basic Sciences,40303130,8,0,Fundamentals of Computing,4,Ashraf Mohammad Saleem Al-Smadi,"14,30 - 16,00 س ث / المركز الهندي الأردني IJC-01 ** Blended 3 hours",,Page2.html
+372,School of Social and Basic Sciences,40303130,9,0,Fundamentals of Computing,4,Ghosoun AlHindi,"16,00 - 17,30 ن خ / المركز الهندي الأردني IJC-01 ** Blended 3 hours",,Page2.html
+373,School of Social and Basic Sciences,40303130,10,0,Fundamentals of Computing,4,Ghosoun AlHindi,"16,00 - 17,30 س ث / المركز الهندي الأردني IJC-02 ** Blended 3 hours",,Page2.html
+374,School of Social and Basic Sciences,40303221,1,0,Discrete Maths,3,Rula Mufied Elias Musleh,"08,30 - 10,00 ح ر / مبنى رقم ( 23 ) W-121 ** Blended 1 hours",40303121 و 40201201 Corequisite,Page2.html
+375,School of Social and Basic Sciences,40303221,3,0,Discrete Maths,3,Aladeen Ahmad Ibrahim Al Basheer,"10,00 - 11,30 ن خ / مبنى رقم ( 23 ) W-121 ** Blended 1 hours",40303121 و 40201201 Corequisite,Page2.html
+376,School of Social and Basic Sciences,40303221,4,0,Discrete Maths,3,Rula Mufied Elias Musleh,"11,30 - 13,00 ن خ / مبنى رقم ( 23 ) W-121 ** Blended 1 hours",40303121 و 40201201 Corequisite,Page2.html
+377,School of Social and Basic Sciences,40303221,5,0,Discrete Maths,3,Tareq Mohammad Abdulaziz Dalgmoni,"10,00 - 11,30 س ث / مبنى رقم ( 23 ) W-128 ** Blended 1 hours",40303121 و 40201201 Corequisite,Page2.html
