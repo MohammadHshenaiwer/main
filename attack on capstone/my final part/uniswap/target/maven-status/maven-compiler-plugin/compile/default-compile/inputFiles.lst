@@ -14,6 +14,7 @@ C:\Users\Mohammad Shenaiwer\OneDrive\Desktop\main\attack on capstone\my final pa
 C:\Users\Mohammad Shenaiwer\OneDrive\Desktop\main\attack on capstone\my final part\uniswap\src\main\java\com\university\swap\enums\OfferStatus.java
 C:\Users\Mohammad Shenaiwer\OneDrive\Desktop\main\attack on capstone\my final part\uniswap\src\main\java\com\university\swap\dto\DirectAcceptRequest.java
 C:\Users\Mohammad Shenaiwer\OneDrive\Desktop\main\attack on capstone\my final part\uniswap\src\main\java\com\university\swap\model\Student.java
+C:\Users\Mohammad Shenaiwer\OneDrive\Desktop\main\attack on capstone\my final part\uniswap\src\main\java\com\university\swap\model\StudentCourseCompletion.java
 C:\Users\Mohammad Shenaiwer\OneDrive\Desktop\main\attack on capstone\my final part\uniswap\src\main\java\com\university\swap\repository\SectionRepository.java
 C:\Users\Mohammad Shenaiwer\OneDrive\Desktop\main\attack on capstone\my final part\uniswap\src\main\java\com\university\swap\controller\EnrollmentController.java
 C:\Users\Mohammad Shenaiwer\OneDrive\Desktop\main\attack on capstone\my final part\uniswap\src\main\java\com\university\swap\repository\EnrollmentRepository.java
@@ -28,3 +29,4 @@ C:\Users\Mohammad Shenaiwer\OneDrive\Desktop\main\attack on capstone\my final pa
 C:\Users\Mohammad Shenaiwer\OneDrive\Desktop\main\attack on capstone\my final part\uniswap\src\main\java\com\university\swap\repository\CourseRepository.java
 C:\Users\Mohammad Shenaiwer\OneDrive\Desktop\main\attack on capstone\my final part\uniswap\src\main\java\com\university\swap\service\SwapOfferService.java
 C:\Users\Mohammad Shenaiwer\OneDrive\Desktop\main\attack on capstone\my final part\uniswap\src\main\java\com\university\swap\SwapSystemApplication.java
+C:\Users\Mohammad Shenaiwer\OneDrive\Desktop\main\attack on capstone\my final part\uniswap\src\main\java\com\university\swap\repository\StudentCourseCompletionRepository.java
