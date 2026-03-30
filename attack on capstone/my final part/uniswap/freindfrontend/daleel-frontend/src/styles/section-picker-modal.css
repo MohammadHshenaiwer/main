@@ -1,0 +1,208 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.section-modal {
+  width: min(1400px, 96vw);
+  max-height: 90vh;
+  overflow: auto;
+  background: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  padding: 24px;
+}
+
+.portal-like-modal {
+  background: #f2f2f2;
+}
+
+.section-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.section-modal-header h2 {
+  margin: 0;
+  color: #8b0000;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.modal-close-btn {
+  border: none;
+  background: transparent;
+  font-size: 34px;
+  cursor: pointer;
+  color: #222;
+}
+
+.section-modal-filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.section-modal-filters label {
+  font-weight: bold;
+  color: #8b0000;
+}
+
+.section-modal-filters select {
+  height: 36px;
+  min-width: 320px;
+  border: 1px solid #999;
+  padding: 6px 8px;
+  background: white;
+}
+
+.course-group-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.course-group-card {
+  border: 1px solid #b30000;
+  background: #b30000;
+}
+
+.course-summary-table,
+.expanded-sections-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.course-summary-table thead th,
+.expanded-sections-table thead th {
+  background: #b30000;
+  color: white;
+  padding: 12px 10px;
+  text-align: center;
+  border: 1px solid #8f0000;
+  font-weight: bold;
+}
+
+.course-summary-table tbody td {
+  background: #b30000;
+  color: #d6ffb3;
+  font-weight: bold;
+  padding: 14px 10px;
+  text-align: center;
+  border: 1px solid #8f0000;
+  vertical-align: middle;
+}
+
+.expanded-sections-box {
+  background: #fff;
+  border-top: 4px solid #8f0000;
+}
+
+.expanded-sections-table tbody td {
+  background: #ffffff;
+  color: #222;
+  padding: 12px 10px;
+  text-align: center;
+  border: 1px solid #c8c8c8;
+  vertical-align: top;
+}
+
+.expanded-sections-table tbody tr:nth-child(even) td {
+  background: #efefef;
+}
+
+.expand-course-btn {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #d0d0d0;
+  background: #fff;
+  color: #444;
+  font-size: 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.expand-course-btn:hover {
+  background: #f5f5f5;
+}
+
+.inner-action-btn {
+  min-width: 98px;
+  height: 40px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.inner-add-btn {
+  background: #22a447;
+  color: white;
+}
+
+.inner-add-btn:hover {
+  background: #1d8f3d;
+}
+
+.inner-conflict-btn {
+  background: #ef4444;
+  color: white;
+  cursor: not-allowed;
+}
+
+.inner-registered-btn {
+  background: #8b8b8b;
+  color: white;
+  cursor: not-allowed;
+}
+
+.modal-time-cell {
+  white-space: pre-line;
+  line-height: 1.6;
+}
+
+.section-modal-empty {
+  padding: 30px;
+  text-align: center;
+  border: 1px dashed #ccc;
+  background: white;
+}
+
+.action-col {
+  width: 90px;
+}
+
+@media (max-width: 900px) {
+  .section-modal {
+    padding: 16px;
+  }
+
+  .section-modal-header h2 {
+    font-size: 22px;
+  }
+
+  .section-modal-filters {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .trade-offered-box {
+  background: #fff3cd;
+  border: 1px solid #f0d98c;
+  color: #7a4f00;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+}

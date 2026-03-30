@@ -21,7 +21,9 @@ com\university\swap\service\SwapRequestService.class
 com\university\swap\model\Course.class
 com\university\swap\controller\SectionController.class
 com\university\swap\repository\StudentRepository.class
+com\university\swap\controller\StudentController.class
 com\university\swap\exception\GlobalExceptionHandler.class
+com\university\swap\service\EnrollmentService.class
 com\university\swap\model\Enrollment.class
 com\university\swap\controller\EnrollmentController.class
 com\university\swap\repository\SectionRepository.class

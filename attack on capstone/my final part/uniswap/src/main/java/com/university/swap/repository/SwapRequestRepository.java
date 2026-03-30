@@ -28,4 +28,10 @@ public interface SwapRequestRepository extends JpaRepository<SwapRequest, Long> 
     @Query("SELECT COUNT(r) > 0 FROM SwapRequest r WHERE r.offer.offerId = :offerId " +
            "AND r.sender.studentId = :senderId AND r.status = 'PENDING'")
     boolean hasPendingRequest(@Param("offerId") Long offerId, @Param("senderId") Long senderId);
+
+    // Cancel all pending requests for a list of offers (cascade when offers are cancelled)
+    @Modifying
+    @Query("UPDATE SwapRequest r SET r.status = 'CANCELLED', r.resolvedAt = CURRENT_TIMESTAMP " +
+           "WHERE r.offer.offerId IN :offerIds AND r.status = 'PENDING'")
+    void cancelPendingRequestsForOffers(@Param("offerIds") List<Long> offerIds);
 }

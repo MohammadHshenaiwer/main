@@ -1,0 +1,94 @@
+/* src/styles/available-courses.css */
+.courses-title {
+  text-align: center;
+  color: #7f0000;
+  font-size: 24px;
+  margin: 8px 0 28px;
+}
+
+.courses-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 720px;
+  margin: 0 auto 26px;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.filter-group label {
+  width: 90px;
+  font-weight: bold;
+  color: #7f0000;
+}
+
+.filter-group select {
+  width: 320px;
+  height: 34px;
+  border: 1px solid #999;
+  padding: 4px 8px;
+  background: white;
+}
+
+.filter-button-row {
+  text-align: center;
+}
+
+.filter-button-row button {
+  background: white;
+  border: 1px solid #999;
+  color: #b00000;
+  font-weight: bold;
+  padding: 7px 24px;
+  cursor: pointer;
+}
+
+.filter-button-row button:hover {
+  background: #f2f2f2;
+}
+
+.courses-table-wrapper {
+  overflow-x: auto;
+}
+
+.courses-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1100px;
+}
+
+.courses-table thead th {
+  background: #5a84d6;
+  color: white;
+  padding: 12px 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.courses-table tbody td {
+  padding: 12px 10px;
+  text-align: center;
+  color: #8b0000;
+  font-weight: bold;
+  vertical-align: top;
+}
+
+.courses-table tbody tr:nth-child(odd) {
+  background: #eef2fb;
+}
+
+.courses-table tbody tr:nth-child(even) {
+  background: #f8f9fc;
+}
+
+.courses-empty {
+  border: 1px dashed #c8c8c8;
+  padding: 24px;
+  text-align: center;
+  color: #555;
+  background: white;
+}

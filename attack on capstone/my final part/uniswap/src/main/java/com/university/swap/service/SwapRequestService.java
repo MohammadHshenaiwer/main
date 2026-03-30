@@ -25,6 +25,7 @@ public class SwapRequestService {
     private final SectionRepository sectionRepo;
     private final EnrollmentRepository enrollmentRepo;
     private final StudentCourseCompletionRepository completionRepo;
+    private final CourseRepository courseRepo;
 
     // ── Accept a direct trade instantly (from the board) ───────
     @Transactional
@@ -68,22 +69,9 @@ public class SwapRequestService {
                             + ". You cannot swap to get it again.");
         }
 
-        // ── CASE 2: Cannot swap if year level is higher than what you currently have
-        // ──
-        Integer offererYear = offer.getHaveSection().getCourseYear();
-        Integer accepterYear = offeredSection.getCourseYear();
-        if (offererYear != null && accepterYear != null) {
-            if (accepterYear > offererYear) {
-                throw new SwapException(
-                        "❌ The offerer cannot receive a Year " + accepterYear +
-                                " course in exchange for a Year " + offererYear + " course.");
-            }
-            if (offererYear > accepterYear) {
-                throw new SwapException(
-                        "❌ You cannot receive a Year " + offererYear +
-                                " course in exchange for a Year " + accepterYear + " course.");
-            }
-        }
+        // ── CASE 2: Prerequisite check ──
+        checkPrerequisite(offererId, offeredSection.getCourse());
+        checkPrerequisite(accepterId, offer.getHaveSection().getCourse());
 
         // Verify both still enrolled
         enrollmentRepo.findActiveByStudentAndSection(offererId, receiverSectionId)
@@ -116,6 +104,10 @@ public class SwapRequestService {
         offer.setStatus(OfferStatus.COMPLETED);
         offerRepo.save(offer);
         requestRepo.rejectOtherRequests(offer.getOfferId(), savedRequest.getRequestId());
+
+        // ── CASCADE: Cancel stale offers/requests for the sections that were traded ──
+        cascadeCancelOffersAndRequests(offererId, receiverSectionId, offer.getOfferId());
+        cascadeCancelOffersAndRequests(accepterId, senderSectionId, offer.getOfferId());
     }
 
     // ── Send a direct request to a specific student ────────────
@@ -160,14 +152,8 @@ public class SwapRequestService {
                             + ". No need to swap for it.");
         }
 
-        // ── CASE 2: Year level check ──
-        Integer senderYear = senderSection.getCourseYear();
-        Integer receiverYear = offer.getHaveSection().getCourseYear();
-        if (senderYear != null && receiverYear != null && receiverYear > senderYear) {
-            throw new SwapException(
-                    "❌ You cannot receive a Year " + receiverYear +
-                            " course in exchange for a Year " + senderYear + " course.");
-        }
+        // ── CASE 2: Prerequisite check ──
+        checkPrerequisite(dto.getSenderId(), offer.getHaveSection().getCourse());
 
         if (requestRepo.hasPendingRequest(dto.getOfferId(), dto.getSenderId()))
             throw new SwapException("You already have a pending request for this offer.");
@@ -220,14 +206,9 @@ public class SwapRequestService {
                             + ". Swap not allowed.");
         }
 
-        // ── CASE 2: Year level check ──
-        Integer receiverYear = offer.getHaveSection().getCourseYear();
-        Integer senderYear = request.getSenderSection().getCourseYear();
-        if (receiverYear != null && senderYear != null && senderYear > receiverYear) {
-            throw new SwapException(
-                    "❌ You cannot receive a Year " + senderYear +
-                            " course in exchange for a Year " + receiverYear + " course.");
-        }
+        // ── CASE 2: Prerequisite check ──
+        checkPrerequisite(receiverId, request.getSenderSection().getCourse());
+        checkPrerequisite(senderId, offer.getHaveSection().getCourse());
 
         // Verify both still enrolled
         enrollmentRepo.findActiveByStudentAndSection(receiverId, receiverSectionId)
@@ -254,6 +235,10 @@ public class SwapRequestService {
         requestRepo.save(request);
         offerRepo.save(offer);
         requestRepo.rejectOtherRequests(offer.getOfferId(), requestId);
+
+        // ── CASCADE: Cancel stale offers/requests for the sections that were traded ──
+        cascadeCancelOffersAndRequests(receiverId, receiverSectionId, offer.getOfferId());
+        cascadeCancelOffersAndRequests(senderId, senderSectionId, offer.getOfferId());
     }
 
     // ── Reject a request ───────────────────────────────────────
@@ -310,10 +295,20 @@ public class SwapRequestService {
     // PRIVATE HELPERS
     // ══════════════════════════════════════════════════════════
 
-    // ── CASE 3: Time conflict check ───────────────────────────
-    // studentId = student receiving the new section
-    // incomingId = section they will GET
-    // swappingOutId = section they are GIVING UP (excluded)
+    private void checkPrerequisite(Long studentId, Course course) {
+        String prereqCode = course.getPrerequisiteCourseCode();
+        if (prereqCode == null || prereqCode.isBlank()) return;
+
+        if (!completionRepo.hasStudentPassedCourseByCode(studentId, prereqCode)) {
+            String prereqName = courseRepo.findByCourseCode(prereqCode)
+                    .map(Course::getCourseName)
+                    .orElse(prereqCode);
+            throw new SwapException(
+                    "❌ You cannot swap for " + course.getCourseName()
+                            + " because you haven't completed the prerequisite: " + prereqName);
+        }
+    }
+
     private void checkTimeConflict(Long studentId, Long incomingId, Long swappingOutId) {
         Section incoming = sectionRepo.findById(incomingId)
                 .orElseThrow(() -> new ResourceNotFoundException("Section not found: " + incomingId));
@@ -341,6 +336,21 @@ public class SwapRequestService {
                                 " clashes with " +
                                 existing.getCourse().getCourseName() + " (" + existing.getSchedule() + ")");
             }
+        }
+    }
+
+    /**
+     * After a swap completes, cancel all other open/pending offers where either student
+     * offered the section they just gave away. Also cancel pending requests on those offers.
+     */
+    private void cascadeCancelOffersAndRequests(Long studentId, Long sectionId, Long excludeOfferId) {
+        List<Long> offerIds = offerRepo.findOpenOfferIdsByStudentAndHaveSection(studentId, sectionId, excludeOfferId);
+
+        if (!offerIds.isEmpty()) {
+            // First cancel pending requests on those offers
+            requestRepo.cancelPendingRequestsForOffers(offerIds);
+            // Then cancel the offers themselves
+            offerRepo.cancelOpenOffersByStudentAndHaveSection(studentId, sectionId, excludeOfferId);
         }
     }
 

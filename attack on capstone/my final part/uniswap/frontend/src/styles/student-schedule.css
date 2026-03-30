@@ -1,0 +1,163 @@
+.schedule-toolbar {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.schedule-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+.schedule-filter label {
+  font-weight: bold;
+  color: #333;
+}
+
+.schedule-filter select {
+  height: 32px;
+  border: 1px solid #999;
+  background: white;
+  padding: 4px 8px;
+}
+
+.schedule-actions-top {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.schedule-add-btn {
+  min-width: 120px;
+  height: 38px;
+  border: 1px solid #1c8f45;
+  background: #24a148;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.schedule-add-btn:hover {
+  background: #1d893d;
+}
+
+.schedule-print-btn {
+  min-width: 96px;
+  height: 38px;
+  border: 1px solid #d0d0d0;
+  background: #f5f0ea;
+  color: #c00000;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.schedule-print-btn:hover {
+  background: #eee7de;
+}
+
+.schedule-table-wrapper {
+  overflow-x: auto;
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 1320px;
+}
+
+.schedule-table thead th {
+  background: #5a84d6;
+  color: white;
+  padding: 12px 10px;
+  text-align: center;
+  font-weight: bold;
+  border-right: 2px solid #ffffff22;
+}
+
+.schedule-table thead th:first-child {
+  border-top-left-radius: 10px;
+}
+
+.schedule-table thead th:last-child {
+  border-top-right-radius: 10px;
+  border-right: none;
+}
+
+.schedule-table tbody td {
+  padding: 14px 10px;
+  text-align: center;
+  color: #333;
+  vertical-align: top;
+  border-bottom: 1px solid #e3e6ed;
+}
+
+.schedule-table tbody tr:nth-child(odd) {
+  background: #eef2fb;
+}
+
+.schedule-table tbody tr:nth-child(even) {
+  background: #f8f9fc;
+}
+
+.time-classroom-cell {
+  white-space: pre-line;
+  line-height: 1.7;
+}
+
+.table-action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.trade-action-btn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 7px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.trade-action-btn:hover {
+  background: #2563eb;
+}
+
+.delete-action-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 7px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.delete-action-btn:hover {
+  background: #dc2626;
+}
+
+.schedule-empty {
+  padding: 25px;
+  text-align: center;
+  border: 1px dashed #ccc;
+  background: white;
+}
+
+@media (max-width: 900px) {
+  .schedule-toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .schedule-actions-top {
+    justify-content: center;
+  }
+}

@@ -2,6 +2,7 @@ package com.university.swap.service;
 
 import com.university.swap.dto.CreateOfferRequest;
 import com.university.swap.enums.OfferStatus;
+import com.university.swap.enums.SwapType;
 import com.university.swap.exception.ResourceNotFoundException;
 import com.university.swap.exception.SwapException;
 import com.university.swap.model.*;
@@ -21,6 +22,7 @@ public class SwapOfferService {
     private final EnrollmentRepository enrollmentRepo;
     private final SectionRepository sectionRepo;
     private final StudentCourseCompletionRepository completionRepo;
+    private final CourseRepository courseRepo;
 
     // ── Get all open offers (Swap Board) ──────────────────────
     public List<SwapOffer> getAllOpenOffers(Long currentStudentId) {
@@ -70,14 +72,25 @@ public class SwapOfferService {
                     "❌ You already completed " + wantSection.getCourse().getCourseName() + ". No need to swap for it.");
         }
 
-        // ── CASE 3: Cannot request a higher year course ──
-        if (haveSection.getCourseYear() != null && wantSection.getCourseYear() != null) {
-            if (wantSection.getCourseYear() > haveSection.getCourseYear()) {
+        // ── CASE 3: Prerequisite check ──
+        checkPrerequisite(req.getStudentId(), wantSection.getCourse());
+
+        // ── CASE 4: Cannot swap for the same section you have ──
+        if (req.getHaveSectionId().equals(req.getWantSectionId())) {
+            throw new SwapException("❌ You cannot swap a section for itself.");
+        }
+
+        // ── CASE 5: For COURSE_SWAP — cannot request a course you're already enrolled in ──
+        if (req.getSwapType() == SwapType.COURSE_SWAP) {
+            if (enrollmentRepo.isEnrolledInCourse(req.getStudentId(), wantSection.getCourse().getCourseId())) {
                 throw new SwapException(
-                        "❌ You cannot request a Year " + wantSection.getCourseYear() +
-                                " course when you are offering a Year " + haveSection.getCourseYear() + " course.");
+                        "❌ You are already enrolled in " + wantSection.getCourse().getCourseName()
+                                + ". You cannot swap for it.");
             }
         }
+
+        // ── CASE 6: Time conflict check on offer creation ──
+        checkTimeConflictForOffer(req.getStudentId(), wantSection, req.getHaveSectionId());
 
         // 5. Check if targeting a specific student
         Student targetStudent = null;
@@ -113,5 +126,66 @@ public class SwapOfferService {
 
         offer.setStatus(OfferStatus.CANCELLED);
         offerRepo.save(offer);
+    }
+
+    // ══════════════════════════════════════════════════════════
+    // PRIVATE HELPERS
+    // ══════════════════════════════════════════════════════════
+
+    /**
+     * Check if the student has completed the prerequisite course for the given course.
+     */
+    private void checkPrerequisite(Long studentId, Course course) {
+        String prereqCode = course.getPrerequisiteCourseCode();
+        if (prereqCode == null || prereqCode.isBlank()) return;
+
+        if (!completionRepo.hasStudentPassedCourseByCode(studentId, prereqCode)) {
+            String prereqName = courseRepo.findByCourseCode(prereqCode)
+                    .map(Course::getCourseName)
+                    .orElse(prereqCode);
+            throw new SwapException(
+                    "❌ You cannot swap for " + course.getCourseName()
+                            + " because you haven't completed the prerequisite: " + prereqName);
+        }
+    }
+
+    /**
+     * Check if the wanted section has a time conflict with the student's current schedule
+     * (excluding the section they are giving up).
+     */
+    private void checkTimeConflictForOffer(Long studentId, Section wantSection, Long haveSectionId) {
+        if (wantSection.getDayOfWeek() == null || wantSection.getStartTime() == null) return;
+
+        List<Enrollment> enrollments = enrollmentRepo.findAllActiveByStudent(studentId);
+
+        for (Enrollment e : enrollments) {
+            Section existing = e.getSection();
+
+            // Skip the section they're giving up (won't conflict after swap)
+            if (existing.getSectionId().equals(haveSectionId)) continue;
+            if (existing.getDayOfWeek() == null || existing.getStartTime() == null) continue;
+
+            if (daysOverlap(existing.getDayOfWeek(), wantSection.getDayOfWeek()) &&
+                timesOverlap(existing.getStartTime(), existing.getEndTime(),
+                             wantSection.getStartTime(), wantSection.getEndTime())) {
+                throw new SwapException(
+                        "❌ Time conflict: " + wantSection.getCourse().getCourseName()
+                                + " (" + wantSection.getSchedule() + ")"
+                                + " clashes with " + existing.getCourse().getCourseName()
+                                + " (" + existing.getSchedule() + ")");
+            }
+        }
+    }
+
+    private boolean daysOverlap(String days1, String days2) {
+        for (String d : days1.split("/")) {
+            if (days2.contains(d)) return true;
+        }
+        return false;
+    }
+
+    private boolean timesOverlap(java.time.LocalTime s1, java.time.LocalTime e1,
+                                  java.time.LocalTime s2, java.time.LocalTime e2) {
+        return s1.isBefore(e2) && s2.isBefore(e1);
     }
 }

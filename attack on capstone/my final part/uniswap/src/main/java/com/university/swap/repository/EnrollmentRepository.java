@@ -33,4 +33,17 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment, Long> {
             @Param("studentId") Long studentId,
             @Param("oldSectionId") Long oldSectionId,
             @Param("newSectionId") Long newSectionId);
+
+    // Delete an enrollment by student and section
+    @Modifying
+    @Query("DELETE FROM Enrollment e WHERE e.student.studentId = :studentId " +
+           "AND e.section.sectionId = :sectionId AND e.status = 'ACTIVE'")
+    int deleteByStudentAndSection(@Param("studentId") Long studentId,
+                                  @Param("sectionId") Long sectionId);
+
+    // Check if student is enrolled in any active section of a specific course
+    @Query("SELECT COUNT(e) > 0 FROM Enrollment e WHERE e.student.studentId = :studentId " +
+           "AND e.section.course.courseId = :courseId AND e.status = 'ACTIVE'")
+    boolean isEnrolledInCourse(@Param("studentId") Long studentId,
+                                @Param("courseId") Long courseId);
 }

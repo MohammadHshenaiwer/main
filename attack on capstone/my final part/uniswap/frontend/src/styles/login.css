@@ -1,0 +1,112 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.login-page-custom {
+  min-height: 100vh;
+  background: #e9e9e9;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px;
+}
+
+.login-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.login-card {
+  width: 360px;
+  background: #f7f7f7;
+  border: 1px solid #ddd;
+  padding: 20px 18px 30px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.08);
+}
+
+.login-top-text {
+  text-align: center;
+  color: red;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.logo-area {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.htu-logo {
+  width: 180px;
+  display: block;
+  margin: 0 auto 8px;
+}
+
+.portal-logo {
+  width: 160px;
+  display: block;
+  margin: 0 auto;
+}
+
+.input-group-custom {
+  display: flex;
+  margin-bottom: 14px;
+}
+
+.input-icon {
+  width: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+}
+
+.green-box {
+  background: #2bb673;
+}
+
+.yellow-box {
+  background: #f0ad2c;
+}
+
+.input-group-custom input {
+  flex: 1;
+  height: 40px;
+  border: none;
+  background: #dfe8f4;
+  padding: 0 12px;
+  outline: none;
+  font-size: 16px;
+}
+
+.language-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 18px 8px;
+  font-size: 14px;
+}
+
+.login-btn {
+  background: #1f5ea8;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+.forgot-row {
+  margin-top: 10px;
+}
+
+.forgot-row a {
+  color: #1d4ed8;
+  text-decoration: none;
+  font-weight: bold;
+}

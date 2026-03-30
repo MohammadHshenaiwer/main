@@ -1,0 +1,133 @@
+UniSwap — Backend Fixes + Frontend Rewrite + Cleanup
+Overview
+Three major tasks:
+
+Backend: Strengthen swap validation logic to handle all edge cases
+Frontend: Replace the current plain-HTML frontend with a React+Vite app matching the friend's frontend (daleel-frontend) flow/popups/layout, but wired to YOUR backend API
+Cleanup: List files that are not needed
+Part 1: Backend — Swap Validation Improvements
+Current State (What Already Works ✅)
+Your backend already handles many cases well:
+
+✅ Student can't offer a course they already completed
+✅ Student can't request a course they already completed
+✅ Prerequisite check when creating an offer
+✅ Prerequisite check when accepting a request
+✅ Time conflict detection on swap acceptance
+✅ Duplicate pending request prevention
+✅ Auto-reject all other pending requests when one is accepted (rejectOtherRequests)
+Missing Cases to Add
+#	Case	Where	Status
+1	Student can't offer a course they're not enrolled in	SwapOfferService.createOffer	✅ Already checked
+2	When offer is accepted, cancel all OTHER open offers by the same student for the same haveSection	SwapRequestService.acceptRequest + acceptDirectTrade	❌ Missing
+3	When a student accepts an incoming request (gives away their course), cancel any open offers where they offered that same section	SwapRequestService.acceptRequest	❌ Missing
+4	New endpoint: Get available courses a student CAN take (filtered by prerequisites, completions, time conflicts)	New controller/service method	❌ Missing
+5	New endpoint: Get courses showing time-conflict status	Part of the above	❌ Missing
+6	Time conflict check during offer creation (warn/prevent)	SwapOfferService.createOffer	❌ Missing
+7	Same-course check: can't swap for a course they're already enrolled in	SwapOfferService.createOffer	❌ Missing
+Proposed Changes
+[MODIFY] 
+SwapOfferRepository.java
+Add query: cancelOpenOffersByStudentAndSection(studentId, sectionId) — used when a swap completes to cancel all other offers the student had for the same section
+Add query: findOpenOffersByStudentAndHaveSection(studentId, sectionId) — find offers to cancel
+[MODIFY] 
+SwapRequestRepository.java
+Add query: cancelPendingRequestsByStudentSenderSection(studentId, sectionId) — cancel pending requests where a student offered a section they no longer have
+[MODIFY] 
+SectionRepository.java
+Add findAll() (already inherited from JPA) — no change needed
+Add findByCourse_CourseIdIn(List<Long> courseIds) for filtering
+[MODIFY] 
+SwapOfferService.java
+CASE 4 (new): Can't request a course you're already enrolled in (same course, different section is fine for SECTION_SWAP, but same course is blocked for COURSE_SWAP if they already have it)
+CASE 5 (new): Time conflict check on offer creation — check if the wantSection conflicts with student's current schedule (excluding the haveSection)
+New method: getAvailableSections(Long studentId) — returns all sections annotated with eligible, conflict, completed, missingPrereq status
+[MODIFY] 
+SwapRequestService.java
+After a successful swap (in both acceptRequest and acceptDirectTrade):
+Cancel all other OPEN offers where either student offered the section they just gave away
+Cancel all PENDING requests where either student offered the section they just gave away
+[MODIFY] 
+SwapOfferController.java
+Add new endpoint: GET /api/swaps/offers/available-sections?studentId=X — returns sections with eligibility status
+[NEW] 
+AvailableSectionDTO.java
+DTO wrapping Section + eligibility status: eligible, timeConflict, alreadyCompleted, missingPrerequisite, alreadyEnrolled
+Part 2: Frontend — Rewrite to Match Friend's Frontend
+What Changes
+Your current frontend is 4 plain HTML files using Bootstrap + vanilla JS + Axios. Your friend's frontend is a React + Vite app with a sidebar layout, login page, student schedule table, section picker modal, available courses page, and trading page.
+
+Mapping: Friend's API ➜ Your API
+Friend's Function	Friend's Endpoint	Your Equivalent Endpoint
+ensureWallet(studentId)	POST /api/wallet/create/{id}	Will use GET /api/enrollments/my?studentId=X (just validate student exists)
+getStudentSchedule(id)	GET /api/student-schedule/{id}/detailed	GET /api/enrollments/my?studentId=X (re-shape response)
+getPortalSections()	GET /api/portal-sections	GET /api/sections + GET /api/swaps/offers/available-sections?studentId=X
+addStudentSection(sid, psid)	POST /api/student-schedule/add	Not applicable (students can't self-register — they swap)
+removeStudentSection(sid, psid)	DELETE /api/student-schedule/remove	Not applicable
+createTrade(sid, offered, desired)	POST /api/trading/create/{sid}	POST /api/swaps/offers
+getActiveTrades()	GET /api/trading/active	GET /api/swaps/offers?studentId=X
+acceptTrade(sid, offerId)	POST /api/trading/accept/{sid}/{offerId}	POST /api/swaps/requests/accept-direct
+cancelTrade(sid, offerId)	POST /api/trading/cancel/{sid}/{offerId}	DELETE /api/swaps/offers/{offerId}?studentId=X
+Frontend Plan
+Replace your frontend/ with a React+Vite app that has the same visual layout and flow as the friend's but calls your API.
+
+Pages/Components to Create
+Component	Matches Friend's	Notes
+LoginPage.jsx	✅ Same look	Just enter student ID (no real auth)
+PortalLayout.jsx	✅ Same sidebar, topbar	HTU Portal layout with sidebar nav
+StudentSchedulePage.jsx	✅ Same table layout	Calls GET /api/enrollments/my instead — no add/delete, but has Trade button
+SectionPickerModal.jsx	✅ Same modal	Used for creating trade offers — calls POST /api/swaps/offers
+AvailableCoursesPage.jsx	✅ Same table	Lists all sections with eligibility info from new endpoint
+TradingPage.jsx	✅ Same card layout	Shows open offers, accept/cancel buttons
+api.js	Rewired to your endpoints	All API calls mapped to your Spring Boot backend
+CSS files — Copy friend's CSS verbatim:
+login.css, portal.css, student-schedule.css, available-courses.css, trading.css, section-picker-modal.css
+IMPORTANT
+
+Key differences from friend's flow to yours:
+
+Your system has no add/delete section (students are pre-enrolled, they can only swap). The "Add Section" button will be removed; the "Delete" button will be removed. Only "Trade" remains.
+Friend's ensureWallet won't be used — login just verifies the student exists via enrollment lookup.
+The SectionPickerModal in trade mode creates a POST /api/swaps/offers call instead of friend's createTrade.
+Part 3: Files Not Needed (Safe to Delete/Move)
+File/Dir	Reason
+frontend/index.html	Replaced by React app
+frontend/create-offer.html	Replaced by React app
+frontend/my-swaps.html	Replaced by React app
+frontend/trades.html	Replaced by React app
+.apt_generated_tests/	Empty directory, auto-generated
+implementation_plan.md.resolved	Old artifact from previous session
+data/data.py	One-off data script
+data/generate_sql.py	One-off SQL generator
+data/omar.sql	One-off reference SQL
+data/course_sections_backup.json	Backup data, not needed at runtime
+data/courses_backup.json	Backup data, not needed at runtime
+data/student_course_completion_backup.json	Backup data, not needed at runtime
+data/users_backup.json	Backup data, not needed at runtime
+full_seed.py	One-off seeding script
+run_seed.py	One-off seeding script
+test_columns.py	One-off DB test script
+dataneeded/	Reference data, not needed at runtime
+freindfrontend/	Reference only — will be used as source, can be removed AFTER frontend is built
+src/main/java/com/university/swap/{config,controller,...}	Empty placeholder directory with curly braces — can be deleted
+WARNING
+
+Do NOT delete data/seed.sql — you may need it to re-seed. The freindfrontend/ folder can be kept as reference until you're satisfied with the new frontend.
+
+Verification Plan
+Automated Tests
+Build the Spring Boot app with mvnw.cmd spring-boot:run and verify it starts
+Test backend API manually via browser/curl:
+Create an offer, verify validation blocks completed courses
+Accept an offer, verify other offers for same section are cancelled
+Run the React frontend with npm run dev and verify all pages load
+Manual Verification
+Login flow → Schedule page → Trade button → Section picker modal → Create trade
+Trading page → Accept/Cancel trades
+Available courses page → View sections with conflict/completion status
+Open Questions
+IMPORTANT
+
+Your friend's frontend has Add Section and Delete Section buttons on the schedule page. Since your system doesn't support self-registration (students are pre-enrolled and can only swap), should I remove these buttons entirely, or should I add backend support for them?
+The friend's frontend shows HTU logos (htu-logo.png, student-portal-logo.png). Should I copy these images into your frontend, or skip them?
+Your friend has a My Swaps page concept with incoming/sent requests. The friend's frontend doesn't show this — it's only on YOUR current frontend. Should I add an extra nav item for "My Swaps" (incoming/sent requests, accept/reject) on the sidebar to keep that functionality?
