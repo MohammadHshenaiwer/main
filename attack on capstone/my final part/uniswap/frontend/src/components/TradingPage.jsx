@@ -3,7 +3,14 @@ import PortalLayout from "./PortalLayout";
 import { getOpenOffers, acceptDirectTrade, cancelOffer } from "../api";
 import "../styles/trading.css";
 
-function TradingPage({ studentId, onNavigate, onLogout }) {
+function TradingPage({
+  studentId,
+  studentName,
+  studentNumber,
+  studentYear,
+  onNavigate,
+  onLogout,
+}) {
   const [trades, setTrades] = useState([]);
   const [loading, setLoading] = useState(true);
   const [acceptingOfferId, setAcceptingOfferId] = useState(null);
@@ -58,6 +65,9 @@ function TradingPage({ studentId, onNavigate, onLogout }) {
   return (
     <PortalLayout
       studentId={studentId}
+      studentName={studentName}
+      studentNumber={studentNumber}
+      studentYear={studentYear}
       title="Trading Page"
       currentPage="trading"
       onNavigate={onNavigate}

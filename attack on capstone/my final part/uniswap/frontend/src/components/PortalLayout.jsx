@@ -2,12 +2,20 @@ import "../styles/portal.css";
 
 function PortalLayout({
   studentId,
+  studentName,
+  studentNumber,
+  studentYear,
   title,
   currentPage,
   onNavigate,
   onLogout,
   children,
 }) {
+  const displayName = studentName || "Student";
+  const displayStudentNumber = studentNumber || studentId || "-";
+  const displayYear = studentYear ? `Year ${studentYear}` : "Year -";
+  const topbarIdentity = [displayName, displayStudentNumber].filter(Boolean).join(" ");
+
   return (
     <div className="portal-layout">
       <aside className="portal-sidebar">
@@ -16,8 +24,9 @@ function PortalLayout({
         <div className="sidebar-user">
           <div className="user-avatar">👤</div>
           <div>
-            <div className="user-name">Student</div>
-            <div className="user-id">{studentId}</div>
+            <div className="user-name">{displayName}</div>
+            <div className="user-id">{displayStudentNumber}</div>
+            <div className="user-year">{displayYear}</div>
           </div>
         </div>
 
@@ -61,7 +70,7 @@ function PortalLayout({
       <main className="portal-main">
         <header className="portal-topbar">
           <div className="topbar-left">{title}</div>
-          <div className="topbar-right">Logged in as: {studentId}</div>
+          <div className="topbar-right">Logged in as: {topbarIdentity}</div>
         </header>
 
         <section className="portal-content">{children}</section>

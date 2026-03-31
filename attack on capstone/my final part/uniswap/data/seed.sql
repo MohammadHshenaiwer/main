@@ -35,18 +35,18 @@ CREATE TABLE IF NOT EXISTS sections (
 
 CREATE TABLE IF NOT EXISTS enrollments (
     enrollment_id BIGSERIAL PRIMARY KEY,
-    student_id BIGINT REFERENCES students(student_id),
+    student_id BIGINT REFERENCES users(user_id),
     section_id BIGINT REFERENCES sections(section_id),
     status VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS swap_offers (
     offer_id BIGSERIAL PRIMARY KEY,
-    student_id BIGINT NOT NULL REFERENCES students(student_id),
+    student_id BIGINT NOT NULL REFERENCES users(user_id),
     swap_type VARCHAR(255) NOT NULL,
     have_section_id BIGINT REFERENCES sections(section_id),
     want_section_id BIGINT REFERENCES sections(section_id),
-    target_student_id BIGINT REFERENCES students(student_id),
+    target_student_id BIGINT REFERENCES users(user_id),
     status VARCHAR(255) NOT NULL DEFAULT 'OPEN',
     created_at TIMESTAMP DEFAULT NOW(),
     updated_at TIMESTAMP DEFAULT NOW()
@@ -55,8 +55,8 @@ CREATE TABLE IF NOT EXISTS swap_offers (
 CREATE TABLE IF NOT EXISTS swap_requests (
     request_id BIGSERIAL PRIMARY KEY,
     offer_id BIGINT NOT NULL REFERENCES swap_offers(offer_id),
-    sender_id BIGINT NOT NULL REFERENCES students(student_id),
-    receiver_id BIGINT NOT NULL REFERENCES students(student_id),
+    sender_id BIGINT NOT NULL REFERENCES users(user_id),
+    receiver_id BIGINT NOT NULL REFERENCES users(user_id),
     sender_section_id BIGINT REFERENCES sections(section_id),
     status VARCHAR(255) NOT NULL DEFAULT 'PENDING',
     sent_at TIMESTAMP DEFAULT NOW(),
@@ -179,21 +179,102 @@ INSERT INTO courses (course_id, code, name, credit_hours, prerequisite_course_co
 -- STEP 4: Insert students
 -- ═══════════════════════════════════════════════════════════
 
-INSERT INTO students (student_id, name, email) VALUES (1, 'mohammad shenasiwer', '22110066@htu.edu.jo') ON CONFLICT (student_id) DO NOTHING;
-INSERT INTO users (user_id, full_name, email, password_hash, role, student_number) OVERRIDING SYSTEM VALUE VALUES (1, 'mohammad shenasiwer', '22110066@htu.edu.jo', 'dummy', 'student', '22110066') ON CONFLICT (user_id) DO NOTHING;
-INSERT INTO students (student_id, name, email) VALUES (2, 'Lina Khader', 'lina.khader@htu.edu.jo') ON CONFLICT (student_id) DO NOTHING;
-INSERT INTO users (user_id, full_name, email, password_hash, role, student_number) OVERRIDING SYSTEM VALUE VALUES (2, 'Lina Khader', 'lina.khader@htu.edu.jo', 'dummy', 'student', 'lina.khader') ON CONFLICT (user_id) DO NOTHING;
-INSERT INTO students (student_id, name, email) VALUES (3, 'Ahmad Nasser', 'ahmad.nasser@htu.edu.jo') ON CONFLICT (student_id) DO NOTHING;
-INSERT INTO users (user_id, full_name, email, password_hash, role, student_number) OVERRIDING SYSTEM VALUE VALUES (3, 'Ahmad Nasser', 'ahmad.nasser@htu.edu.jo', 'dummy', 'student', 'ahmad.nasser') ON CONFLICT (user_id) DO NOTHING;
-INSERT INTO students (student_id, name, email) VALUES (6, 'DAWOUD AL-NAJI', '22210019@htu.edu.jo') ON CONFLICT (student_id) DO NOTHING;
-INSERT INTO users (user_id, full_name, email, password_hash, role, student_number) OVERRIDING SYSTEM VALUE VALUES (6, 'DAWOUD AL-NAJI', '22210019@htu.edu.jo', 'dummy', 'student', '22210019') ON CONFLICT (user_id) DO NOTHING;
-INSERT INTO students (student_id, name, email) VALUES (7, 'MOHAMMED HABBOUB', '22120026@htu.edu.jo') ON CONFLICT (student_id) DO NOTHING;
-INSERT INTO users (user_id, full_name, email, password_hash, role, student_number) OVERRIDING SYSTEM VALUE VALUES (7, 'MOHAMMED HABBOUB', '22120026@htu.edu.jo', 'dummy', 'student', '22120026') ON CONFLICT (user_id) DO NOTHING;
-INSERT INTO students (student_id, name, email) VALUES (8, 'AYHAM ODEH', '22110260@htu.edu.jo') ON CONFLICT (student_id) DO NOTHING;
-INSERT INTO users (user_id, full_name, email, password_hash, role, student_number) OVERRIDING SYSTEM VALUE VALUES (8, 'AYHAM ODEH', '22110260@htu.edu.jo', 'dummy', 'student', '22110260') ON CONFLICT (user_id) DO NOTHING;
+WITH seed_students(student_id, full_name, email, student_number) AS (
+    VALUES
+        (1, 'Mohammad Alshenaiwer', '22110066@htu.edu.jo', '22110066'),
+        (2, 'Lina Khader', 'lina.khader@htu.edu.jo', 'lina.khader'),
+        (3, 'Ahmad Nasser', 'ahmad.nasser@htu.edu.jo', 'ahmad.nasser'),
+        (6, 'Dawoud Al-Naji', '22210019@htu.edu.jo', '22210019'),
+        (7, 'Mohammed Habboub', '22120026@htu.edu.jo', '22120026'),
+        (8, 'Ayham Odeh', '22110260@htu.edu.jo', '22110260'),
+        (9, 'Ahmad Tba5e', '22220020@htu.edu.jo', '22220020'),
+        (10, 'Lina Alnour', '22001414@htu.edu.jo', '22001414'),
+        (11, 'Yazan Al-Qudah', '23012001@htu.edu.jo', '23012001'),
+        (12, 'Raghad Al-Khateeb', '23012002@htu.edu.jo', '23012002')
+)
+UPDATE students s
+SET name = ss.full_name,
+    email = ss.email
+FROM seed_students ss
+WHERE s.student_id = ss.student_id
+   OR LOWER(TRIM(s.email)) = LOWER(TRIM(ss.email));
 
--- Reset sequence
-SELECT setval('students_student_id_seq', (SELECT COALESCE(MAX(student_id),0) FROM students));
+WITH seed_students(student_id, full_name, email, student_number) AS (
+    VALUES
+        (1, 'Mohammad Alshenaiwer', '22110066@htu.edu.jo', '22110066'),
+        (2, 'Lina Khader', 'lina.khader@htu.edu.jo', 'lina.khader'),
+        (3, 'Ahmad Nasser', 'ahmad.nasser@htu.edu.jo', 'ahmad.nasser'),
+        (6, 'Dawoud Al-Naji', '22210019@htu.edu.jo', '22210019'),
+        (7, 'Mohammed Habboub', '22120026@htu.edu.jo', '22120026'),
+        (8, 'Ayham Odeh', '22110260@htu.edu.jo', '22110260'),
+        (9, 'Ahmad Tba5e', '22220020@htu.edu.jo', '22220020'),
+        (10, 'Lina Alnour', '22001414@htu.edu.jo', '22001414'),
+        (11, 'Yazan Al-Qudah', '23012001@htu.edu.jo', '23012001'),
+        (12, 'Raghad Al-Khateeb', '23012002@htu.edu.jo', '23012002')
+)
+INSERT INTO students (student_id, name, email)
+OVERRIDING SYSTEM VALUE
+SELECT ss.student_id, ss.full_name, ss.email
+FROM seed_students ss
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM students s
+    WHERE s.student_id = ss.student_id
+       OR LOWER(TRIM(s.email)) = LOWER(TRIM(ss.email))
+);
+
+WITH seed_students(student_id, full_name, email, student_number) AS (
+    VALUES
+        (1, 'Mohammad Alshenaiwer', '22110066@htu.edu.jo', '22110066'),
+        (2, 'Lina Khader', 'lina.khader@htu.edu.jo', 'lina.khader'),
+        (3, 'Ahmad Nasser', 'ahmad.nasser@htu.edu.jo', 'ahmad.nasser'),
+        (6, 'Dawoud Al-Naji', '22210019@htu.edu.jo', '22210019'),
+        (7, 'Mohammed Habboub', '22120026@htu.edu.jo', '22120026'),
+        (8, 'Ayham Odeh', '22110260@htu.edu.jo', '22110260'),
+        (9, 'Ahmad Tba5e', '22220020@htu.edu.jo', '22220020'),
+        (10, 'Lina Alnour', '22001414@htu.edu.jo', '22001414'),
+        (11, 'Yazan Al-Qudah', '23012001@htu.edu.jo', '23012001'),
+        (12, 'Raghad Al-Khateeb', '23012002@htu.edu.jo', '23012002')
+)
+UPDATE users u
+SET full_name = ss.full_name,
+    email = ss.email,
+    password_hash = 'dummy',
+    role = 'student',
+    student_number = ss.student_number
+FROM seed_students ss
+WHERE u.user_id = ss.student_id
+   OR LOWER(TRIM(u.email)) = LOWER(TRIM(ss.email))
+   OR TRIM(COALESCE(u.student_number, '')) = TRIM(ss.student_number);
+
+WITH seed_students(student_id, full_name, email, student_number) AS (
+    VALUES
+        (1, 'Mohammad Alshenaiwer', '22110066@htu.edu.jo', '22110066'),
+        (2, 'Lina Khader', 'lina.khader@htu.edu.jo', 'lina.khader'),
+        (3, 'Ahmad Nasser', 'ahmad.nasser@htu.edu.jo', 'ahmad.nasser'),
+        (6, 'Dawoud Al-Naji', '22210019@htu.edu.jo', '22210019'),
+        (7, 'Mohammed Habboub', '22120026@htu.edu.jo', '22120026'),
+        (8, 'Ayham Odeh', '22110260@htu.edu.jo', '22110260'),
+        (9, 'Ahmad Tba5e', '22220020@htu.edu.jo', '22220020'),
+        (10, 'Lina Alnour', '22001414@htu.edu.jo', '22001414'),
+        (11, 'Yazan Al-Qudah', '23012001@htu.edu.jo', '23012001'),
+        (12, 'Raghad Al-Khateeb', '23012002@htu.edu.jo', '23012002')
+)
+INSERT INTO users (user_id, full_name, email, password_hash, role, student_number)
+OVERRIDING SYSTEM VALUE
+SELECT ss.student_id, ss.full_name, ss.email, 'dummy', 'student', ss.student_number
+FROM seed_students ss
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM users u
+    WHERE u.user_id = ss.student_id
+       OR LOWER(TRIM(u.email)) = LOWER(TRIM(ss.email))
+       OR TRIM(COALESCE(u.student_number, '')) = TRIM(ss.student_number)
+);
+
+-- Reset sequences
+SELECT setval(pg_get_serial_sequence('students', 'student_id'), (SELECT COALESCE(MAX(student_id), 0) FROM students), true);
+SELECT setval(pg_get_serial_sequence('users', 'user_id'), (SELECT COALESCE(MAX(user_id), 0) FROM users), true);
 
 -- ═══════════════════════════════════════════════════════════
 -- STEP 5: Insert sections from CSV
@@ -711,3 +792,126 @@ SELECT setval('student_course_completion_completion_id_seq', (SELECT COALESCE(MA
 -- ═══════════════════════════════════════════════════════════
 -- DONE! Your database is now seeded for UniSwap.
 -- ═══════════════════════════════════════════════════════════
+
+-- =======================================================
+-- STEP 7: Auto-complete lower-year courses by student year
+-- =======================================================
+DELETE FROM student_course_completion
+WHERE term IN ('Auto-Seeded', 'Auto-Year');
+
+WITH student_years AS (
+    SELECT
+        u.user_id AS student_id,
+        CASE
+            WHEN TRIM(u.student_number) IN ('22220020', '22001414') THEN 2
+            WHEN TRIM(u.student_number) IN ('23012001', '23012002') THEN 3
+            ELSE LEAST(
+                4,
+                GREATEST(
+                    1,
+                    (
+                        (CASE WHEN EXTRACT(MONTH FROM CURRENT_DATE) >= 9
+                              THEN EXTRACT(YEAR FROM CURRENT_DATE)
+                              ELSE EXTRACT(YEAR FROM CURRENT_DATE) - 1
+                         END)::INT
+                        - (2000 + LEFT(TRIM(u.student_number), 2)::INT)
+                        + 1
+                    )
+                )
+            )
+        END AS student_year
+    FROM users u
+    WHERE COALESCE(LOWER(TRIM(u.role)), 'student') = 'student'
+      AND TRIM(COALESCE(u.student_number, '')) ~ '^[0-9]{2}'
+)
+INSERT INTO student_course_completion (student_id, course_id, status, grade, term)
+SELECT sy.student_id, c.course_id, 'passed', 'P', 'Auto-Year'
+FROM student_years sy
+CROSS JOIN courses c
+WHERE LENGTH(COALESCE(TRIM(c.code), '')) >= 6
+  AND SUBSTRING(TRIM(c.code) FROM 6 FOR 1) ~ '^[0-9]$'
+  AND SUBSTRING(TRIM(c.code) FROM 6 FOR 1)::INT < sy.student_year
+  AND NOT EXISTS (
+      SELECT 1
+      FROM student_course_completion scc
+      WHERE scc.student_id = sy.student_id
+        AND scc.course_id = c.course_id
+        AND LOWER(TRIM(COALESCE(scc.status, ''))) IN ('passed', 'completed')
+  );
+
+-- =======================================================
+-- STEP 8: Backup guard for critical student accounts
+-- Safe to run multiple times on existing databases
+-- =======================================================
+WITH backup_students(student_id, full_name, email, student_number) AS (
+    VALUES
+        (1,  'Mohammad Alshenaiwer', '22110066@htu.edu.jo', '22110066'),
+        (9,  'Ahmad Tba5e',          '22220020@htu.edu.jo', '22220020'),
+        (10, 'Lina Alnour',          '22001414@htu.edu.jo', '22001414'),
+        (11, 'Yazan Al-Qudah',       '23012001@htu.edu.jo', '23012001'),
+        (12, 'Raghad Al-Khateeb',    '23012002@htu.edu.jo', '23012002')
+)
+UPDATE users u
+SET full_name = bs.full_name,
+    email = bs.email,
+    password_hash = 'dummy',
+    role = 'student',
+    student_number = bs.student_number
+FROM backup_students bs
+WHERE u.user_id = bs.student_id
+   OR LOWER(TRIM(u.email)) = LOWER(TRIM(bs.email))
+   OR TRIM(COALESCE(u.student_number, '')) = TRIM(bs.student_number);
+
+WITH backup_students(student_id, full_name, email, student_number) AS (
+    VALUES
+        (1,  'Mohammad Alshenaiwer', '22110066@htu.edu.jo', '22110066'),
+        (9,  'Ahmad Tba5e',          '22220020@htu.edu.jo', '22220020'),
+        (10, 'Lina Alnour',          '22001414@htu.edu.jo', '22001414'),
+        (11, 'Yazan Al-Qudah',       '23012001@htu.edu.jo', '23012001'),
+        (12, 'Raghad Al-Khateeb',    '23012002@htu.edu.jo', '23012002')
+)
+INSERT INTO users (user_id, full_name, email, password_hash, role, student_number)
+OVERRIDING SYSTEM VALUE
+SELECT bs.student_id, bs.full_name, bs.email, 'dummy', 'student', bs.student_number
+FROM backup_students bs
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM users u
+    WHERE u.user_id = bs.student_id
+       OR LOWER(TRIM(u.email)) = LOWER(TRIM(bs.email))
+       OR TRIM(COALESCE(u.student_number, '')) = TRIM(bs.student_number)
+);
+
+WITH backup_students(student_id, full_name, email) AS (
+    VALUES
+        (1,  'Mohammad Alshenaiwer', '22110066@htu.edu.jo'),
+        (9,  'Ahmad Tba5e',          '22220020@htu.edu.jo'),
+        (10, 'Lina Alnour',          '22001414@htu.edu.jo'),
+        (11, 'Yazan Al-Qudah',       '23012001@htu.edu.jo'),
+        (12, 'Raghad Al-Khateeb',    '23012002@htu.edu.jo')
+)
+UPDATE students s
+SET name = bs.full_name,
+    email = bs.email
+FROM backup_students bs
+WHERE s.student_id = bs.student_id
+   OR LOWER(TRIM(s.email)) = LOWER(TRIM(bs.email));
+
+WITH backup_students(student_id, full_name, email) AS (
+    VALUES
+        (1,  'Mohammad Alshenaiwer', '22110066@htu.edu.jo'),
+        (9,  'Ahmad Tba5e',          '22220020@htu.edu.jo'),
+        (10, 'Lina Alnour',          '22001414@htu.edu.jo'),
+        (11, 'Yazan Al-Qudah',       '23012001@htu.edu.jo'),
+        (12, 'Raghad Al-Khateeb',    '23012002@htu.edu.jo')
+)
+INSERT INTO students (student_id, name, email)
+OVERRIDING SYSTEM VALUE
+SELECT bs.student_id, bs.full_name, bs.email
+FROM backup_students bs
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM students s
+    WHERE s.student_id = bs.student_id
+       OR LOWER(TRIM(s.email)) = LOWER(TRIM(bs.email))
+);

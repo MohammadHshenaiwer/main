@@ -4,7 +4,14 @@ import SectionPickerModal from "./SectionPickerModal";
 import { getStudentSchedule, removeStudentSection } from "../api";
 import "../styles/student-schedule.css";
 
-function StudentSchedulePage({ studentId, onNavigate, onLogout }) {
+function StudentSchedulePage({
+  studentId,
+  studentName,
+  studentNumber,
+  studentYear,
+  onNavigate,
+  onLogout,
+}) {
   const [schedule, setSchedule] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -50,6 +57,9 @@ function StudentSchedulePage({ studentId, onNavigate, onLogout }) {
     <>
       <PortalLayout
         studentId={studentId}
+        studentName={studentName}
+        studentNumber={studentNumber}
+        studentYear={studentYear}
         title="Student Schedule"
         currentPage="schedule"
         onNavigate={onNavigate}

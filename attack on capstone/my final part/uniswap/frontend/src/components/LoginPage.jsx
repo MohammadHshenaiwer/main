@@ -17,8 +17,8 @@ function LoginPage({ onLogin }) {
 
     try {
       setLoading(true);
-      await verifyStudent(studentId);
-      onLogin(studentId);
+      const student = await verifyStudent(studentId);
+      onLogin(student);
     } catch (error) {
       alert(error.message || "Student not found");
     } finally {
@@ -49,7 +49,7 @@ function LoginPage({ onLogin }) {
               <div className="input-icon green-box">👤</div>
               <input
                 type="text"
-                placeholder="Student ID"
+                placeholder="Student ID, Number, or Email"
                 value={studentId}
                 onChange={(e) => setStudentId(e.target.value)}
               />

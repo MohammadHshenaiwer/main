@@ -13,8 +13,9 @@ async function apiCall(url, options = {}) {
 }
 
 // ── Student ───────────────────────────────────────────
-export async function verifyStudent(studentId) {
-  return apiCall(`${BASE_URL}/students/${studentId}`);
+export async function verifyStudent(identifier) {
+  const encoded = encodeURIComponent(String(identifier ?? "").trim());
+  return apiCall(`${BASE_URL}/students/login?identifier=${encoded}`);
 }
 
 export async function getCompletedCourses(studentId) {

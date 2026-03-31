@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import { getAllSections, addStudentSection, createOffer, getCompletedCourses } from "../api";
 import "../styles/section-picker-modal.css";
 
+const normalizeCourseCode = (value) => String(value ?? "").trim();
+
 function SectionPickerModal({
   studentId,
   registeredSections,
@@ -28,7 +30,7 @@ function SectionPickerModal({
           getCompletedCourses(studentId),
         ]);
         setAllSections(sections || []);
-        setCompletedCodes(completed || []);
+        setCompletedCodes(Array.isArray(completed) ? completed : []);
       } catch (error) {
         alert(error.message);
       } finally {
@@ -37,7 +39,11 @@ function SectionPickerModal({
     };
 
     loadData();
-  }, [isOpen]);
+  }, [isOpen, studentId]);
+
+  const completedCodeSet = useMemo(() => {
+    return new Set((completedCodes || []).map(normalizeCourseCode).filter(Boolean));
+  }, [completedCodes]);
 
   // Group sections by course code
   const groupedCourses = useMemo(() => {
@@ -67,23 +73,19 @@ function SectionPickerModal({
     return new Set(registeredSections.map((enr) => enr.section?.sectionId));
   }, [registeredSections]);
 
-  // Set of enrolled course codes
-  const registeredCourseCodes = useMemo(() => {
-    return new Set(registeredSections.map((enr) => enr.section?.course?.courseCode));
-  }, [registeredSections]);
-
   const isAlreadyRegistered = (section) => {
     return registeredSectionIds.has(section.sectionId);
   };
 
   const isCompleted = (section) => {
-    return completedCodes.includes(section.course?.courseCode);
+    const courseCode = normalizeCourseCode(section.course?.courseCode);
+    return courseCode && completedCodeSet.has(courseCode);
   };
 
   const isMissingPrerequisite = (section) => {
-    const prereq = section.course?.prerequisiteCourseCode;
+    const prereq = normalizeCourseCode(section.course?.prerequisiteCourseCode);
     if (!prereq) return false;
-    return !completedCodes.includes(prereq);
+    return !completedCodeSet.has(prereq);
   };
 
   const hasTimeConflict = (section) => {
@@ -94,7 +96,9 @@ function SectionPickerModal({
       }
 
       // Same course check (already enrolled in another section of same course)
-      const sameCourse = enr.section?.course?.courseCode === section.course?.courseCode;
+      const sameCourse =
+        normalizeCourseCode(enr.section?.course?.courseCode) ===
+        normalizeCourseCode(section.course?.courseCode);
 
       // Time overlap check using schedule string
       const sameTime =

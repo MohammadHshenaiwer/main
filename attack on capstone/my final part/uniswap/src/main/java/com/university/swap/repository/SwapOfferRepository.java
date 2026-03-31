@@ -13,7 +13,11 @@ import java.util.List;
 public interface SwapOfferRepository extends JpaRepository<SwapOffer, Long> {
 
     // All open offers EXCEPT the current student's own, AND either public or targeted at this student
-    @Query("SELECT o FROM SwapOffer o WHERE o.status = 'OPEN' AND o.student.studentId != :studentId AND (o.targetStudent IS NULL OR o.targetStudent.studentId = :studentId)")
+    @Query("SELECT o FROM SwapOffer o WHERE o.status = 'OPEN' " +
+            "AND o.student.studentId != :studentId " +
+            "AND (o.targetStudent IS NULL OR o.targetStudent.studentId = :studentId) " +
+            "AND EXISTS (SELECT 1 FROM Enrollment e WHERE e.student.studentId = o.student.studentId " +
+            "AND e.section.sectionId = o.haveSection.sectionId AND e.status = 'ACTIVE')")
     List<SwapOffer> findAllOpenExcludingStudent(@Param("studentId") Long studentId);
 
     // All offers by a specific student
@@ -49,4 +53,15 @@ public interface SwapOfferRepository extends JpaRepository<SwapOffer, Long> {
            "AND o.haveSection.sectionId = :sectionId AND o.status IN ('OPEN', 'PENDING')")
     List<Long> findAllOpenOfferIdsByStudentAndHaveSection(@Param("studentId") Long studentId,
                                                           @Param("sectionId") Long sectionId);
+
+    // Check if student already has an active offer for the same offered section
+    @Query("SELECT COUNT(o) > 0 FROM SwapOffer o WHERE o.student.studentId = :studentId " +
+           "AND o.haveSection.sectionId = :sectionId AND o.status IN ('OPEN', 'PENDING')")
+    boolean hasActiveOfferForSection(@Param("studentId") Long studentId,
+                                     @Param("sectionId") Long sectionId);
+
+    // Re-open offers that were pending after their request got cancelled
+    @Modifying
+    @Query("UPDATE SwapOffer o SET o.status = 'OPEN' WHERE o.offerId IN :offerIds AND o.status = 'PENDING'")
+    int reopenPendingOffersByIds(@Param("offerIds") List<Long> offerIds);
 }

@@ -11,7 +11,14 @@ import {
 } from "../api";
 import "../styles/my-swaps.css";
 
-function MySwapsPage({ studentId, onNavigate, onLogout }) {
+function MySwapsPage({
+  studentId,
+  studentName,
+  studentNumber,
+  studentYear,
+  onNavigate,
+  onLogout,
+}) {
   const [myOffers, setMyOffers] = useState([]);
   const [incoming, setIncoming] = useState([]);
   const [sent, setSent] = useState([]);
@@ -94,6 +101,9 @@ function MySwapsPage({ studentId, onNavigate, onLogout }) {
   return (
     <PortalLayout
       studentId={studentId}
+      studentName={studentName}
+      studentNumber={studentNumber}
+      studentYear={studentYear}
       title="My Swaps"
       currentPage="swaps"
       onNavigate={onNavigate}

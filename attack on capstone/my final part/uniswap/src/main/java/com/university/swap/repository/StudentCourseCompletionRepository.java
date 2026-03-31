@@ -12,19 +12,25 @@ public interface StudentCourseCompletionRepository extends JpaRepository<Student
     @Query("SELECT COUNT(c) > 0 FROM StudentCourseCompletion c " +
             "WHERE c.student.studentId = :studentId " +
             "AND c.course.courseId = :courseId " +
-            "AND c.status = 'passed'")
+            "AND LOWER(TRIM(c.status)) IN ('passed', 'completed')")
     boolean hasStudentPassedCourse(@Param("studentId") Long studentId,
             @Param("courseId") Long courseId);
 
     @Query("SELECT COUNT(c) > 0 FROM StudentCourseCompletion c " +
             "WHERE c.student.studentId = :studentId " +
-            "AND c.course.courseCode = :courseCode " +
-            "AND c.status = 'passed'")
+            "AND TRIM(c.course.courseCode) = TRIM(:courseCode) " +
+            "AND LOWER(TRIM(c.status)) IN ('passed', 'completed')")
     boolean hasStudentPassedCourseByCode(@Param("studentId") Long studentId,
             @Param("courseCode") String courseCode);
 
     // Get all completed course codes for a student (for frontend eligibility display)
     @Query("SELECT c.course.courseCode FROM StudentCourseCompletion c " +
-            "WHERE c.student.studentId = :studentId AND c.status = 'passed'")
+            "WHERE c.student.studentId = :studentId " +
+            "AND LOWER(TRIM(c.status)) IN ('passed', 'completed')")
     java.util.List<String> findCompletedCourseCodesByStudent(@Param("studentId") Long studentId);
+
+    @Query("SELECT c.course.courseId FROM StudentCourseCompletion c " +
+            "WHERE c.student.studentId = :studentId " +
+            "AND LOWER(TRIM(c.status)) IN ('passed', 'completed')")
+    java.util.List<Long> findPassedCourseIdsByStudent(@Param("studentId") Long studentId);
 }

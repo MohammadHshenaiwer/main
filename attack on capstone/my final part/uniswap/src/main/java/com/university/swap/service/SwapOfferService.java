@@ -52,6 +52,12 @@ public class SwapOfferService {
                         "You are not enrolled in section " + haveSection.getSectionNumber()
                                 + " of " + haveSection.getCourse().getCourseName()));
 
+        // 3.1 Prevent duplicate active offers for the same offered section
+        if (offerRepo.hasActiveOfferForSection(req.getStudentId(), req.getHaveSectionId())) {
+            throw new SwapException(
+                    "You already have an active offer for this section. Cancel it first or wait until it is resolved.");
+        }
+
         // ── CASE 1: Cannot offer a course you already completed ──
         if (completionRepo.hasStudentPassedCourse(req.getStudentId(), haveSection.getCourse().getCourseId())) {
             throw new SwapException(
@@ -135,7 +141,7 @@ public class SwapOfferService {
     /**
      * Check if the student has completed the prerequisite course for the given course.
      */
-    private void checkPrerequisite(Long studentId, Course course) {
+    public void checkPrerequisite(Long studentId, Course course) {
         String prereqCode = course.getPrerequisiteCourseCode();
         if (prereqCode == null || prereqCode.isBlank()) return;
 

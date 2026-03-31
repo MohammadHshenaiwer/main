@@ -1,12 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import PortalLayout from "./PortalLayout";
 import { getAllSections, getCompletedCourses } from "../api";
 import "../styles/available-courses.css";
 
-function AvailableCoursesPage({ studentId, onNavigate, onLogout }) {
+const normalizeCourseCode = (value) => String(value ?? "").trim();
+
+function AvailableCoursesPage({
+  studentId,
+  studentName,
+  studentNumber,
+  studentYear,
+  onNavigate,
+  onLogout,
+}) {
   const [allSections, setAllSections] = useState([]);
   const [completedCodes, setCompletedCodes] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const completedCodeSet = useMemo(() => {
+    return new Set((completedCodes || []).map(normalizeCourseCode).filter(Boolean));
+  }, [completedCodes]);
 
   const loadData = async () => {
     try {
@@ -16,7 +29,7 @@ function AvailableCoursesPage({ studentId, onNavigate, onLogout }) {
         getCompletedCourses(studentId),
       ]);
       setAllSections(sections || []);
-      setCompletedCodes(completed || []);
+      setCompletedCodes(Array.isArray(completed) ? completed : []);
     } catch (error) {
       alert(error.message);
     } finally {
@@ -31,6 +44,9 @@ function AvailableCoursesPage({ studentId, onNavigate, onLogout }) {
   return (
     <PortalLayout
       studentId={studentId}
+      studentName={studentName}
+      studentNumber={studentNumber}
+      studentYear={studentYear}
       title="Available Courses"
       currentPage="courses"
       onNavigate={onNavigate}
@@ -64,10 +80,10 @@ function AvailableCoursesPage({ studentId, onNavigate, onLogout }) {
               </thead>
               <tbody>
                 {allSections.map((section, index) => {
-                  const code = section.course?.courseCode;
-                  const isCompleted = completedCodes.includes(code);
-                  const prereq = section.course?.prerequisiteCourseCode;
-                  const missingPrereq = prereq && !completedCodes.includes(prereq);
+                  const code = normalizeCourseCode(section.course?.courseCode);
+                  const isCompleted = code && completedCodeSet.has(code);
+                  const prereq = normalizeCourseCode(section.course?.prerequisiteCourseCode);
+                  const missingPrereq = prereq && !completedCodeSet.has(prereq);
 
                   return (
                     <tr key={section.sectionId}>

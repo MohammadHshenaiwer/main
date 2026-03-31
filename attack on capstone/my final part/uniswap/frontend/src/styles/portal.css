@@ -49,6 +49,11 @@
   color: #bfe3ff;
 }
 
+.user-year {
+  font-size: 12px;
+  color: #d8ecff;
+}
+
 .sidebar-menu {
   list-style: none;
   margin: 0;
