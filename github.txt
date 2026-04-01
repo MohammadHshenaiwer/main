@@ -9,3 +9,6 @@ git push -u origin main
 git add .
 git commit -m :main
 git push -u origin main
+
+npm run dev 
+.\mvnw.cmd spring-boot:run

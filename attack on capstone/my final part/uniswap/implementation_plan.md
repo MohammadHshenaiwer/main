@@ -1,82 +1,208 @@
-# UniSwap - Complete Project & Handover Guide
+# UniSwap - Full Application Scope and Handover Plan
 
-This document is a comprehensive guide to understanding the **UniSwap** project. It explains the core concepts, the architecture, what has been built and fixed so far, and clearly outlines the current bugs/tasks that remain.
+This document is the single onboarding reference for AI-assisted continuation (including long voice sessions).
+It describes the current system behavior, architecture, business rules, test setup, and known constraints.
 
-You can feed this entire document to AI (like Claude or ChatGPT) to give it immediate context on how to jump in and start coding.
+## 1) Product Scope
 
----
+UniSwap is a university portal where a student can:
+- log in using student identifier
+- view current schedule
+- add/remove sections with prerequisite and conflict checks
+- post swap offers (public or directed to a specific student)
+- accept direct trades from the trading board
+- manage incoming/sent swap requests in My Swaps
 
-## 1. Project Overview & Tech Stack
+Core objective: enforce academic constraints while allowing practical section/course swaps.
 
-**Project Name:** UniSwap (University Section Swapping Portal)
-**Purpose:** A web application where university students can securely swap registered course sections with other students, manage their existing schedules, and enroll in new available sections if they meet the necessary prerequisite requirements.
+## 2) Tech Stack and Runtime
 
-**Technology Stack:**
-- **Backend:** Spring Boot (Java 17+), Spring Data JPA, Hibernate.
-- **Frontend:** React + Vite (`frontend/` directory).
-- **Database:** PostgreSQL (hosted remotely via Supabase).
-- **Setup script:** `src/main/resources/data/seed.sql` handles all table initialization and dummy data seeding.
+- Backend: Spring Boot 3.x, Java 17, Spring Data JPA, PostgreSQL
+- Frontend: React + Vite
+- DB host: Supabase Postgres
+- Backend port: `8080`
+- Frontend dev port: `5173`
 
----
+Run locally:
+- Backend: `mvnw.cmd spring-boot:run`
+- Frontend: in `frontend/` run `npm run dev`
 
-## 2. Core Entities & Database Logic
+## 3) Repository Map
 
-The system is built on these primary concepts:
-1. **Users (`users` table):** Formerly known as `students`. This table houses the student profile (`user_id` as PK, `student_number` as the string ID used to log in, e.g., "22110066").
-2. **Courses (`courses`):** Contains master records of university subjects, credits, and their explicit `prerequisite_course_code` (e.g., "30303111" for Functional Math).
-3. **Sections (`sections`):** A specific time-slot instance of a course led by an instructor with a fixed capacity.
-4. **Enrollments (`enrollments`):** Tracks which sections a user is currently registered in.
-5. **Completions (`student_course_completion`):** Critical for validation. Tracks which `Course` a user has explicitly marked as `"passed"`.
-6. **Swap Offers & Requests (`swap_offers`, `swap_requests`):** The engine of the portal allowing a user to broadcast a section they want to trade, and receive/accept incoming offers for other sections.
+- Backend source: `src/main/java/com/university/swap`
+- Backend config: `src/main/resources/application.properties`
+- Frontend app: `frontend/src`
+- Main planning docs:
+  - `implementation_plan.md` (this file)
+  - `docs/swap_user_cases.md`
+- SQL and test scripts:
+  - `data/seed.sql`
+  - `data/test cases.sql`
+  - `docs/sql/cleanup/test_users_swap_cleanup.sql`
 
----
+## 4) Data Model (Conceptual)
 
-## 3. What We Have Accomplished So Far
+Primary tables and roles:
+- `users`: primary student profile model used by backend `Student` entity
+- `students`: legacy table still referenced by FK in some environments
+- `courses`: master course catalog, includes `prerequisite_course_code`
+- `sections`: specific section instances with schedule metadata
+- `enrollments`: active schedule per student
+- `student_course_completion`: passed/completed course records
+- `swap_offers`: board posts (`have_section`, `want_section`, optional `target_student`)
+- `swap_requests`: request/transaction log for swaps
 
-We have stabilized and fully connected the backend to the frontend with significant optimizations:
+Important note: some DB setups still require entries in both `users` and `students` for FK consistency.
 
-### A. Solved the "N+1" Database Cripple
-*   **The Issue:** The `/api/sections` endpoint was taking 30–40 seconds to load because Hibernate was generating a unique SQL query to fetch the `Course` master data for *every single Section instance* in the DB.
-*   **The Fix:** Added an `@EntityGraph(attributePaths = {"course"})` in `SectionRepository.java`. Now, available sections fetch instantly in milliseconds using a proper SQL JOIN.
+## 5) Frontend Pages and Behavior
 
-### B. Mapped Authentication & Consolidated the Users Table
-*   **The Issue:** The application previously split its data between an isolated `students` table and a `users` table shared with another module (eLearning portal).
-*   **The Fix:** 
-    *   Updated the `Student.java` Java entity to strictly use `@Table(name = "users")` directly. 
-    *   Altered login mechanism in `StudentController.java` to search by `studentNumber` (String).
-    *   The frontend `LoginPage.jsx` fires `GET /api/students/login?studentNumber=22110066` and grabs the deeply nested numeric `user_id` Primary Key to act as the authentication token for all subsequent components.
-    *   Rewrote all dependencies in `seed.sql` to set their foreign keys specifically against `users(user_id)`.
+### 5.1 Login
+- File: `frontend/src/components/LoginPage.jsx`
+- Flow: identifier + password UI, then calls `verifyStudent()`
+- Identifier supports student id, student number, or email-like input
 
-### C. Created Auto-Seeding for 1st & 2nd Year Completeness
-*   **The Fix:** To test 3rd and 4th year course additions, I authored a SQL inject block at the bottom of `seed.sql`. This script forcefully inserts "passed" completion records into `student_course_completion` for all courses defined as 1st or 2nd year, enabling target student profiles (like `22110066`) to seamlessly bypass lower-tier prerequisites.
+### 5.2 Student Schedule
+- File: `frontend/src/components/StudentSchedulePage.jsx`
+- Shows enrolled sections
+- Actions:
+  - Add section (opens `SectionPickerModal` in add mode)
+  - Trade section (opens `SectionPickerModal` in trade mode)
+  - Delete section
 
----
+### 5.3 Section Picker Modal
+- File: `frontend/src/components/SectionPickerModal.jsx`
+- Used in add and trade modes
+- Validates/labels sections with states:
+  - Current Section
+  - Registered
+  - Completed
+  - Missing Prereq
+  - Conflict
+  - Eligible
+- Trade mode includes blue direct-request input:
+  - Optional target student (student id or student number)
+  - If filled, offer is directed via `targetStudentId`
 
-## 4. Current Situation & The Bug to Fix
+### 5.4 Available Courses
+- File: `frontend/src/components/AvailableCoursesPage.jsx`
+- Read-only catalog view with status indicators based on completions/prereqs
 
-**Our Current State:**
-We are functionally sound, but we have hit a wall on **Prerequisite Validation Mapping**.
+### 5.5 Trading Page
+- File: `frontend/src/components/TradingPage.jsx`
+- Shows open offers visible to current student
+- Supports direct accept flow
+- Added filters:
+  - acceptability filter (all/can/cannot accept)
+  - wanted-course search
+  - day chips filter (Sat..Thu)
+  - time range filter (from/to)
 
-**The Bug:**
-When logging in as user `22110066`, we try to browse "Available Courses" or click "Add Section". A course like **Maths for Computing (40303121)** requires **Functional Math (30303111)** as a prerequisite. 
-However, the UI blocks the selection with a red **`⚠ Missing Prereq`** warning.
+### 5.6 My Swaps
+- File: `frontend/src/components/MySwapsPage.jsx`
+- Three views:
+  - My posted offers
+  - Incoming requests (accept/reject)
+  - Sent requests (cancel)
 
-**How it supposedly works under the hood:**
-1. The frontend hits `GET /api/students/{id}/completions` which pulls an array of `course_code` strings that the user has marked as `'passed'`.
-2. The frontend code (in `SectionPickerModal.jsx` and `AvailableCoursesPage.jsx`) checks if the selected course's prerequisite exists (`array.includes()`) in the backend's returned completions array.
+## 6) Backend API Scope
 
-**Why is it failing? (Hypotheses for the AI to debug):**
-1. **The Auto-Seed Script Syntax:** In `seed.sql`, the script I wrote at the bottom says:
-   `AND SUBSTRING(c.code FROM 6 FOR 1) IN ('1', '2')`
-   However, the `courses` table column might be called `course_code`, not `code`. This might cause the SQL block to quietly fail or insert nothing upon database initialization.
-2. **Missing PK Reference:** The script hardcodes specific `user_id` values (e.g., `WHERE u.user_id IN (1, 2, 3, 6, 7, 8)`). If user `22110066` generated an ID outside of this range (like `9`), they naturally wouldn't receive the auto-completions.
-3. **Frontend Mismatch:** Is the backend returning `[ "30303111" ]` but the frontend is somehow mapping it differently?
+### Students
+- `GET /api/students/login?identifier=...`
+- `GET /api/students/{id}`
+- `GET /api/students/{id}/completions`
 
-## 5. Instructions for the Next AI (Claude / ChatGPT)
+### Enrollments
+- `GET /api/enrollments/my?studentId=...`
+- `POST /api/enrollments/add?studentId=...&sectionId=...`
+- `DELETE /api/enrollments/remove?studentId=...&sectionId=...`
 
-Hello fellow AI assistant! Here are your immediate objectives:
+### Sections
+- `GET /api/sections`
 
-1. **Investigate the SQL Auto-seed constraint:** Open `data/seed.sql`, locate the `STEP 7: Auto-complete 1st and 2nd Year courses` at the very bottom, and ensure the syntax maps to the actual schema (verify `courses` uses `course_code` and adjust the substring logic accordingly). Verify user IDs.
-2. **Review the Completions Endpoint:** Check `StudentController.java` to ensure `getCompletions` cleanly returns the string identifiers of completed courses.
-3. **Verify the Frontend Checks:** Review `AvailableCoursesPage.jsx` and `SectionPickerModal.jsx` to ensure `rl = L && !U.includes(L)` executes properly without type mismatches.
-4. **Coordinate with the User:** Have the user wipe/reset their Supabase Database with the updated `seed.sql`, restart Spring Boot, and login as `22110066`. The user should suddenly see that course `40303121` is **Available** and labeled `Eligible` rather than `Missing Prereq`.
+### Swap Offers
+- `GET /api/swaps/offers?studentId=...`
+- `GET /api/swaps/offers/my?studentId=...`
+- `POST /api/swaps/offers`
+- `DELETE /api/swaps/offers/{offerId}?studentId=...`
+
+### Swap Requests
+- `POST /api/swaps/requests`
+- `POST /api/swaps/requests/accept-direct`
+- `GET /api/swaps/requests/incoming?studentId=...`
+- `GET /api/swaps/requests/sent?studentId=...`
+- `POST /api/swaps/requests/{requestId}/accept?studentId=...`
+- `POST /api/swaps/requests/{requestId}/reject?studentId=...`
+- `DELETE /api/swaps/requests/{requestId}?studentId=...`
+
+## 7) Business Rules Implemented
+
+Key swap/enrollment rules currently enforced:
+- cannot add/swap into a course already completed
+- prerequisite must be satisfied for target course
+- cannot swap section with itself
+- time conflict checks on add/create offer/accept
+- student must still own required sections at accept time
+- duplicate pending request for same offer+sender blocked
+- same offered section can target multiple different wanted sections
+- exact duplicate offer pair (same have + same want) blocked
+- directed offers can be limited to one target student
+- on successful swap, dependent offers/requests using traded-away section are cleaned up/cancelled
+
+## 8) Data Integrity and Reliability Changes
+
+Recent reliability updates:
+- deduplicated enrollment read behavior in repository
+- startup cleanup of duplicate active enrollments
+- safer ACTIVE comparisons with case-insensitive checks
+
+Relevant files:
+- `src/main/java/com/university/swap/repository/EnrollmentRepository.java`
+- `src/main/java/com/university/swap/service/EnrollmentService.java`
+
+## 9) Test Strategy and Scripts
+
+Primary scenario checklist:
+- `docs/swap_user_cases.md`
+
+Seed and cleanup scripts for controlled testing:
+- seed: `data/test cases.sql`
+- cleanup: `docs/sql/cleanup/test_users_swap_cleanup.sql`
+
+Seed script creates dedicated test users across academic years and configures enrollments/completions for edge cases.
+
+## 10) Known Limitations / Risks (Important)
+
+Current design limitations to be aware of before production hardening:
+- authentication is identifier-based and not full credential-based auth
+- authorization relies heavily on client-supplied ids in query/body
+- CORS currently open (`*`)
+- error responses may expose internal exception message text
+- DB credentials are currently present in local config file
+
+This project is functionally rich for capstone/demo workflows, but security hardening is still required for production.
+
+## 11) Suggested AI Voice Session Agenda
+
+If this repo + this file are given to another AI, use this order:
+
+1. Read this file fully.
+2. Read `docs/swap_user_cases.md` to understand expected behavior.
+3. Read core backend services:
+   - `SwapOfferService.java`
+   - `SwapRequestService.java`
+   - `EnrollmentService.java`
+4. Read frontend flow files:
+   - `App.jsx`
+   - `StudentSchedulePage.jsx`
+   - `SectionPickerModal.jsx`
+   - `TradingPage.jsx`
+   - `MySwapsPage.jsx`
+5. Validate assumptions against `data/test cases.sql` and run scenario tests.
+6. Propose changes in small, reviewable patches.
+
+## 12) Current Goal for Continuation
+
+Continue improving usability and correctness of swap workflows while preserving existing business constraints.
+If a change affects rules, update both:
+- `docs/swap_user_cases.md`
+- SQL seed/cleanup scripts used for reproducible testing.
