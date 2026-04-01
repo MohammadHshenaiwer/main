@@ -52,12 +52,6 @@ public class SwapOfferService {
                         "You are not enrolled in section " + haveSection.getSectionNumber()
                                 + " of " + haveSection.getCourse().getCourseName()));
 
-        // 3.1 Prevent duplicate active offers for the same offered section
-        if (offerRepo.hasActiveOfferForSection(req.getStudentId(), req.getHaveSectionId())) {
-            throw new SwapException(
-                    "You already have an active offer for this section. Cancel it first or wait until it is resolved.");
-        }
-
         // ── CASE 1: Cannot offer a course you already completed ──
         if (completionRepo.hasStudentPassedCourse(req.getStudentId(), haveSection.getCourse().getCourseId())) {
             throw new SwapException(
@@ -71,6 +65,12 @@ public class SwapOfferService {
         Section wantSection = sectionRepo.findById(req.getWantSectionId())
                 .orElseThrow(
                         () -> new ResourceNotFoundException("Target Section not found: " + req.getWantSectionId()));
+
+        // 4.1 Allow multiple offers from the same offered section, but block exact duplicate pairs
+        if (offerRepo.hasActiveOfferForSamePair(req.getStudentId(), req.getHaveSectionId(), req.getWantSectionId())) {
+            throw new SwapException(
+                    "You already have an active offer with the same offered and wanted sections.");
+        }
 
         // ── CASE 2: Cannot request a course you already completed ──
         if (completionRepo.hasStudentPassedCourse(req.getStudentId(), wantSection.getCourse().getCourseId())) {

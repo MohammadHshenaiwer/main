@@ -5,12 +5,16 @@ import com.university.swap.exception.SwapException;
 import com.university.swap.model.*;
 import com.university.swap.repository.*;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class EnrollmentService {
 
@@ -21,6 +25,15 @@ public class EnrollmentService {
     private final CourseRepository courseRepo;
     private final SwapOfferRepository offerRepo;
     private final SwapRequestRepository requestRepo;
+
+    @EventListener(ApplicationReadyEvent.class)
+    @Transactional
+    public void cleanupDuplicateActiveEnrollmentsOnStartup() {
+        int removed = enrollmentRepo.deleteDuplicateActiveEnrollments();
+        if (removed > 0) {
+            log.warn("Removed {} duplicate ACTIVE enrollment rows on startup.", removed);
+        }
+    }
 
     // ── Add a section to student's schedule ────────────────────
     @Transactional

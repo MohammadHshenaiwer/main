@@ -1,5 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
-import { getAllSections, addStudentSection, createOffer, getCompletedCourses } from "../api";
+import {
+  getAllSections,
+  addStudentSection,
+  createOffer,
+  getCompletedCourses,
+  verifyStudent,
+} from "../api";
 import "../styles/section-picker-modal.css";
 
 const normalizeCourseCode = (value) => String(value ?? "").trim();
@@ -18,6 +24,7 @@ function SectionPickerModal({
   const [loading, setLoading] = useState(false);
   const [submittingId, setSubmittingId] = useState(null);
   const [expandedCourses, setExpandedCourses] = useState({});
+  const [targetStudentInput, setTargetStudentInput] = useState("");
 
   useEffect(() => {
     if (!isOpen) return;
@@ -40,6 +47,12 @@ function SectionPickerModal({
 
     loadData();
   }, [isOpen, studentId]);
+
+  useEffect(() => {
+    if (isOpen && mode === "trade") {
+      setTargetStudentInput("");
+    }
+  }, [isOpen, mode, offeredSection?.section?.sectionId]);
 
   const completedCodeSet = useMemo(() => {
     return new Set((completedCodes || []).map(normalizeCourseCode).filter(Boolean));
@@ -133,7 +146,19 @@ function SectionPickerModal({
       } else {
         // Trade mode — create swap offer
         const haveSectionId = offeredSection.section?.sectionId;
-        await createOffer(studentId, haveSectionId, sectionId, "SECTION_SWAP");
+        const rawTarget = String(targetStudentInput ?? "").trim();
+        let targetStudentId = null;
+
+        if (rawTarget) {
+          const targetStudent = await verifyStudent(rawTarget);
+          targetStudentId = Number(targetStudent.studentId);
+
+          if (String(targetStudentId) === String(studentId)) {
+            throw new Error("You cannot send a direct request to yourself.");
+          }
+        }
+
+        await createOffer(studentId, haveSectionId, sectionId, "SECTION_SWAP", targetStudentId);
         alert("Trade offer created!");
       }
 
@@ -171,6 +196,21 @@ function SectionPickerModal({
           <div className="trade-offered-box">
             <strong>Offering:</strong> {offeredSection.section?.course?.courseCode} -{" "}
             {offeredSection.section?.course?.courseName} (Section {offeredSection.section?.sectionNumber})
+          </div>
+        )}
+
+        {mode === "trade" && (
+          <div className="direct-request-box">
+            <label htmlFor="target-student-input">Direct request to student ID (optional)</label>
+            <input
+              id="target-student-input"
+              type="text"
+              inputMode="numeric"
+              placeholder="Student ID or number (e.g. 900012 or 22000012)"
+              value={targetStudentInput}
+              onChange={(event) => setTargetStudentInput(event.target.value)}
+            />
+            <small>Leave empty to create an open offer visible to all students.</small>
           </div>
         )}
 

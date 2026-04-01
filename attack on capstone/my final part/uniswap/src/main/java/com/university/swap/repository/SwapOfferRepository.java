@@ -54,11 +54,14 @@ public interface SwapOfferRepository extends JpaRepository<SwapOffer, Long> {
     List<Long> findAllOpenOfferIdsByStudentAndHaveSection(@Param("studentId") Long studentId,
                                                           @Param("sectionId") Long sectionId);
 
-    // Check if student already has an active offer for the same offered section
+    // Check duplicate active offer for the same offered->wanted pair
     @Query("SELECT COUNT(o) > 0 FROM SwapOffer o WHERE o.student.studentId = :studentId " +
-           "AND o.haveSection.sectionId = :sectionId AND o.status IN ('OPEN', 'PENDING')")
-    boolean hasActiveOfferForSection(@Param("studentId") Long studentId,
-                                     @Param("sectionId") Long sectionId);
+           "AND o.haveSection.sectionId = :haveSectionId " +
+           "AND o.wantSection.sectionId = :wantSectionId " +
+           "AND o.status IN ('OPEN', 'PENDING')")
+    boolean hasActiveOfferForSamePair(@Param("studentId") Long studentId,
+                                      @Param("haveSectionId") Long haveSectionId,
+                                      @Param("wantSectionId") Long wantSectionId);
 
     // Re-open offers that were pending after their request got cancelled
     @Modifying
